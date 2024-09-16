@@ -15,9 +15,9 @@ Projeto interdisciplinar que consiste na criação de um sistema completo para u
 - [ ] Frames
     - [x] Main
 
-    - [ ] Login
+    - [x] Login
 
-    - [ ] Painel de controle
+    - [x] Painel de controle
         - [ ] Gerenciar Funcionários
         - [ ] Gerenciar Produtos
         - [ ] Relatório Geral de Gastos
