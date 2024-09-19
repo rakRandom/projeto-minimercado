@@ -2,9 +2,7 @@ package controller;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import view.FrmLogin;
 import view.FrmMain;
-import view.FrmPainelControle;
 
 /**
  *
@@ -20,7 +18,7 @@ public class Main {
                 InstantiationException | 
                 IllegalAccessException e) {}
         
-        var main = new FrmPainelControle();
+        var main = new FrmMain();
         main.setVisible(true);
     }
 }
