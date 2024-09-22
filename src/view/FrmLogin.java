@@ -42,7 +42,6 @@ public class FrmLogin extends javax.swing.JFrame {
         setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(720, 480));
-        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,6 +136,8 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         dispose();
+        var painel = new FrmMain();
+        painel.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
 
     /**

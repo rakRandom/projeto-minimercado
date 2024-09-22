@@ -33,14 +33,21 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -49,7 +56,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Painel de Controle");
         setBounds(new java.awt.Rectangle(0, 0, 720, 480));
-        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 480));
 
@@ -73,7 +79,10 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenu1.setMnemonic('G');
         jMenu1.setText("Gerenciar");
 
-        jMenu2.setText("Funcionários");
+        jMenu2.setText("Recursos Humanos");
+
+        jMenuItem13.setText("Controle de Clientes");
+        jMenu2.add(jMenuItem13);
 
         jMenuItem1.setText("Controle de Funcionários");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,10 +100,13 @@ public class FrmPainelControle extends javax.swing.JFrame {
 
         jMenu1.add(jMenu2);
 
-        jMenu3.setText("Produtos");
+        jMenu3.setText("Produtos e Compras");
 
         jMenuItem5.setText("Controle de Produtos");
         jMenu3.add(jMenuItem5);
+
+        jMenuItem10.setText("Controle de Categorias");
+        jMenu3.add(jMenuItem10);
 
         jMenuItem6.setText("Controle de Lotes");
         jMenu3.add(jMenuItem6);
@@ -105,7 +117,23 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenuItem8.setText("Gerenciar Promoções");
         jMenu3.add(jMenuItem8);
 
+        jMenuItem15.setText("Gerenciar Compras");
+        jMenu3.add(jMenuItem15);
+
         jMenu1.add(jMenu3);
+
+        jMenu4.setText("Outros");
+
+        jMenuItem11.setText("Administrar Classificações");
+        jMenu4.add(jMenuItem11);
+
+        jMenuItem14.setText("Administrar Telefones");
+        jMenu4.add(jMenuItem14);
+
+        jMenuItem12.setText("Métodos de Pagamento");
+        jMenu4.add(jMenuItem12);
+
+        jMenu1.add(jMenu4);
         jMenu1.add(jSeparator1);
 
         jMenuItem2.setText("Contas");
@@ -211,8 +239,15 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
