@@ -45,13 +45,13 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItemAdmClassific = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItemMetodosPag = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Painel de Controle");
@@ -124,14 +124,24 @@ public class FrmPainelControle extends javax.swing.JFrame {
 
         jMenu4.setText("Outros");
 
-        jMenuItem11.setText("Administrar Classificações");
-        jMenu4.add(jMenuItem11);
+        jMenuItemAdmClassific.setText("Administrar Classificações");
+        jMenuItemAdmClassific.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAdmClassificActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemAdmClassific);
 
         jMenuItem14.setText("Administrar Telefones");
         jMenu4.add(jMenuItem14);
 
-        jMenuItem12.setText("Métodos de Pagamento");
-        jMenu4.add(jMenuItem12);
+        jMenuItemMetodosPag.setText("Métodos de Pagamento");
+        jMenuItemMetodosPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMetodosPagActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemMetodosPag);
 
         jMenu1.add(jMenu4);
         jMenu1.add(jSeparator1);
@@ -145,19 +155,19 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
         jMenu1.add(jSeparator2);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem9.setText("Sair");
-        jMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem9MouseClicked(evt);
+                jMenuItemSairMouseClicked(evt);
             }
         });
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMenuItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem9);
+        jMenu1.add(jMenuItemSair);
 
         jMenuBar1.add(jMenu1);
 
@@ -188,15 +198,27 @@ public class FrmPainelControle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MouseClicked
+    private void jMenuItemSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemSairMouseClicked
         
-    }//GEN-LAST:event_jMenuItem9MouseClicked
+    }//GEN-LAST:event_jMenuItemSairMouseClicked
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         dispose();
         var main = new FrmMain();
         main.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jMenuItemMetodosPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMetodosPagActionPerformed
+        dispose();
+        var painel = new FrmMetodosPag();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemMetodosPagActionPerformed
+
+    private void jMenuItemAdmClassificActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdmClassificActionPerformed
+        dispose();
+        var painel = new FrmAdmClassific();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAdmClassificActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,8 +265,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
@@ -255,7 +275,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAdmClassific;
+    private javax.swing.JMenuItem jMenuItemMetodosPag;
+    private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPopupMenu.Separator jSeparator1;

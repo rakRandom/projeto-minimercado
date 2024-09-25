@@ -43,6 +43,8 @@ public class FrmMain extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(735, 515));
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMain.setMinimumSize(new java.awt.Dimension(720, 480));
+        jPanelMain.setPreferredSize(new java.awt.Dimension(720, 480));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(246, 246, 246));
@@ -121,7 +123,7 @@ public class FrmMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
