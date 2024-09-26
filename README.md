@@ -24,7 +24,7 @@ Projeto interdisciplinar que consiste na criação de um sistema completo para u
         - [ ] Gerenciar Contas/Credenciais
         - [ ] Outros Frames de CRUDs
     
-    - [ ] Sistema de Caixa
+    - [X] Sistema de Caixa
 
 
 - [ ] Funcionalidades
