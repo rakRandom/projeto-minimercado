@@ -4,11 +4,32 @@
  */
 package view;
 
+import view.crud.outros.FrmClassific;
+import view.crud.outros.FrmContas;
+import view.crud.outros.FrmMetodosPag;
+import view.crud.outros.FrmTelefone;
+import view.crud.produtoscompras.FrmCategoria;
+import view.crud.produtoscompras.FrmCompra;
+import view.crud.produtoscompras.FrmFabricante;
+import view.crud.produtoscompras.FrmLote;
+import view.crud.produtoscompras.FrmProduto;
+import view.crud.produtoscompras.FrmPromoCate;
+import view.crud.produtoscompras.FrmPromoProd;
+import view.crud.recursoshumanos.FrmCargo;
+import view.crud.recursoshumanos.FrmCliente;
+import view.crud.recursoshumanos.FrmExpediente;
+import view.crud.recursoshumanos.FrmFuncionario;
+
 /**
  *
  * @author user
  */
 public class FrmPainelControle extends javax.swing.JFrame {
+    private static final String[] promocaoOpcoes = {
+        "Produtos", 
+        "Categorias", 
+        "[Cancelar]"
+    };
 
     /**
      * Creates new form FrmPainelControle
@@ -27,31 +48,32 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel4 = new javax.swing.JLabel();
+        jButtonClassificacoes = new javax.swing.JButton();
+        jButtonTelefones = new javax.swing.JButton();
+        jButtonMetodoPag = new javax.swing.JButton();
+        jButtonContas = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        jButtonSair = new javax.swing.JButton();
+        jLabelRelatorio = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemClientes = new javax.swing.JMenuItem();
+        jMenuItemFuncionarios = new javax.swing.JMenuItem();
+        jMenuItemExpedientes = new javax.swing.JMenuItem();
+        jMenuItemCargos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItemAdmClassific = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItemMetodosPag = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItemSair = new javax.swing.JMenuItem();
+        jMenuItemProdutos = new javax.swing.JMenuItem();
+        jMenuItemCategorias = new javax.swing.JMenuItem();
+        jMenuItemLotes = new javax.swing.JMenuItem();
+        jMenuItemFabricantes = new javax.swing.JMenuItem();
+        jMenuItemPromocoes = new javax.swing.JMenuItem();
+        jMenuItemCompras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Painel de Controle");
@@ -65,10 +87,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jPanelMain.setPreferredSize(new java.awt.Dimension(740, 480));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 15, 700, 400));
-
         jLabel2.setText("Usuário: Admin");
         jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
@@ -76,100 +94,177 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jLabel3.setText("Nível de Acesso: 1");
         jPanelMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, -1));
 
-        jMenu1.setMnemonic('G');
-        jMenu1.setText("Gerenciar");
+        jToolBar1.setRollover(true);
+
+        jLabel4.setText("  Outras Tabelas:    ");
+        jToolBar1.add(jLabel4);
+
+        jButtonClassificacoes.setText("  Classificações  ");
+        jButtonClassificacoes.setFocusable(false);
+        jButtonClassificacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonClassificacoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonClassificacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClassificacoesActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonClassificacoes);
+
+        jButtonTelefones.setText("  Telefones  ");
+        jButtonTelefones.setFocusable(false);
+        jButtonTelefones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonTelefones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonTelefones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTelefonesActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonTelefones);
+
+        jButtonMetodoPag.setText("  Métodos de Pagamento  ");
+        jButtonMetodoPag.setFocusable(false);
+        jButtonMetodoPag.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMetodoPag.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonMetodoPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMetodoPagActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonMetodoPag);
+
+        jButtonContas.setText("  Contas e Credenciais  ");
+        jButtonContas.setFocusable(false);
+        jButtonContas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonContas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonContas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContasActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonContas);
+
+        jSeparator1.setSeparatorSize(new java.awt.Dimension(50, 25));
+        jToolBar1.add(jSeparator1);
+
+        jButtonSair.setText("   Sair   ");
+        jButtonSair.setFocusable(false);
+        jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonSair);
+
+        jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 30));
+
+        jLabelRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelRelatorio.setText("Relatório Geral de Gastos:");
+        jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 330));
 
         jMenu2.setText("Recursos Humanos");
 
-        jMenuItem13.setText("Controle de Clientes");
-        jMenu2.add(jMenuItem13);
-
-        jMenuItem1.setText("Controle de Funcionários");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClientes.setText("Controle de Clientes");
+        jMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemClientesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(jMenuItemClientes);
 
-        jMenuItem3.setText("Administrar Horários");
-        jMenu2.add(jMenuItem3);
+        jMenuItemFuncionarios.setText("Controle de Funcionários");
+        jMenuItemFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFuncionariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemFuncionarios);
 
-        jMenuItem4.setText("Administrar Cargos");
-        jMenu2.add(jMenuItem4);
+        jMenuItemExpedientes.setText("Administrar Expedientes");
+        jMenuItemExpedientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExpedientesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemExpedientes);
 
-        jMenu1.add(jMenu2);
+        jMenuItemCargos.setText("Administrar Cargos");
+        jMenuItemCargos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCargosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemCargos);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Produtos e Compras");
 
-        jMenuItem5.setText("Controle de Produtos");
-        jMenu3.add(jMenuItem5);
-
-        jMenuItem10.setText("Controle de Categorias");
-        jMenu3.add(jMenuItem10);
-
-        jMenuItem6.setText("Controle de Lotes");
-        jMenu3.add(jMenuItem6);
-
-        jMenuItem7.setText("Controle de Fabricantes");
-        jMenu3.add(jMenuItem7);
-
-        jMenuItem8.setText("Gerenciar Promoções");
-        jMenu3.add(jMenuItem8);
-
-        jMenuItem15.setText("Gerenciar Compras");
-        jMenu3.add(jMenuItem15);
-
-        jMenu1.add(jMenu3);
-
-        jMenu4.setText("Outros");
-
-        jMenuItemAdmClassific.setText("Administrar Classificações");
-        jMenuItemAdmClassific.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemProdutos.setText("Controle de Produtos");
+        jMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAdmClassificActionPerformed(evt);
+                jMenuItemProdutosActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemAdmClassific);
+        jMenu3.add(jMenuItemProdutos);
 
-        jMenuItem14.setText("Administrar Telefones");
-        jMenu4.add(jMenuItem14);
-
-        jMenuItemMetodosPag.setText("Métodos de Pagamento");
-        jMenuItemMetodosPag.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCategorias.setText("Controle de Categorias");
+        jMenuItemCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMetodosPagActionPerformed(evt);
+                jMenuItemCategoriasActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemMetodosPag);
+        jMenu3.add(jMenuItemCategorias);
 
-        jMenu1.add(jMenu4);
-        jMenu1.add(jSeparator1);
-
-        jMenuItem2.setText("Contas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemLotes.setText("Controle de Lotes");
+        jMenuItemLotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemLotesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator2);
+        jMenu3.add(jMenuItemLotes);
 
-        jMenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItemSair.setText("Sair");
-        jMenuItemSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItemSairMouseClicked(evt);
-            }
-        });
-        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemFabricantes.setText("Controle de Fabricantes");
+        jMenuItemFabricantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSairActionPerformed(evt);
+                jMenuItemFabricantesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemSair);
+        jMenu3.add(jMenuItemFabricantes);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItemPromocoes.setText("Gerenciar Promoções");
+        jMenuItemPromocoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPromocoesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemPromocoes);
+
+        jMenuItemCompras.setText("Gerenciar Compras");
+        jMenuItemCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemComprasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemCompras);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -190,35 +285,114 @@ public class FrmPainelControle extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItemSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemSairMouseClicked
-        
-    }//GEN-LAST:event_jMenuItemSairMouseClicked
-
-    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+    private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
         dispose();
-        var main = new FrmMain();
-        main.setVisible(true);
-    }//GEN-LAST:event_jMenuItemSairActionPerformed
+        var painel = new FrmFuncionario();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
-    private void jMenuItemMetodosPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMetodosPagActionPerformed
+    private void jButtonClassificacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClassificacoesActionPerformed
+        dispose();
+        var painel = new FrmClassific();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButtonClassificacoesActionPerformed
+
+    private void jButtonTelefonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelefonesActionPerformed
+        dispose();
+        var painel = new FrmTelefone();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButtonTelefonesActionPerformed
+
+    private void jButtonMetodoPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMetodoPagActionPerformed
         dispose();
         var painel = new FrmMetodosPag();
         painel.setVisible(true);
-    }//GEN-LAST:event_jMenuItemMetodosPagActionPerformed
+    }//GEN-LAST:event_jButtonMetodoPagActionPerformed
 
-    private void jMenuItemAdmClassificActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdmClassificActionPerformed
+    private void jButtonContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContasActionPerformed
         dispose();
-        var painel = new FrmAdmClassific();
+        var painel = new FrmContas();
         painel.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAdmClassificActionPerformed
+    }//GEN-LAST:event_jButtonContasActionPerformed
+
+    private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
+        dispose();
+        var painel = new FrmCliente();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemClientesActionPerformed
+
+    private void jMenuItemExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExpedientesActionPerformed
+        dispose();
+        var painel = new FrmExpediente();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemExpedientesActionPerformed
+
+    private void jMenuItemCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCargosActionPerformed
+        dispose();
+        var painel = new FrmCargo();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCargosActionPerformed
+
+    private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
+        dispose();
+        var painel = new FrmProduto();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemProdutosActionPerformed
+
+    private void jMenuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriasActionPerformed
+        dispose();
+        var painel = new FrmCategoria();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCategoriasActionPerformed
+
+    private void jMenuItemLotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLotesActionPerformed
+        dispose();
+        var painel = new FrmLote();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemLotesActionPerformed
+
+    private void jMenuItemFabricantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFabricantesActionPerformed
+        dispose();
+        var painel = new FrmFabricante();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemFabricantesActionPerformed
+
+    private void jMenuItemPromocoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPromocoesActionPerformed
+        int opcao = javax.swing.JOptionPane.showOptionDialog(null, 
+                "Escolha uma tabela",
+                "Você deseja abrir o formulário CRUD referente as promoções de: ",
+                javax.swing.JOptionPane.DEFAULT_OPTION,
+                javax.swing.JOptionPane.INFORMATION_MESSAGE,
+                null,
+                promocaoOpcoes,
+                promocaoOpcoes[2]);
+
+        switch(opcao) {
+            case 0 -> {
+                dispose();
+                var painel = new FrmPromoProd();
+                painel.setVisible(true);
+            }
+            case 1 -> {
+                dispose();
+                var painel = new FrmPromoCate();
+                painel.setVisible(true);
+            }
+            default -> javax.swing.JOptionPane.showMessageDialog(null, "Operação cancelada");
+        }
+    }//GEN-LAST:event_jMenuItemPromocoesActionPerformed
+
+    private void jMenuItemComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemComprasActionPerformed
+        dispose();
+        var painel = new FrmCompra();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemComprasActionPerformed
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        dispose();
+        var painel = new FrmMain();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButtonSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,31 +430,32 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonClassificacoes;
+    private javax.swing.JButton jButtonContas;
+    private javax.swing.JButton jButtonMetodoPag;
+    private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonTelefones;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelRelatorio;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItemAdmClassific;
-    private javax.swing.JMenuItem jMenuItemMetodosPag;
-    private javax.swing.JMenuItem jMenuItemSair;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jMenuItemCargos;
+    private javax.swing.JMenuItem jMenuItemCategorias;
+    private javax.swing.JMenuItem jMenuItemClientes;
+    private javax.swing.JMenuItem jMenuItemCompras;
+    private javax.swing.JMenuItem jMenuItemExpedientes;
+    private javax.swing.JMenuItem jMenuItemFabricantes;
+    private javax.swing.JMenuItem jMenuItemFuncionarios;
+    private javax.swing.JMenuItem jMenuItemLotes;
+    private javax.swing.JMenuItem jMenuItemProdutos;
+    private javax.swing.JMenuItem jMenuItemPromocoes;
     private javax.swing.JPanel jPanelMain;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

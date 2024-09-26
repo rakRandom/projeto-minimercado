@@ -47,7 +47,6 @@ public class FrmDev extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Desenvolvedores");
         setMinimumSize(new java.awt.Dimension(735, 515));
-        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
         setSize(new java.awt.Dimension(735, 515));
 

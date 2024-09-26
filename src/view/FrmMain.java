@@ -4,6 +4,9 @@
  */
 package view;
 
+import view.login.FrmLoginAdm;
+import view.login.FrmLoginCaixa;
+
 /**
  *
  * @author Fellipe Leonardo
@@ -38,7 +41,6 @@ public class FrmMain extends javax.swing.JFrame {
         setTitle("Minimercado");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(735, 515));
-        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
         setSize(new java.awt.Dimension(735, 515));
 
@@ -67,6 +69,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jButton2.setText("Sistema de Caixa");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,7 +139,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         dispose();
-        var painel = new FrmLogin();
+        var painel = new FrmLoginAdm();
         painel.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -145,6 +152,12 @@ public class FrmMain extends javax.swing.JFrame {
        var painel = new FrmDev();
        painel.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        dispose();
+        var painel = new FrmLoginCaixa();
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
