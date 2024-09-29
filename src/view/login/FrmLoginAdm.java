@@ -141,7 +141,6 @@ public class FrmLoginAdm extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try{
             String pesquisa = "select * from credenciais where usuario like '"+ jTextFieldUsuario.getText() + "' and senha like '" + new String(jPasswordField.getPassword()) + "' and cod_acesso = 1"; 
-            System.out.println(pesquisa);
             conexaoDB.executarSQL(pesquisa);
             if (conexaoDB.resultset.first()) { 
                 // acesso ao form de cadastro
