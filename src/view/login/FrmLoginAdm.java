@@ -6,18 +6,24 @@ package view.login;
 
 import view.FrmMain;
 import view.FrmPainelControle;
+import controller.db.Conexao;
+import java.util.Arrays;
 
 /**
  *
  * @author user
  */
 public class FrmLoginAdm extends javax.swing.JFrame {
-
+    Conexao conexaoDB;
+    
     /**
      * Creates new form FrmLogin
      */
     public FrmLoginAdm() {
         initComponents();
+        
+        conexaoDB = new Conexao();
+        conexaoDB.conectar();
     }
 
     /**
@@ -39,7 +45,7 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Painel de Controle");
@@ -55,12 +61,13 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         jLabelTitulo.setText("Painel de Controle - Login");
         jPanelMain.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 50));
 
-        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelSenha.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSenha.setText("Senha");
-        jPanel1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 30));
+        jPanel1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 30));
 
         jTextFieldUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -77,13 +84,19 @@ public class FrmLoginAdm extends javax.swing.JFrame {
                 jButtonLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 100, 30));
+        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, 30));
 
         jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButtonLimpar.setText("Limpar");
-        jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 100, 30));
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 100, 30));
 
-        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuário");
         jPanel1.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 30));
 
@@ -93,18 +106,20 @@ public class FrmLoginAdm extends javax.swing.JFrame {
                 jPasswordFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 270, 30));
+        jPanel1.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 270, 30));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 350, 250));
 
-        jMenu1.setMnemonic('S');
-        jMenu1.setText("Sair");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuBar1.setBackground(new java.awt.Color(0, 51, 102));
+
+        jMenuSair.setMnemonic('S');
+        jMenuSair.setText("Sair");
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenuSairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -124,9 +139,23 @@ public class FrmLoginAdm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        dispose();
-        var painel = new FrmPainelControle();
-        painel.setVisible(true);
+        try{
+            String pesquisa = "select * from credenciais where usuario like '"+ jTextFieldUsuario.getText() + "' and senha like '" + new String(jPasswordField.getPassword()) + "' and cod_acesso = 1"; 
+            System.out.println(pesquisa);
+            conexaoDB.executarSQL(pesquisa);
+            if (conexaoDB.resultset.first()) { 
+                // acesso ao form de cadastro
+                conexaoDB.desconectar();
+                dispose();
+                var painel = new FrmPainelControle();
+                painel.setVisible(true);
+            }
+            else {
+                javax.swing.JOptionPane.showMessageDialog(null, "\n Usuário ou senha incorreta", "Mensagem do Programa", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (java.sql.SQLException errosql) {
+            javax.swing.JOptionPane.showMessageDialog(null, "\n Ocorreu um erro ao fazer login.\n " + errosql, "Mensagem do Programa", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
@@ -137,11 +166,17 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
         dispose();
         var painel = new FrmMain();
         painel.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jMenuSairMouseClicked
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldUsuario.setText("");
+        jPasswordField.setText("");
+        jTextFieldUsuario.requestFocus();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +220,8 @@ public class FrmLoginAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPasswordField jPasswordField;

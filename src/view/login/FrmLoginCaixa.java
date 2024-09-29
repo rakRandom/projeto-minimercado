@@ -43,7 +43,7 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         jTextFieldNumCaixa = new javax.swing.JTextField();
         jLabelNumCaixa = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema de Caixa");
@@ -58,10 +58,11 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         jLabelTitulo.setText("Sistema de Caixa - Login");
         jPanelMain.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 50));
 
-        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelSenha.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSenha.setText("Senha");
         jPanel1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 30));
 
@@ -80,13 +81,14 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
                 jButtonLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 100, 30));
+        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 100, 30));
 
         jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButtonLimpar.setText("Limpar");
-        jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 100, 30));
+        jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 100, 30));
 
-        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuário");
         jPanel1.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 30));
 
@@ -106,33 +108,37 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldCodOperador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 190, 30));
 
-        jLabelCodOperador.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelCodOperador.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelCodOperador.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCodOperador.setText("Código do Operador");
         jPanel1.add(jLabelCodOperador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 30));
 
         jTextFieldNumCaixa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jPanel1.add(jTextFieldNumCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 70, 30));
 
-        jLabelNumCaixa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelNumCaixa.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelNumCaixa.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNumCaixa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNumCaixa.setText("Caixa Nº");
         jPanel1.add(jLabelNumCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 70, 30));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 350, 300));
 
-        jMenu1.setMnemonic('S');
-        jMenu1.setText("Sair");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuBar1.setBackground(new java.awt.Color(0, 51, 102));
+
+        jMenuSair.setMnemonic('S');
+        jMenuSair.setText("Sair");
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenuSairMouseClicked(evt);
             }
         });
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                jMenuSairActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -151,15 +157,15 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
         dispose();
         var painel = new FrmMain();
         painel.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jMenuSairMouseClicked
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenuSairActionPerformed
 
     private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
         // TODO add your handling code here:
@@ -222,8 +228,8 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPasswordField jPasswordField;
