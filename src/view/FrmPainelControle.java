@@ -48,8 +48,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel4 = new javax.swing.JLabel();
         jButtonClassificacoes = new javax.swing.JButton();
@@ -87,15 +85,10 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jPanelMain.setPreferredSize(new java.awt.Dimension(740, 480));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Usuário: Admin");
-        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Nível de Acesso: 1");
-        jPanelMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, -1));
-
+        jToolBar1.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar1.setRollover(true);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("  Outras Tabelas:    ");
         jToolBar1.add(jLabel4);
 
@@ -157,11 +150,11 @@ public class FrmPainelControle extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonSair);
 
-        jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 30));
+        jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 700, 30));
 
         jLabelRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelRelatorio.setText("Relatório Geral de Gastos:");
-        jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +169,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 330));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 700, 330));
 
         jMenu2.setText("Recursos Humanos");
 
@@ -389,9 +382,18 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemComprasActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        dispose();
-        var painel = new FrmMain();
-        painel.setVisible(true);
+        int op = javax.swing.JOptionPane.showConfirmDialog(
+                null, 
+                "Você realmente deseja sair do Painel de Controle?", 
+                "Confirmar logout", 
+                javax.swing.JOptionPane.YES_NO_OPTION, 
+                javax.swing.JOptionPane.QUESTION_MESSAGE);
+        
+        if (op == javax.swing.JOptionPane.YES_OPTION) {
+            dispose();
+            var painel = new FrmMain();
+            painel.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     /**
@@ -435,8 +437,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMetodoPag;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonTelefones;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelRelatorio;
     private javax.swing.JMenu jMenu2;
