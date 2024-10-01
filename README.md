@@ -19,18 +19,18 @@ Projeto interdisciplinar que consiste na criação de um sistema completo para u
 
     - [x] Painel de controle
         - [ ] Gerenciar Funcionários
-        - [ ] Gerenciar Produtos
+        - [x] Gerenciar Produtos
         - [ ] Relatório Geral de Gastos
-        - [ ] Gerenciar Contas/Credenciais
-        - [ ] Outros Frames de CRUDs
+        - [x] Gerenciar Contas/Credenciais
+        - [x] Outros Frames de CRUDs
     
     - [X] Sistema de Caixa
 
 
 - [ ] Funcionalidades
-    - [ ] Conectar com o Banco de Dados
+    - [x] Conectar com o Banco de Dados
 
-    - [ ] Login (verificação de credenciais)
+    - [x] Login (verificação de credenciais)
 
     - [ ] Painel de controle
         - [ ] Gerenciar Funcionários
