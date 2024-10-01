@@ -62,6 +62,8 @@ public class FrmLote extends javax.swing.JFrame {
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1039, 520));
+        setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setMinimumSize(new java.awt.Dimension(735, 515));
@@ -69,10 +71,10 @@ public class FrmLote extends javax.swing.JFrame {
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 20));
 
         jButtonPesquisar.setText("Pesquisar");
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 80, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setRollover(true);
@@ -141,7 +143,7 @@ public class FrmLote extends javax.swing.JFrame {
         });
         jToolBar.add(jButtonSair);
 
-        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
+        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 40));
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -152,14 +154,14 @@ public class FrmLote extends javax.swing.JFrame {
 
         jTextField2.setEditable(false);
         jTextField2.setPreferredSize(new java.awt.Dimension(26, 22));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 40, -1));
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cód. do Produto:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jFormattedTextField4.setPreferredSize(new java.awt.Dimension(60, 22));
-        jPanel3.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 40, -1));
+        jPanel3.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 90, -1));
 
         jLabel11.setBackground(new java.awt.Color(200, 200, 200));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -183,11 +185,11 @@ public class FrmLote extends javax.swing.JFrame {
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Data de Validade:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Quantidade:");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jFormattedTextField5.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -195,11 +197,11 @@ public class FrmLote extends javax.swing.JFrame {
                 jFormattedTextField5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 70, -1));
+        jPanel3.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 90, -1));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Data da Compra:");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jFormattedTextField6.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +209,7 @@ public class FrmLote extends javax.swing.JFrame {
                 jFormattedTextField6ActionPerformed(evt);
             }
         });
-        jPanel3.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 70, -1));
+        jPanel3.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 90, -1));
 
         jFormattedTextField10.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -215,9 +217,9 @@ public class FrmLote extends javax.swing.JFrame {
                 jFormattedTextField10ActionPerformed(evt);
             }
         });
-        jPanel3.add(jFormattedTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 70, -1));
+        jPanel3.add(jFormattedTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 90, -1));
 
-        jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 340));
+        jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 270));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,14 +229,14 @@ public class FrmLote extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "CodLote", "CodProd", "DataValidade", "DataCompra", "Quantidade"
+                "CodLote", "CodProd", "Data de Validade", "Data da Compra", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -247,25 +249,34 @@ public class FrmLote extends javax.swing.JFrame {
         });
         jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
+        }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 470, 440));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 130, -1));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 760, 420));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 140, -1));
 
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód do Lote", "Cód do Produto", "Data de Validade", "Data da Compra", "Quantidade" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed

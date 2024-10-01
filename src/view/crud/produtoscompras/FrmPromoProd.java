@@ -61,6 +61,7 @@ public class FrmPromoProd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciar Promoções dos Produtos");
+        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -209,14 +210,14 @@ public class FrmPromoProd extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Cod da PromoProd", "Porcentagem", "Data de Inicio", "Data Término"
+                "Cód.", "Porcentagem", "Data de Inicio", "Data Término"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -229,28 +230,34 @@ public class FrmPromoProd extends javax.swing.JFrame {
         });
         jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(125);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(130);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(130);
+        }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 470, 430));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 460, 400));
 
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da PromoProd", "Porcentagem", "Data de Início", "Data de Término" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 140, -1));
 
         jButtonPesquisar.setText("Pesquisar");
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 90, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 90, -1));
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 130, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 80, 20));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -59,33 +59,34 @@ public class FrmCategoria extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Categorias");
+        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setMinimumSize(new java.awt.Dimension(735, 515));
-        jPanelMain.setPreferredSize(new java.awt.Dimension(735, 515));
+        jPanelMain.setPreferredSize(new java.awt.Dimension(720, 480));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cód. da Categoria:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
 
         jTextField1.setEditable(false);
         jTextField1.setPreferredSize(new java.awt.Dimension(26, 22));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 40, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 50, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cód. da PromoCate:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jLabel2.setText("Cód. da Promo. da Cate.:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
 
         jFormattedTextField2.setPreferredSize(new java.awt.Dimension(60, 22));
-        jPanel1.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 40, -1));
+        jPanel1.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 50, -1));
 
         jFormattedTextField1.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,11 +94,11 @@ public class FrmCategoria extends javax.swing.JFrame {
                 jFormattedTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, -1));
+        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 190, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Descrição");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jLabel3.setText("Descrição:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 20));
 
         jLabel4.setBackground(new java.awt.Color(200, 200, 200));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -119,7 +120,7 @@ public class FrmCategoria extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 2));
 
-        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 260));
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 230));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,11 +130,11 @@ public class FrmCategoria extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "CodCate", "CodPromoCate", "Descrição"
+                "CodCate", "CodPromo", "Descrição"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -149,9 +150,14 @@ public class FrmCategoria extends javax.swing.JFrame {
         });
         jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(310);
+        }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 420, 430));
-        jPanelMain.add(jTextFieldPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 130, -1));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 460, 370));
+        jPanelMain.add(jTextFieldPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 370, -1));
 
         jComboBoxPesquisa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da Categoria", "Cód. PromoCate", "Descrição" }));
         jComboBoxPesquisa1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +165,10 @@ public class FrmCategoria extends javax.swing.JFrame {
                 jComboBoxPesquisa1ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
 
         jButtonPesquisar1.setText("Pesquisar");
-        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 90, -1));
+        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 90, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setRollover(true);
@@ -237,11 +243,15 @@ public class FrmCategoria extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

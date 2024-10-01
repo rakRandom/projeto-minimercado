@@ -56,6 +56,8 @@ public class FrmProduto extends javax.swing.JFrame {
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
         jFormattedTextField8 = new javax.swing.JFormattedTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jToolBar = new javax.swing.JToolBar();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
@@ -71,32 +73,39 @@ public class FrmProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Produtos");
-        setPreferredSize(new java.awt.Dimension(735, 515));
+        setPreferredSize(new java.awt.Dimension(1095, 760));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setMinimumSize(new java.awt.Dimension(735, 515));
-        jPanelMain.setPreferredSize(new java.awt.Dimension(735, 515));
+        jPanelMain.setPreferredSize(new java.awt.Dimension(1080, 720));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 470, 420, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 680, 410, -1));
 
         jButtonPesquisar.setText("Pesquisar");
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 680, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "CodProd", "CodCate", "CodPromoProd", "CodClassific", "IdFabric", "Nome", "Descricao", "Estoque", "Preco"
+                "CodProd", "CodCate", "CodPromo", "CodClassific", "IdFabric", "Nome", "Descricao", "Estoque", "Preco"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -104,18 +113,18 @@ public class FrmProduto extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(63);
-            jTable2.getColumnModel().getColumn(1).setMaxWidth(60);
-            jTable2.getColumnModel().getColumn(2).setMaxWidth(80);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(140);
-            jTable2.getColumnModel().getColumn(4).setMaxWidth(55);
-            jTable2.getColumnModel().getColumn(5).setMaxWidth(40);
-            jTable2.getColumnModel().getColumn(6).setMaxWidth(60);
-            jTable2.getColumnModel().getColumn(7).setMaxWidth(55);
-            jTable2.getColumnModel().getColumn(8).setMaxWidth(45);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(75);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(75);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(75);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(75);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(75);
+            jTable2.getColumnModel().getColumn(5).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(6).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(7).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(8).setPreferredWidth(165);
         }
 
-        jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 510, 400));
+        jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1040, 450));
 
         jComboBoxPesquisa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Produto", "Cód. da Categoria", "Cód. da Classific", "Cód. da PromoProd", "Id. do Fabricante", "Nome", "Descrição", "Estoque", "Preço" }));
         jComboBoxPesquisa1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,25 +132,25 @@ public class FrmProduto extends javax.swing.JFrame {
                 jComboBoxPesquisa1ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 130, -1));
+        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cód. do Produto:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
 
         jTextField1.setEditable(false);
         jTextField1.setPreferredSize(new java.awt.Dimension(26, 22));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 40, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 70, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cód. da Categoria:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 20));
 
         jFormattedTextField2.setPreferredSize(new java.awt.Dimension(60, 22));
-        jPanel1.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 40, -1));
+        jPanel1.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 70, -1));
 
         jFormattedTextField1.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,11 +158,11 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 40, -1));
+        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, 100, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Id. do Fabricante:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, 20));
 
         jLabel4.setBackground(new java.awt.Color(200, 200, 200));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -176,24 +185,24 @@ public class FrmProduto extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 2));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Cód. da Classific");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jLabel5.setText("C:ód. da Classificação:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 130, 20));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Preço:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, -1, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Estoque:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, -1, 20));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Descrição:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, 20));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nome:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, 20));
 
         jFormattedTextField3.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -201,11 +210,11 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 40, -1));
+        jPanel1.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 70, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Cód. da PromoProd:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jLabel10.setText("Cód. da Promo. do Prod.:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, 20));
 
         jFormattedTextField4.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +222,7 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 40, -1));
+        jPanel1.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 70, -1));
 
         jFormattedTextField5.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +230,7 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 40, -1));
+        jPanel1.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, 100, -1));
 
         jFormattedTextField6.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +238,7 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 60, -1));
+        jPanel1.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 300, -1));
 
         jFormattedTextField7.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +246,7 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+        jPanel1.add(jFormattedTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 300, -1));
 
         jFormattedTextField8.setPreferredSize(new java.awt.Dimension(60, 22));
         jFormattedTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -245,9 +254,35 @@ public class FrmProduto extends javax.swing.JFrame {
                 jFormattedTextField8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 40, -1));
+        jPanel1.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 70, -1));
 
-        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 70, 210, 360));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 10, 3, 110));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 10, 3, 110));
+
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1040, 130));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setRollover(true);
@@ -316,7 +351,7 @@ public class FrmProduto extends javax.swing.JFrame {
         });
         jToolBar.add(jButtonSair);
 
-        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
+        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,6 +474,8 @@ public class FrmProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JToolBar.Separator jSeparator1;
