@@ -67,7 +67,7 @@ public class FrmDev extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(3);
         jTextArea1.setTabSize(10);
-        jTextArea1.setText("Lorem ipsum dorem sit amet.\nLorem ipsum dorem sit amet.\nLorem ipsum dorem sit amet.");
+        jTextArea1.setText("Estudante do curso de DS, novata\nna área da tecnologia, mas aprimorando\nminhas habilidades.");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 290, -1));
@@ -78,7 +78,7 @@ public class FrmDev extends javax.swing.JFrame {
         jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea2.setRows(3);
         jTextArea2.setTabSize(10);
-        jTextArea2.setText("Lorem ipsum dorem sit amet.\nLorem ipsum dorem sit amet. \nLorem ipsum dorem sit amet.");
+        jTextArea2.setText("Sou um jovem estudante, desenvolvendo \nminhas habilidades em DS, buscando \naprimorar meus conhecimentos.");
         jScrollPane2.setViewportView(jTextArea2);
 
         jPanelMain.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 290, -1));
@@ -89,7 +89,7 @@ public class FrmDev extends javax.swing.JFrame {
         jTextArea3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea3.setRows(3);
         jTextArea3.setTabSize(10);
-        jTextArea3.setText("Lorem ipsum dorem sit amet. \nLorem ipsum dorem sit amet. \nLorem ipsum dorem sit amet.");
+        jTextArea3.setText("Sou atualmente um estudante de \nDesenvolvimento de Sistemas, \napaixonado desde a infância por tecnologia.");
         jScrollPane3.setViewportView(jTextArea3);
 
         jPanelMain.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 290, -1));
