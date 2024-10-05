@@ -118,7 +118,7 @@
                 </Property>
                 <Property name="rows" type="int" value="3"/>
                 <Property name="tabSize" type="int" value="10"/>
-                <Property name="text" type="java.lang.String" value="Lorem ipsum dorem sit amet.&#xa;Lorem ipsum dorem sit amet.&#xa;Lorem ipsum dorem sit amet."/>
+                <Property name="text" type="java.lang.String" value="Estudante do curso de DS, novata&#xa;na &#xe1;rea da tecnologia, mas aprimorando&#xa;minhas habilidades."/>
               </Properties>
             </Component>
           </SubComponents>
@@ -147,7 +147,7 @@
                 </Property>
                 <Property name="rows" type="int" value="3"/>
                 <Property name="tabSize" type="int" value="10"/>
-                <Property name="text" type="java.lang.String" value="Lorem ipsum dorem sit amet.&#xa;Lorem ipsum dorem sit amet. &#xa;Lorem ipsum dorem sit amet."/>
+                <Property name="text" type="java.lang.String" value="Sou um jovem estudante, desenvolvendo &#xa;minhas habilidades em DS, buscando &#xa;aprimorar meus conhecimentos."/>
               </Properties>
             </Component>
           </SubComponents>
@@ -176,7 +176,7 @@
                 </Property>
                 <Property name="rows" type="int" value="3"/>
                 <Property name="tabSize" type="int" value="10"/>
-                <Property name="text" type="java.lang.String" value="Lorem ipsum dorem sit amet. &#xa;Lorem ipsum dorem sit amet. &#xa;Lorem ipsum dorem sit amet."/>
+                <Property name="text" type="java.lang.String" value="Sou atualmente um estudante de &#xa;Desenvolvimento de Sistemas, &#xa;apaixonado desde a inf&#xe2;ncia por tecnologia."/>
               </Properties>
             </Component>
           </SubComponents>
