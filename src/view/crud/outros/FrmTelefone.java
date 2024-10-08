@@ -30,6 +30,7 @@ public class FrmTelefone extends javax.swing.JFrame {
 
         jPanelMain = new javax.swing.JPanel();
         jToolBar = new javax.swing.JToolBar();
+        jLabel6 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -69,7 +70,11 @@ public class FrmTelefone extends javax.swing.JFrame {
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel6.setText("      ");
+        jToolBar.add(jLabel6);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -291,6 +296,7 @@ public class FrmTelefone extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

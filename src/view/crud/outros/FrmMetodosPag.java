@@ -36,6 +36,7 @@ public class FrmMetodosPag extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jToolBar = new javax.swing.JToolBar();
+        jLabel3 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -111,7 +112,11 @@ public class FrmMetodosPag extends javax.swing.JFrame {
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel3.setText("      ");
+        jToolBar.add(jLabel3);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -237,6 +242,7 @@ public class FrmMetodosPag extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;

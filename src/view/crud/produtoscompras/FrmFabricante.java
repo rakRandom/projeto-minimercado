@@ -32,6 +32,7 @@ public class FrmFabricante extends javax.swing.JFrame {
         jLabelPesquisa = new javax.swing.JLabel();
         jButtonPesquisar = new javax.swing.JButton();
         jToolBar = new javax.swing.JToolBar();
+        jLabel5 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -78,7 +79,11 @@ public class FrmFabricante extends javax.swing.JFrame {
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel5.setText("   ");
+        jToolBar.add(jLabel5);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -319,6 +324,7 @@ public class FrmFabricante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelPesquisa;

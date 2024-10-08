@@ -36,6 +36,7 @@ public class FrmClassific extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jToolBar = new javax.swing.JToolBar();
+        jLabel3 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -110,7 +111,11 @@ public class FrmClassific extends javax.swing.JFrame {
         jPanelMain.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 410, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel3.setText("      ");
+        jToolBar.add(jLabel3);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -232,6 +237,7 @@ public class FrmClassific extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;

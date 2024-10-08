@@ -59,6 +59,7 @@ public class FrmProduto extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jToolBar = new javax.swing.JToolBar();
+        jLabel11 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -285,7 +286,11 @@ public class FrmProduto extends javax.swing.JFrame {
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1040, 130));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel11.setText("   ");
+        jToolBar.add(jLabel11);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -428,6 +433,7 @@ public class FrmProduto extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

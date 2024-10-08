@@ -86,6 +86,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar1.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

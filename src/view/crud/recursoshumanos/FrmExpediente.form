@@ -57,6 +57,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="33" red="0" type="rgb"/>
             </Property>
+            <Property name="floatable" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="false" type="code"/>
+            </Property>
             <Property name="rollover" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -67,6 +70,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="      "/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JButton" name="jButtonNovoRegistro">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Novo Registro "/>

@@ -41,6 +41,7 @@ public class FrmPromoProd extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jToolBar = new javax.swing.JToolBar();
+        jLabel5 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
@@ -134,7 +135,11 @@ public class FrmPromoProd extends javax.swing.JFrame {
         jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 240));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
+        jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+
+        jLabel5.setText("   ");
+        jToolBar.add(jLabel5);
 
         jButtonNovoRegistro.setText(" Novo Registro ");
         jButtonNovoRegistro.setFocusable(false);
@@ -296,6 +301,7 @@ public class FrmPromoProd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelPesquisa;
