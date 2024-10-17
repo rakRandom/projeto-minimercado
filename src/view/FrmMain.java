@@ -149,8 +149,7 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDevActionPerformed
 
     private void jButtonDevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDevMouseClicked
-       dispose();
-       var painel = new FrmDev();
+       var painel = new DialogDev(this, true);
        painel.setVisible(true);
     }//GEN-LAST:event_jButtonDevMouseClicked
 
