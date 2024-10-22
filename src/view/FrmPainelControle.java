@@ -60,18 +60,19 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuRecursosHumanos = new javax.swing.JMenu();
         jMenuItemClientes = new javax.swing.JMenuItem();
         jMenuItemFuncionarios = new javax.swing.JMenuItem();
         jMenuItemExpedientes = new javax.swing.JMenuItem();
         jMenuItemCargos = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenuProdutosCompras = new javax.swing.JMenu();
         jMenuItemProdutos = new javax.swing.JMenuItem();
         jMenuItemCategorias = new javax.swing.JMenuItem();
         jMenuItemLotes = new javax.swing.JMenuItem();
         jMenuItemFabricantes = new javax.swing.JMenuItem();
         jMenuItemPromocoes = new javax.swing.JMenuItem();
         jMenuItemCompras = new javax.swing.JMenuItem();
+        jMenuRelatorioGastos = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Painel de Controle");
@@ -154,7 +155,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 700, 30));
 
         jLabelRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelRelatorio.setText("Relatório Geral de Gastos:");
+        jLabelRelatorio.setText("Notificações:");
         jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -172,7 +173,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 700, 330));
 
-        jMenu2.setText("Recursos Humanos");
+        jMenuRecursosHumanos.setText("Recursos Humanos");
 
         jMenuItemClientes.setText("Controle de Clientes");
         jMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +181,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemClientesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemClientes);
+        jMenuRecursosHumanos.add(jMenuItemClientes);
 
         jMenuItemFuncionarios.setText("Controle de Funcionários");
         jMenuItemFuncionarios.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +189,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemFuncionariosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemFuncionarios);
+        jMenuRecursosHumanos.add(jMenuItemFuncionarios);
 
         jMenuItemExpedientes.setText("Administrar Expedientes");
         jMenuItemExpedientes.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +197,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemExpedientesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemExpedientes);
+        jMenuRecursosHumanos.add(jMenuItemExpedientes);
 
         jMenuItemCargos.setText("Administrar Cargos");
         jMenuItemCargos.addActionListener(new java.awt.event.ActionListener() {
@@ -204,11 +205,11 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemCargosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemCargos);
+        jMenuRecursosHumanos.add(jMenuItemCargos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuRecursosHumanos);
 
-        jMenu3.setText("Produtos e Compras");
+        jMenuProdutosCompras.setText("Produtos e Compras");
 
         jMenuItemProdutos.setText("Controle de Produtos");
         jMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +217,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemProdutosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemProdutos);
+        jMenuProdutosCompras.add(jMenuItemProdutos);
 
         jMenuItemCategorias.setText("Controle de Categorias");
         jMenuItemCategorias.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +225,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemCategoriasActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemCategorias);
+        jMenuProdutosCompras.add(jMenuItemCategorias);
 
         jMenuItemLotes.setText("Controle de Lotes");
         jMenuItemLotes.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +233,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemLotesActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemLotes);
+        jMenuProdutosCompras.add(jMenuItemLotes);
 
         jMenuItemFabricantes.setText("Controle de Fabricantes");
         jMenuItemFabricantes.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +241,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemFabricantesActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemFabricantes);
+        jMenuProdutosCompras.add(jMenuItemFabricantes);
 
         jMenuItemPromocoes.setText("Gerenciar Promoções");
         jMenuItemPromocoes.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +249,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemPromocoesActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemPromocoes);
+        jMenuProdutosCompras.add(jMenuItemPromocoes);
 
         jMenuItemCompras.setText("Gerenciar Compras");
         jMenuItemCompras.addActionListener(new java.awt.event.ActionListener() {
@@ -256,9 +257,31 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 jMenuItemComprasActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemCompras);
+        jMenuProdutosCompras.add(jMenuItemCompras);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuProdutosCompras);
+
+        jMenuRelatorioGastos.setText("Relatório Geral de Gastos");
+        jMenuRelatorioGastos.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenuRelatorioGastosMenuSelected(evt);
+            }
+        });
+        jMenuRelatorioGastos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuRelatorioGastosMouseClicked(evt);
+            }
+        });
+        jMenuRelatorioGastos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuRelatorioGastosActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenuRelatorioGastos);
 
         setJMenuBar(jMenuBar1);
 
@@ -382,6 +405,19 @@ public class FrmPainelControle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    private void jMenuRelatorioGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioGastosActionPerformed
+        
+    }//GEN-LAST:event_jMenuRelatorioGastosActionPerformed
+
+    private void jMenuRelatorioGastosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioGastosMouseClicked
+        var painel = new DialogRelatorioGastos(this, true);
+        painel.setVisible(true);
+    }//GEN-LAST:event_jMenuRelatorioGastosMouseClicked
+
+    private void jMenuRelatorioGastosMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuRelatorioGastosMenuSelected
+        
+    }//GEN-LAST:event_jMenuRelatorioGastosMenuSelected
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClassificacoes;
     private javax.swing.JButton jButtonContas;
@@ -390,8 +426,6 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTelefones;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelRelatorio;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCargos;
     private javax.swing.JMenuItem jMenuItemCategorias;
@@ -403,6 +437,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemLotes;
     private javax.swing.JMenuItem jMenuItemProdutos;
     private javax.swing.JMenuItem jMenuItemPromocoes;
+    private javax.swing.JMenu jMenuProdutosCompras;
+    private javax.swing.JMenu jMenuRecursosHumanos;
+    private javax.swing.JMenu jMenuRelatorioGastos;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
