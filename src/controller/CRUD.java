@@ -54,7 +54,7 @@ public class CRUD {
     
     public void gravar() {                                              
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja salvar os dados?", "Confirmar Gravação de Dados", JOptionPane.YES_NO_OPTION);
-            
+        
         if(opcao == 0) {
             try {
                 var sqlAtributos = atributos[0];
@@ -62,8 +62,13 @@ public class CRUD {
                 for (int i = 1; i < atributos.length; i++) {
                     sqlAtributos += ", " + atributos[i];
                 }
-
+                
                 var sqlValores = "null";
+                if (tiposAtributo[0] != TipoAtributo.PK) {
+                    sqlValores = campos[0].getText();
+                    if (tiposAtributo[1] == TipoAtributo.String)
+                        sqlValores = "'" + sqlValores + "'";
+                }
 
                 for (int i = 1; i < campos.length; i++) {
                     if (tiposAtributo[i] == TipoAtributo.String) {
@@ -129,7 +134,12 @@ public class CRUD {
                         }
                     }
                     
-                    sql = "update " + nome_tabela + " set " + sqlSet + " where " + atributos[0] + " = " + campos[0].getText();
+                    var whereValue = campos[0].getText();
+                    if (tiposAtributo[0] == TipoAtributo.String) {
+                        whereValue = "'" + whereValue + "'";
+                    }
+                    
+                    sql = "update " + nome_tabela + " set " + sqlSet + " where " + atributos[0] + " = " + whereValue;
                 }
 
                 conexao.statement.executeUpdate(sql);
@@ -150,7 +160,12 @@ public class CRUD {
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o registro?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
                 
             if (resposta == 0) {
-                String sql = "delete from " + nome_tabela + " where " + atributos[0] + " = " + campos[0].getText();
+                var whereValue = campos[0].getText();
+                if (tiposAtributo[0] == TipoAtributo.String) {
+                    whereValue = "'" + whereValue + "'";
+                }
+                
+                String sql = "delete from " + nome_tabela + " where " + atributos[0] + " = " + whereValue;
                 int excluir = conexao.statement.executeUpdate(sql);
                     
                 if (excluir == 1) {

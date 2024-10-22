@@ -42,7 +42,7 @@ public class DialogClassific extends javax.swing.JDialog {
                     "descricao"
                 },
                 new TipoAtributo[] {
-                    TipoAtributo.Number,
+                    TipoAtributo.PK,
                     TipoAtributo.String
                 },
                 new JTextField[] {

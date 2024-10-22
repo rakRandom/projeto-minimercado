@@ -9,6 +9,7 @@ package controller;
  * @author Admin
  */
 public enum TipoAtributo {
+    PK,
     String,
     Number
 }
