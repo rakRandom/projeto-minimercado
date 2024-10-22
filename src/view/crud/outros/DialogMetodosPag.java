@@ -50,7 +50,8 @@ public class DialogMetodosPag extends javax.swing.JDialog {
         jButtonPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
+	setTitle("Métodos de Pagamento");
+	setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

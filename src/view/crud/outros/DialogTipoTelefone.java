@@ -50,7 +50,8 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(735, 515));
+	setTitle("Tipos de Telefone");
+	setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
