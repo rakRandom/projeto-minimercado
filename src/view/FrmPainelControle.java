@@ -4,10 +4,10 @@
  */
 package view;
 
-import view.crud.outros.FrmClassific;
-import view.crud.outros.FrmContas;
-import view.crud.outros.FrmMetodosPag;
-import view.crud.outros.FrmTelefone;
+import view.crud.outros.DialogClassific;
+import view.crud.outros.DialogContas;
+import view.crud.outros.DialogMetodosPag;
+import view.crud.outros.DialogTelefone;
 import view.crud.produtoscompras.FrmCategoria;
 import view.crud.produtoscompras.FrmCompra;
 import view.crud.produtoscompras.FrmFabricante;
@@ -286,26 +286,22 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
     private void jButtonClassificacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClassificacoesActionPerformed
-        dispose();
-        var painel = new FrmClassific();
+        var painel = new DialogClassific(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonClassificacoesActionPerformed
 
     private void jButtonTelefonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelefonesActionPerformed
-        dispose();
-        var painel = new FrmTelefone();
+        var painel = new DialogTelefone(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonTelefonesActionPerformed
 
     private void jButtonMetodoPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMetodoPagActionPerformed
-        dispose();
-        var painel = new FrmMetodosPag();
+        var painel = new DialogMetodosPag(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonMetodoPagActionPerformed
 
     private void jButtonContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContasActionPerformed
-        dispose();
-        var painel = new FrmContas();
+        var painel = new DialogContas(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonContasActionPerformed
 
