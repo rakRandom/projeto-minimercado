@@ -4,15 +4,52 @@
  */
 package view.crud.outros;
 
+import controller.CRUD;
+import controller.TipoAtributo;
+import controller.db.Conexao;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author neo
  */
 public class DialogContas extends javax.swing.JDialog {
+    Conexao conexao;
+    CRUD crud;
 
     public DialogContas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(600);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
+        
+        crud = new CRUD(
+                conexao,
+                modelo,
+                "credenciais",
+                new String[] {
+                    "usuario",
+                    "senha",
+                    "cod_acesso"
+                },
+                new TipoAtributo[] {
+                    TipoAtributo.String,
+                    TipoAtributo.String,
+                    TipoAtributo.Number
+                },
+                new JTextField[] {
+                    jTextFieldUsuario,
+                    jTextFieldSenha,
+                    jTextFieldTipo
+                }
+        );
     }
 
     /**
@@ -43,17 +80,16 @@ public class DialogContas extends javax.swing.JDialog {
         jTextFieldPesquisa = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jLabelUsuario = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
         jLabelTipo = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jTextFieldSenha = new javax.swing.JTextField();
-        jComboBoxTipo = new javax.swing.JComboBox<>();
+        jTextFieldTipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-	setTitle("Administrar Contas");
-	setPreferredSize(new java.awt.Dimension(735, 515));
+        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,7 +228,7 @@ public class DialogContas extends javax.swing.JDialog {
         });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 428, 100, 24));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -218,11 +254,11 @@ public class DialogContas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(280);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(280);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(120);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(280);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(280);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(120);
         }
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
@@ -238,8 +274,12 @@ public class DialogContas extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, -1));
         jPanelMain.add(jTextFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 200, -1));
 
-        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin" }));
-        jPanelMain.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 110, -1));
+        jTextFieldTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTipoActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jTextFieldTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,35 +297,35 @@ public class DialogContas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistroActionPerformed
-        // TODO add your handling code here:
+        crud.novoRegistro();
     }//GEN-LAST:event_jButtonNovoRegistroActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        // TODO add your handling code here:
+        crud.gravar();
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        // TODO add your handling code here:
+        crud.alterar();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        // TODO add your handling code here:
+        crud.excluir();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiroActionPerformed
-        // TODO add your handling code here:
+        crud.primeiro();
     }//GEN-LAST:event_jButtonPrimeiroActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        // TODO add your handling code here:
+        crud.anterior();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
-        // TODO add your handling code here:
+        crud.proximo();
     }//GEN-LAST:event_jButtonProximoActionPerformed
 
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
-        // TODO add your handling code here:
+        crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -295,6 +335,10 @@ public class DialogContas extends javax.swing.JDialog {
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jTextFieldTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTipoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
@@ -308,7 +352,6 @@ public class DialogContas extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
-    private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JLabel jLabelSenha;
@@ -318,9 +361,10 @@ public class DialogContas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JTextField jTextFieldSenha;
+    private javax.swing.JTextField jTextFieldTipo;
     private javax.swing.JTextField jTextFieldUsuario;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
