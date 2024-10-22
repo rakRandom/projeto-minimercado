@@ -15,10 +15,10 @@ import view.crud.produtoscompras.FrmLote;
 import view.crud.produtoscompras.FrmProduto;
 import view.crud.produtoscompras.FrmPromoCate;
 import view.crud.produtoscompras.FrmPromoProd;
-import view.crud.recursoshumanos.FrmCargo;
-import view.crud.recursoshumanos.FrmCliente;
-import view.crud.recursoshumanos.FrmExpediente;
-import view.crud.recursoshumanos.FrmFuncionario;
+import view.crud.recursoshumanos.DialogCargo;
+import view.crud.recursoshumanos.DialogCliente;
+import view.crud.recursoshumanos.DialogExpediente;
+import view.crud.recursoshumanos.DialogFuncionario;
 
 /**
  *
@@ -280,8 +280,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
-        dispose();
-        var painel = new FrmFuncionario();
+        var painel = new DialogFuncionario(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
@@ -306,20 +305,17 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonContasActionPerformed
 
     private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
-        dispose();
-        var painel = new FrmCliente();
+        var painel = new DialogCliente(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExpedientesActionPerformed
-        dispose();
-        var painel = new FrmExpediente();
+        var painel = new DialogExpediente(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemExpedientesActionPerformed
 
     private void jMenuItemCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCargosActionPerformed
-        dispose();
-        var painel = new FrmCargo();
+        var painel = new DialogCargo(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemCargosActionPerformed
 
