@@ -1,7 +1,7 @@
 package controller;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+// import javax.swing.UIManager;
+// import javax.swing.UnsupportedLookAndFeelException;
 import view.FrmMain;
 
 /**
@@ -10,6 +10,7 @@ import view.FrmMain;
  */
 public class Main {
     public static void main(String[] args) {
+        /*
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } 
@@ -17,6 +18,7 @@ public class Main {
                 ClassNotFoundException | 
                 InstantiationException | 
                 IllegalAccessException e) {}
+        */
         
         var main = new FrmMain();
         main.setVisible(true);
