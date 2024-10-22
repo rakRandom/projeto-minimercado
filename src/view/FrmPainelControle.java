@@ -8,13 +8,13 @@ import view.crud.outros.DialogClassific;
 import view.crud.outros.DialogContas;
 import view.crud.outros.DialogMetodosPag;
 import view.crud.outros.DialogTelefone;
-import view.crud.produtoscompras.FrmCategoria;
-import view.crud.produtoscompras.FrmCompra;
-import view.crud.produtoscompras.FrmFabricante;
-import view.crud.produtoscompras.FrmLote;
-import view.crud.produtoscompras.FrmProduto;
-import view.crud.produtoscompras.FrmPromoCate;
-import view.crud.produtoscompras.FrmPromoProd;
+import view.crud.produtoscompras.DialogCategoria;
+import view.crud.produtoscompras.DialogCompra;
+import view.crud.produtoscompras.DialogFabricante;
+import view.crud.produtoscompras.DialogLote;
+import view.crud.produtoscompras.DialogProduto;
+import view.crud.produtoscompras.DialogPromoCate;
+import view.crud.produtoscompras.DialogPromoProd;
 import view.crud.recursoshumanos.DialogCargo;
 import view.crud.recursoshumanos.DialogCliente;
 import view.crud.recursoshumanos.DialogExpediente;
@@ -320,26 +320,22 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCargosActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
-        dispose();
-        var painel = new FrmProduto();
+        var painel = new DialogProduto(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemProdutosActionPerformed
 
     private void jMenuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriasActionPerformed
-        dispose();
-        var painel = new FrmCategoria();
+        var painel = new DialogCategoria(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemCategoriasActionPerformed
 
     private void jMenuItemLotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLotesActionPerformed
-        dispose();
-        var painel = new FrmLote();
+        var painel = new DialogLote(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemLotesActionPerformed
 
     private void jMenuItemFabricantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFabricantesActionPerformed
-        dispose();
-        var painel = new FrmFabricante();
+        var painel = new DialogFabricante(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemFabricantesActionPerformed
 
@@ -355,13 +351,11 @@ public class FrmPainelControle extends javax.swing.JFrame {
 
         switch(opcao) {
             case 0 -> {
-                dispose();
-                var painel = new FrmPromoProd();
+                var painel = new DialogPromoProd(this, true);
                 painel.setVisible(true);
             }
             case 1 -> {
-                dispose();
-                var painel = new FrmPromoCate();
+                var painel = new DialogPromoCate(this, true);
                 painel.setVisible(true);
             }
             default -> javax.swing.JOptionPane.showMessageDialog(null, "Operação cancelada");
@@ -369,8 +363,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemPromocoesActionPerformed
 
     private void jMenuItemComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemComprasActionPerformed
-        dispose();
-        var painel = new FrmCompra();
+        var painel = new DialogCompra(this, true);
         painel.setVisible(true);
     }//GEN-LAST:event_jMenuItemComprasActionPerformed
 
