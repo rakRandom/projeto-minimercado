@@ -28,8 +28,8 @@ public class DialogClassific extends javax.swing.JDialog {
         conexao = new Conexao();
         conexao.conectar();
         
-        jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(500);
         
         DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
         

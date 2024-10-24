@@ -25,8 +25,9 @@ public class DialogContas extends javax.swing.JDialog {
         conexao = new Conexao();
         conexao.conectar();
         
-        jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(280);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(280);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(120);
         
         DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
         

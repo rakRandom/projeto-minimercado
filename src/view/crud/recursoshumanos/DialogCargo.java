@@ -4,15 +4,82 @@
  */
 package view.crud.recursoshumanos;
 
+import controller.CRUD;
+import controller.TipoAtributo;
+import controller.db.Conexao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author neo
  */
 public class DialogCargo extends javax.swing.JDialog {
-
+    Conexao conexao;
+    CRUD crud;
+    
     public DialogCargo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
+        
+        crud = new CRUD(
+                conexao,
+                modelo,
+                "cargo",
+                new String[] {
+                    "cod_cargo",
+                    "descricao",
+                    "salario"
+                },
+                new TipoAtributo[] {
+                    TipoAtributo.PK,
+                    TipoAtributo.String,
+                    TipoAtributo.Number
+                },
+                new JTextField[] {
+                    jTextFieldCodigo,
+                    jTextFieldDescricao,
+                    jTextFieldSalario
+                }
+        ) {
+            @Override
+            public void preencherTabela() {
+                modelo.setNumRows(0);
+
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        var row = new Object[campos.length];
+
+                        for (int i = 0; i < campos.length; i++) {
+                            row[i] = conexao.resultset.getString(atributos[i]);
+                        }
+                        
+                        row[2] = "R$ " + row[2];
+
+                        modelo.addRow(row);
+                    }
+                }catch(SQLException erro) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "\n Erro ao listar dados da tabela!!:\n"+erro,
+                            "Mensagem do programa", 
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        };
     }
 
     /**
@@ -48,15 +115,14 @@ public class DialogCargo extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jTextFieldDescricao = new javax.swing.JTextField();
+        jTextFieldSalario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-	setTitle("Administrar Cargos");
-	setPreferredSize(new java.awt.Dimension(735, 515));
+        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,22 +239,22 @@ public class DialogCargo extends javax.swing.JDialog {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descrição:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Salário:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jTextField1.setEnabled(false);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 40, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
+        jTextFieldCodigo.setEnabled(false);
+        jPanel1.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 100, -1));
+        jPanel1.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, -1));
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(60, 22));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        jTextFieldSalario.setPreferredSize(new java.awt.Dimension(60, 22));
+        jPanel1.add(jTextFieldSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, -1));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, 230));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -200,7 +266,7 @@ public class DialogCargo extends javax.swing.JDialog {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -214,7 +280,12 @@ public class DialogCargo extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        }
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 420, 390));
 
@@ -237,6 +308,38 @@ public class DialogCargo extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        crud.novoRegistro();
+    }                                                   
+
+    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        crud.gravar();
+    }                                             
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        crud.alterar();
+    }                                              
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        crud.excluir();
+    }                                              
+
+    private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        crud.primeiro();
+    }                                               
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        crud.anterior();
+    }                                               
+
+    private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        crud.proximo();
+    }                                              
+
+    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        crud.ultimo();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -261,11 +364,11 @@ public class DialogCargo extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldDescricao;
     private javax.swing.JTextField jTextFieldPesquisa;
+    private javax.swing.JTextField jTextFieldSalario;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }

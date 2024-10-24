@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public final class CRUD {
-    Conexao conexao;
-    DefaultTableModel modelo;
-    String nome_tabela;
-    String[] atributos;
-    TipoAtributo[] tiposAtributo;
-    JTextField[] campos;
-    Integer pkIndex = 0;
+public class CRUD {
+    public Conexao conexao;
+    public DefaultTableModel modelo;
+    public String nome_tabela;
+    public String[] atributos;
+    public TipoAtributo[] tiposAtributo;
+    public JTextField[] campos;
+    public Integer pkIndex = 0;
     
     public CRUD(
             Conexao conexao, 
