@@ -14,15 +14,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class CRUD {
+public final class CRUD {
     Conexao conexao;
     DefaultTableModel modelo;
     String nome_tabela;
     String[] atributos;
     TipoAtributo[] tiposAtributo;
     JTextField[] campos;
+    Integer pkIndex = 0;
     
-    /* tabelaStringNumber: true se String, false se Number*/
     public CRUD(
             Conexao conexao, 
             DefaultTableModel modelo, 
@@ -37,6 +37,12 @@ public class CRUD {
         this.atributos = atributos;
         this.tiposAtributo = tiposAtributo;
         this.campos = campos;
+        
+        for (int i = 0; i < tiposAtributo.length; i++) {
+            if (tiposAtributo[i] == TipoAtributo.PK) {
+                pkIndex = i;
+            }
+        }
         
         conexao.executarSQL("select * from " + nome_tabela + " order by " + atributos[0]);
         
@@ -82,7 +88,7 @@ public class CRUD {
                 conexao.statement.executeUpdate(insertSql);
                 JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
 
-                conexao.executarSQL("select * from " + nome_tabela + " order by " + atributos[0]);
+                conexao.executarSQL("select * from " + nome_tabela + " order by " + atributos[this.pkIndex]);
                 conexao.resultset.first();
                 preencherTabela();
                 ultimo();
@@ -159,7 +165,7 @@ public class CRUD {
         try {
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o registro?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
                 
-            if (resposta == 0) {
+            if (resposta == JOptionPane.OK_OPTION) {
                 var whereValue = campos[0].getText();
                 if (tiposAtributo[0] == TipoAtributo.String) {
                     whereValue = "'" + whereValue + "'";
@@ -175,15 +181,38 @@ public class CRUD {
                     conexao.resultset.first();
                     preencherTabela();
                     posicionarRegistro();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch(SQLException excecao) {
             JOptionPane.showMessageDialog(null, "Erro na exclusão: " +excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
     }                                              
 
+    public void excluir(String sql) {                                               
+        try {
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o registro?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
+                
+            if (resposta == JOptionPane.OK_OPTION) {
+                int excluir = conexao.statement.executeUpdate(sql);
+                    
+                if (excluir == 1) {
+                    JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                        
+                    conexao.executarSQL("select * from " + nome_tabela + " order by " + atributos[0]);
+                    conexao.resultset.first();
+                    preencherTabela();
+                    posicionarRegistro();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch(SQLException excecao) {
+            JOptionPane.showMessageDialog(null, "Erro na exclusão: " +excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }                                              
+    
     public void primeiro() {                                                
         try{
             conexao.resultset.first();
