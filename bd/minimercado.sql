@@ -102,7 +102,7 @@ CREATE TABLE `cliente` (
   `id_cliente` int(10) UNSIGNED NOT NULL,
   `nome_cli` varchar(64) NOT NULL,
   `data_nasc` date NOT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `rg` varchar(12) NOT NULL,
   `endereco` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -112,11 +112,11 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome_cli`, `data_nasc`, `cpf`, `rg`, `endereco`) VALUES
-(1, 'Renata Schneider', '1994-10-27', '762.391.772', '23.763.927-2', 'Rua das Laranjeiras, 786'),
-(2, 'Lucas Alves Rivera Tavares', '1997-07-15', '826.410.529', '93.652.302-5', 'Av. Soares Garcia Júnior, 900'),
-(3, 'Carolina Ramires de Souza', '2000-04-09', '631.043.268', '91.528.438-1', 'Rua Cruz Vermelha, 365'),
-(4, 'Milene Fernandes Dantas de Jesus', '1986-01-06', '907.612.434', '16.797.909-6', 'Av. Chamas Azuis, 571'),
-(5, 'Rafael Luz de Mendes', '1962-11-02', '975.325.428', '14.482.676-1', 'Rua Recanto dos Sabiás, 240');
+(1, 'Renata Schneider', '1994-10-27', '762.391.772-00', '23.763.927-2', 'Rua das Laranjeiras, 786'),
+(2, 'Lucas Alves Rivera Tavares', '1997-07-15', '826.410.529-00', '93.652.302-5', 'Av. Soares Garcia Júnior, 900'),
+(3, 'Carolina Ramires de Souza', '2000-04-09', '631.043.268-00', '91.528.438-1', 'Rua Cruz Vermelha, 365'),
+(4, 'Milene Fernandes Dantas de Jesus', '1986-01-06', '907.612.434-00', '16.797.909-6', 'Av. Chamas Azuis, 571'),
+(5, 'Rafael Luz de Mendes', '1962-11-02', '975.325.428-00', '14.482.676-1', 'Rua Recanto dos Sabiás, 240');
 
 -- --------------------------------------------------------
 
@@ -226,7 +226,7 @@ CREATE TABLE `funcionario` (
   `id_func` int(10) UNSIGNED NOT NULL,
   `nome_func` varchar(64) NOT NULL,
   `data_nasc` date NOT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `rg` varchar(12) NOT NULL,
   `endereco` varchar(128) NOT NULL,
   `cod_cargo` int(10) UNSIGNED NOT NULL,
@@ -238,11 +238,11 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`id_func`, `nome_func`, `data_nasc`, `cpf`, `rg`, `endereco`, `cod_cargo`, `cod_expediente`) VALUES
-(1, 'Marceline Alcântara dos Santos', '1995-05-13', '710.263.961', '58.033.931-9', 'Av. Moita Bonita, 325', 4, 2),
-(2, 'Jean Lucca Campos', '1997-03-22', '736.924.815', '47.662.086-4', 'Rua Barro Branco, 544', 5, 3),
-(3, 'Bartolomeu Silva de Azevedo', '1967-12-01', '933.625.591', '87.462.913-1', 'Av. Presidente Alcântara Machado, 190', 1, 4),
-(4, 'Irene Alves Rodrigues', '1984-09-09', '572.328.196', '26.283.758-9', 'Rua Alfeneiros, 700', 2, 5),
-(5, 'Ricardo Moreira Salles', '1980-06-24', '880.283.116', '75.828.326-6', 'Rua Milton Leite, 648', 3, 1);
+(1, 'Marceline Alcântara dos Santos', '1995-05-13', '710.263.961-00', '58.033.931-9', 'Av. Moita Bonita, 325', 4, 2),
+(2, 'Jean Lucca Campos', '1997-03-22', '736.924.815-00', '47.662.086-4', 'Rua Barro Branco, 544', 5, 3),
+(3, 'Bartolomeu Silva de Azevedo', '1967-12-01', '933.625.591-00', '87.462.913-1', 'Av. Presidente Alcântara Machado, 190', 1, 4),
+(4, 'Irene Alves Rodrigues', '1984-09-09', '572.328.196-00', '26.283.758-9', 'Rua Alfeneiros, 700', 2, 5),
+(5, 'Ricardo Moreira Salles', '1980-06-24', '880.283.116-00', '75.828.326-6', 'Rua Milton Leite, 648', 3, 1);
 
 -- --------------------------------------------------------
 
