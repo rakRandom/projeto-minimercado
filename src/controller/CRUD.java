@@ -59,7 +59,7 @@ public class CRUD
             }
         }
         
-        conexao.executarSQL(calcularInsert());
+        conexao.executarSQL(calcularSelect());
         
         preencherTabela();
         posicionarRegistro();
