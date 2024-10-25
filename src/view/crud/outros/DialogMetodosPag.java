@@ -5,7 +5,7 @@
 package view.crud.outros;
 
 import controller.CRUD;
-import controller.TipoAtributo;
+import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;

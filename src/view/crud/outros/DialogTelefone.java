@@ -5,7 +5,7 @@
 package view.crud.outros;
 
 import controller.CRUD;
-import controller.TipoAtributo;
+import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -54,7 +54,12 @@ public class DialogTelefone extends javax.swing.JDialog {
                     jTextFieldTipoDono,
                     jTextFieldTelefone
                 }
-        );
+        ) {
+            @Override
+            public String calcularDelete() {
+                return "delete from telefone where telefone like '" + jTextFieldTelefone.getText() + "'";
+            }
+        };
     }
 
     /**
@@ -370,7 +375,7 @@ public class DialogTelefone extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        crud.excluir("delete from telefone where telefone like '" + jTextFieldTelefone.getText() + "'");
+        crud.excluir();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiroActionPerformed

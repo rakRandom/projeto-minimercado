@@ -5,7 +5,7 @@
 package view.crud.recursoshumanos;
 
 import controller.CRUD;
-import controller.TipoAtributo;
+import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -140,6 +140,11 @@ public class DialogCargo extends javax.swing.JDialog {
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
         jButtonNovoRegistro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonNovoRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoRegistroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonNovoRegistro);
 
         jButtonGravar.setText(" Gravar ");
@@ -147,6 +152,11 @@ public class DialogCargo extends javax.swing.JDialog {
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
         jButtonGravar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonGravar);
 
         jButtonAlterar.setText(" Alterar ");
@@ -154,12 +164,22 @@ public class DialogCargo extends javax.swing.JDialog {
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAlterar);
 
         jButtonExcluir.setText(" Excluir ");
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
@@ -167,24 +187,44 @@ public class DialogCargo extends javax.swing.JDialog {
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrimeiroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonPrimeiro);
 
         jButtonAnterior.setText(" Anterior ");
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAnterior);
 
         jButtonProximo.setText(" Próximo ");
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProximoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonProximo);
 
         jButtonUltimo.setText(" Último ");
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUltimoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
@@ -308,38 +348,38 @@ public class DialogCargo extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistroActionPerformed
         crud.novoRegistro();
-    }                                                   
+    }//GEN-LAST:event_jButtonNovoRegistroActionPerformed
 
-    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
         crud.gravar();
-    }                                             
+    }//GEN-LAST:event_jButtonGravarActionPerformed
 
-    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         crud.alterar();
-    }                                              
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
-    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         crud.excluir();
-    }                                              
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
-    private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiroActionPerformed
         crud.primeiro();
-    }                                               
+    }//GEN-LAST:event_jButtonPrimeiroActionPerformed
 
-    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         crud.anterior();
-    }                                               
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
-    private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
         crud.proximo();
-    }                                              
+    }//GEN-LAST:event_jButtonProximoActionPerformed
 
-    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         crud.ultimo();
-    }
-    
+    }//GEN-LAST:event_jButtonUltimoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
