@@ -4,15 +4,62 @@
  */
 package view.crud.outros;
 
+import controller.CRUD;
+import controller.enums.TipoAtributo;
+import controller.db.Conexao;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author neo
  */
 public class DialogTelefone extends javax.swing.JDialog {
-
+    Conexao conexao;
+    CRUD crud;
+    
     public DialogTelefone(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(225);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(225);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(150);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
+        
+        crud = new CRUD(
+                conexao,
+                modelo,
+                "telefone",
+                new String[] {
+                    "id_dono",
+                    "tipo_tel",
+                    "tipo_dono",
+                    "telefone"
+                },
+                new TipoAtributo[] {
+                    TipoAtributo.Number,
+                    TipoAtributo.Number,
+                    TipoAtributo.String,
+                    TipoAtributo.String
+                },
+                new JTextField[] {
+                    jTextFieldIdDono,
+                    jTextFieldTipoTelefone,
+                    jTextFieldTipoDono,
+                    jTextFieldTelefone
+                }
+        ) {
+            @Override
+            public String calcularDelete() {
+                return "delete from telefone where telefone like '" + jTextFieldTelefone.getText() + "'";
+            }
+        };
     }
 
     /**
@@ -43,23 +90,23 @@ public class DialogTelefone extends javax.swing.JDialog {
         jTextFieldPesquisa = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldIdDono = new javax.swing.JTextField();
+        jTextFieldTelefone = new javax.swing.JTextField();
         jButtonTiposDeTelefone = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jTextFieldTipoTelefone = new javax.swing.JTextField();
+        jTextFieldTipoDono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-	setTitle("Gerenciar Telefones");
-	setPreferredSize(new java.awt.Dimension(735, 515));
+        setTitle("Gerenciar Telefone");
+        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,6 +124,11 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
         jButtonNovoRegistro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonNovoRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoRegistroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonNovoRegistro);
 
         jButtonGravar.setText(" Gravar ");
@@ -84,6 +136,11 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
         jButtonGravar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonGravar);
 
         jButtonAlterar.setText(" Alterar ");
@@ -91,12 +148,22 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAlterar);
 
         jButtonExcluir.setText(" Excluir ");
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
@@ -104,24 +171,44 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrimeiroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonPrimeiro);
 
         jButtonAnterior.setText(" Anterior ");
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAnterior);
 
         jButtonProximo.setText(" Próximo ");
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProximoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonProximo);
 
         jButtonUltimo.setText(" Último ");
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUltimoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
@@ -153,7 +240,7 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonPesquisar.setBorderPainted(false);
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 428, 100, 24));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -179,12 +266,12 @@ public class DialogTelefone extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(225);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(225);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(225);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(225);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(150);
         }
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 680, 280));
@@ -198,7 +285,7 @@ public class DialogTelefone extends javax.swing.JDialog {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Telefone:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de Telefone:");
@@ -206,15 +293,9 @@ public class DialogTelefone extends javax.swing.JDialog {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo do Dono:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pessoal", "Empresarial", "Fixo Domiciliar", "Fixo Empresarial" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 150, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Funcionário", "Fabricante" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
+        jPanel1.add(jTextFieldIdDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 90, -1));
+        jPanel1.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, -1));
 
         jButtonTiposDeTelefone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonTiposDeTelefone.setText("Tipos de Telefone");
@@ -243,6 +324,14 @@ public class DialogTelefone extends javax.swing.JDialog {
         jLabel5.setText("Sub-tabela");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 160, -1));
 
+        jTextFieldTipoTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTipoTelefoneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldTipoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 150, -1));
+        jPanel1.add(jTextFieldTipoDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 90, -1));
+
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 680, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,6 +358,42 @@ public class DialogTelefone extends javax.swing.JDialog {
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonTiposDeTelefoneActionPerformed
 
+    private void jTextFieldTipoTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTipoTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTipoTelefoneActionPerformed
+
+    private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistroActionPerformed
+        crud.novoRegistro();
+    }//GEN-LAST:event_jButtonNovoRegistroActionPerformed
+
+    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
+        crud.gravar();
+    }//GEN-LAST:event_jButtonGravarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        crud.alterar();
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        crud.excluir();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiroActionPerformed
+        crud.primeiro();
+    }//GEN-LAST:event_jButtonPrimeiroActionPerformed
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+        crud.anterior();
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
+        crud.proximo();
+    }//GEN-LAST:event_jButtonProximoActionPerformed
+
+    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
+        crud.ultimo();
+    }//GEN-LAST:event_jButtonUltimoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -281,8 +406,6 @@ public class DialogTelefone extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -297,10 +420,12 @@ public class DialogTelefone extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTextField jTextFieldIdDono;
     private javax.swing.JTextField jTextFieldPesquisa;
+    private javax.swing.JTextField jTextFieldTelefone;
+    private javax.swing.JTextField jTextFieldTipoDono;
+    private javax.swing.JTextField jTextFieldTipoTelefone;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }

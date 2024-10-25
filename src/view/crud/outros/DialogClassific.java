@@ -5,7 +5,7 @@
 package view.crud.outros;
 
 import controller.CRUD;
-import controller.TipoAtributo;
+import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -28,8 +28,8 @@ public class DialogClassific extends javax.swing.JDialog {
         conexao = new Conexao();
         conexao.conectar();
         
-        jTable.getColumnModel().getColumn(0).setPreferredWidth(80);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(500);
         
         DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
         
