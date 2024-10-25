@@ -15,8 +15,16 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Admin
+ * To do: 
+ * - Verificação no "próximo" e "anterior" para não ir out of bounds
+ * - Função de Pesquisar
+ * - Verificação de FK nas ações de Gravar e Alterar (e nisso adicionar FK ao enum TipoAtributo)
+ * 
+ * Notas:
+ * - Nenhum valor é estático porque as funcionalidades dependem de tabela a tabela
+ * - Na inicialização, modificar os métodos caso necessário para encaixar com o contexto da tabela
+ * 
+ * @author Neo / rakRandom / Fellipe Leonardo
  */
 public class CRUD 
 {
@@ -51,7 +59,7 @@ public class CRUD
             }
         }
         
-        conexao.executarSQL("select * from " + nome_tabela + " order by " + atributos[0]);
+        conexao.executarSQL(calcularInsert());
         
         preencherTabela();
         posicionarRegistro();
