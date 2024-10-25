@@ -1,6 +1,7 @@
 # Projeto Minimercado
 
-Projeto interdisciplinar que consiste na criação de um sistema completo para um minimercado. Utiliza Java com Swing e MySQL.
+Projeto interdisciplinar que consiste na criação de um sistema completo para um minimercado. 
+Utiliza Java com Swing e MySQL.
 
 <br />
 
@@ -19,7 +20,7 @@ Projeto interdisciplinar que consiste na criação de um sistema completo para u
 
     - [x] Painel de controle
         - [x] Gerenciar Funcionários
-        - [x] Gerenciar Produtos
+        - [x] Gerenciar Produtos (Falta adicionar um Dialog interno (Itens) no CRUD de Compra)
         - [ ] Relatório Geral de Gastos
         - [x] Gerenciar Contas/Credenciais
         - [x] Outros Frames de CRUDs
@@ -42,3 +43,8 @@ Projeto interdisciplinar que consiste na criação de um sistema completo para u
     - [ ] Sistema de Caixa
 
     - [ ] Automação do Sistema (notificações, verificações periódicas etc.)
+    
+Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
+Verificar o título dos Frames, eles somem do nada
+Fazer a To-do list da classe CRUD
+
