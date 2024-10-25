@@ -224,7 +224,7 @@ public class CRUD
                 String sql = calcularSQL(TipoSQL.Delete);
                 int excluir = conexao.statement.executeUpdate(sql);
                     
-                if (excluir == 1) {
+                if (excluir != 0) {
                     JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                         
                     conexao.executarSQL(calcularSQL(TipoSQL.Select));
