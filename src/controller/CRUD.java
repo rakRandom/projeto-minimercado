@@ -294,7 +294,10 @@ public class CRUD
                 var row = new Object[campos.length];
                 
                 for (int i = 0; i < campos.length; i++) {
-                    row[i] = conexao.resultset.getString(atributos[i]);
+                    if (tiposAtributo[i] == TipoAtributo.Money)
+                        row[i] = "R$ " + conexao.resultset.getString(atributos[i]);
+                    else
+                        row[i] = conexao.resultset.getString(atributos[i]);
                 }
                 
                 modelo.addRow(row);

@@ -10,7 +10,7 @@ package view.crud.produtoscompras;
  */
 public class DialogItens extends javax.swing.JDialog {
 
-    public DialogItens(java.awt.Frame parent, boolean modal) {
+    public DialogItens(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
