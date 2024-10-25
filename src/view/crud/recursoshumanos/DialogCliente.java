@@ -4,15 +4,65 @@
  */
 package view.crud.recursoshumanos;
 
+import controller.CRUD;
+import controller.enums.TipoAtributo;
+import controller.db.Conexao;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author neo
  */
 public class DialogCliente extends javax.swing.JDialog {
+    Conexao conexao;
+    CRUD crud;
 
     public DialogCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(225);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
+        
+        crud = new CRUD(
+                conexao,
+                modelo,
+                "cliente",
+                new String[] {
+                    "id_cliente",
+                    "nome_cli",
+                    "data_nasc",
+                    "cpf",
+                    "rg",
+                    "endereco"
+                },
+                new TipoAtributo[] {
+                    TipoAtributo.PK,
+                    TipoAtributo.String,
+                    TipoAtributo.String,
+                    TipoAtributo.String,
+                    TipoAtributo.String,
+                    TipoAtributo.String
+                },
+                new JTextField[] {
+                    jTextFieldID,
+                    jTextFieldNome,
+                    jFormattedTextFieldNasc,
+                    jFormattedTextFieldCPF,
+                    jFormattedTextFieldRG,
+                    jTextFieldEndereco
+                }
+        );
     }
 
     /**
@@ -58,7 +108,7 @@ public class DialogCliente extends javax.swing.JDialog {
         jFormattedTextFieldRG = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -79,6 +129,11 @@ public class DialogCliente extends javax.swing.JDialog {
         jButtonNovoRegistro2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro2.setPreferredSize(new java.awt.Dimension(150, 23));
         jButtonNovoRegistro2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonNovoRegistro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoRegistro2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonNovoRegistro2);
 
         jButtonGravar2.setText(" Gravar ");
@@ -86,6 +141,11 @@ public class DialogCliente extends javax.swing.JDialog {
         jButtonGravar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar2.setPreferredSize(new java.awt.Dimension(75, 24));
         jButtonGravar2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonGravar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravar2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonGravar2);
 
         jButtonAlterar2.setText(" Alterar ");
@@ -93,12 +153,22 @@ public class DialogCliente extends javax.swing.JDialog {
         jButtonAlterar2.setFocusable(false);
         jButtonAlterar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAlterar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterar2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonAlterar2);
 
         jButtonExcluir2.setText(" Excluir ");
         jButtonExcluir2.setFocusable(false);
         jButtonExcluir2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonExcluir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluir2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonExcluir2);
         jToolBar2.add(jSeparator5);
 
@@ -106,24 +176,44 @@ public class DialogCliente extends javax.swing.JDialog {
         jButtonPrimeiro2.setFocusable(false);
         jButtonPrimeiro2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrimeiro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrimeiro2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonPrimeiro2);
 
         jButtonAnterior2.setText(" Anterior ");
         jButtonAnterior2.setFocusable(false);
         jButtonAnterior2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAnterior2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnterior2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonAnterior2);
 
         jButtonProximo2.setText(" Próximo ");
         jButtonProximo2.setFocusable(false);
         jButtonProximo2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonProximo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProximo2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonProximo2);
 
         jButtonUltimo2.setText(" Último ");
         jButtonUltimo2.setFocusable(false);
         jButtonUltimo2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonUltimo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUltimo2ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButtonUltimo2);
         jToolBar2.add(jSeparator6);
 
@@ -177,7 +267,7 @@ public class DialogCliente extends javax.swing.JDialog {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jTextFieldID.setEnabled(false);
-        jPanel1.add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 80, -1));
+        jPanel1.add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 110, 20));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nome do Cliente:");
@@ -201,18 +291,24 @@ public class DialogCliente extends javax.swing.JDialog {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
         jPanel1.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 330, -1));
 
+        jFormattedTextFieldNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         jFormattedTextFieldNasc.setPreferredSize(new java.awt.Dimension(65, 22));
-        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, -1));
+        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 110, -1));
 
         jFormattedTextFieldRG.setPreferredSize(new java.awt.Dimension(80, 22));
-        jPanel1.add(jFormattedTextFieldRG, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        jPanel1.add(jFormattedTextFieldRG, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 110, -1));
 
+        try {
+            jFormattedTextFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldCPF.setPreferredSize(new java.awt.Dimension(92, 22));
-        jPanel1.add(jFormattedTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 100, -1));
+        jPanel1.add(jFormattedTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 110, -1));
 
         jPanelMain2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 850, 140));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -238,7 +334,7 @@ public class DialogCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable);
 
         jPanelMain2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1040, 440));
 
@@ -260,6 +356,38 @@ public class DialogCliente extends javax.swing.JDialog {
     private void jButtonSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSair2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonSair2ActionPerformed
+
+    private void jButtonNovoRegistro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistro2ActionPerformed
+        crud.novoRegistro();
+    }//GEN-LAST:event_jButtonNovoRegistro2ActionPerformed
+
+    private void jButtonGravar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravar2ActionPerformed
+        crud.gravar();
+    }//GEN-LAST:event_jButtonGravar2ActionPerformed
+
+    private void jButtonAlterar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterar2ActionPerformed
+        crud.alterar();
+    }//GEN-LAST:event_jButtonAlterar2ActionPerformed
+
+    private void jButtonExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluir2ActionPerformed
+        crud.excluir();
+    }//GEN-LAST:event_jButtonExcluir2ActionPerformed
+
+    private void jButtonPrimeiro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiro2ActionPerformed
+        crud.primeiro();
+    }//GEN-LAST:event_jButtonPrimeiro2ActionPerformed
+
+    private void jButtonAnterior2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnterior2ActionPerformed
+        crud.anterior();
+    }//GEN-LAST:event_jButtonAnterior2ActionPerformed
+
+    private void jButtonProximo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximo2ActionPerformed
+        crud.proximo();
+    }//GEN-LAST:event_jButtonProximo2ActionPerformed
+
+    private void jButtonUltimo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimo2ActionPerformed
+        crud.ultimo();
+    }//GEN-LAST:event_jButtonUltimo2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar2;
@@ -291,7 +419,7 @@ public class DialogCliente extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNome;
