@@ -83,7 +83,6 @@ public class DialogCompra extends javax.swing.JDialog {
         jPanelMain = new javax.swing.JPanel();
         jLabelPesquisa = new javax.swing.JLabel();
         jTextFieldPesquisa = new javax.swing.JTextField();
-        jButtonPesquisar = new javax.swing.JButton();
         jToolBar = new javax.swing.JToolBar();
         jLabel3 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
@@ -120,6 +119,8 @@ public class DialogCompra extends javax.swing.JDialog {
         jScrollPane12 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
+        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Compras");
@@ -136,14 +137,6 @@ public class DialogCompra extends javax.swing.JDialog {
         jLabelPesquisa.setText("Pesquisar por");
         jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, 20));
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 410, -1));
-
-        jButtonPesquisar.setText("Pesquisar");
-        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarActionPerformed(evt);
-            }
-        });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, -1, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -394,6 +387,25 @@ public class DialogCompra extends javax.swing.JDialog {
         });
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
 
+        jButtonPesquisar1.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar1.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPesquisar1.setText("Pesquisar");
+        jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisar1ActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 115, -1));
+
+        jButtonResetar2.setText("Resetar");
+        jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetar2ActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, 115, -1));
+
         getContentPane().add(jPanelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 510));
 
         pack();
@@ -445,9 +457,13 @@ public class DialogCompra extends javax.swing.JDialog {
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
-    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+    private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
         crud.pesquisar();
-    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+    }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
+
+    private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetar2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
@@ -455,9 +471,10 @@ public class DialogCompra extends javax.swing.JDialog {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovoRegistro;
-    private javax.swing.JButton jButtonPesquisar;
+    private javax.swing.JButton jButtonPesquisar1;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar2;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;

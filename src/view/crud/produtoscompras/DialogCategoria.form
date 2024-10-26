@@ -67,7 +67,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="330" width="-1" height="20"/>
+              <AbsoluteConstraints x="10" y="330" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -240,7 +240,7 @@
         <Component class="javax.swing.JTextField" name="jTextFieldPesquisa">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="370" width="220" height="-1"/>
+              <AbsoluteConstraints x="10" y="370" width="230" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -268,6 +268,15 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonPesquisar1">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Fira Sans" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
           </Properties>
           <Events>
@@ -275,7 +284,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="420" width="220" height="-1"/>
+              <AbsoluteConstraints x="10" y="420" width="115" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -414,6 +423,19 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButtonResetar2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Resetar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonResetar2ActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="125" y="420" width="115" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

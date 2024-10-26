@@ -93,6 +93,7 @@ public class DialogCategoria extends javax.swing.JDialog {
         jButtonUltimo = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
+        jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Controle de Categorias");
@@ -105,7 +106,7 @@ public class DialogCategoria extends javax.swing.JDialog {
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 20));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 20));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -182,7 +183,7 @@ public class DialogCategoria extends javax.swing.JDialog {
         }
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 460, 400));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 220, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 230, -1));
 
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da Categoria", "Cód. PromoCate", "Descrição" }));
         jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -192,13 +193,16 @@ public class DialogCategoria extends javax.swing.JDialog {
         });
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
+        jButtonPesquisar1.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar1.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar1.setText("Pesquisar");
         jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisar1ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 220, -1));
+        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 115, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -313,6 +317,14 @@ public class DialogCategoria extends javax.swing.JDialog {
 
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
+        jButtonResetar2.setText("Resetar");
+        jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetar2ActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 420, 115, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -376,6 +388,10 @@ public class DialogCategoria extends javax.swing.JDialog {
         crud.pesquisar();
     }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
 
+    private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetar2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -385,6 +401,9 @@ public class DialogCategoria extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPesquisar1;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar;
+    private javax.swing.JButton jButtonResetar1;
+    private javax.swing.JButton jButtonResetar2;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;

@@ -98,7 +98,8 @@ public class DialogPromoProd extends javax.swing.JDialog {
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
         jLabelPesquisa = new javax.swing.JLabel();
         jTextFieldPesquisa = new javax.swing.JTextField();
-        jButtonPesquisar = new javax.swing.JButton();
+        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Promoções dos Produtos");
@@ -322,13 +323,24 @@ public class DialogPromoProd extends javax.swing.JDialog {
         });
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 230, -1));
 
-        jButtonPesquisar.setText("Pesquisar");
-        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisar1.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar1.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPesquisar1.setText("Pesquisar");
+        jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarActionPerformed(evt);
+                jButtonPesquisar1ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, -1));
+        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 115, -1));
+
+        jButtonResetar2.setText("Resetar");
+        jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetar2ActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 420, 115, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -385,9 +397,13 @@ public class DialogPromoProd extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jTextFieldPesquisaActionPerformed
 
-    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+    private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
         crud.pesquisar();
-    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+    }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
+
+    private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetar2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
@@ -395,9 +411,10 @@ public class DialogPromoProd extends javax.swing.JDialog {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovoRegistro;
-    private javax.swing.JButton jButtonPesquisar;
+    private javax.swing.JButton jButtonPesquisar1;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar2;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
