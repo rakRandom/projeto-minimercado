@@ -44,7 +44,10 @@ Utiliza Java com Swing e MySQL.
 
     - [ ] Automação do Sistema (notificações, verificações periódicas etc.)
     
+ 
 Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
+
 Verificar o título dos Frames, eles somem do nada
+
 Fazer a To-do list da classe CRUD
 

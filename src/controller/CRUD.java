@@ -224,7 +224,7 @@ public class CRUD
                 String sql = calcularSQL(TipoSQL.Delete);
                 int excluir = conexao.statement.executeUpdate(sql);
                     
-                if (excluir == 1) {
+                if (excluir != 0) {
                     JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                         
                     conexao.executarSQL(calcularSQL(TipoSQL.Select));
@@ -294,7 +294,10 @@ public class CRUD
                 var row = new Object[campos.length];
                 
                 for (int i = 0; i < campos.length; i++) {
-                    row[i] = conexao.resultset.getString(atributos[i]);
+                    if (tiposAtributo[i] == TipoAtributo.Money)
+                        row[i] = "R$ " + conexao.resultset.getString(atributos[i]);
+                    else
+                        row[i] = conexao.resultset.getString(atributos[i]);
                 }
                 
                 modelo.addRow(row);

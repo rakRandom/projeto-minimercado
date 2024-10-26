@@ -26,10 +26,10 @@ public class DialogFuncionario extends javax.swing.JDialog {
         conexao.conectar();
         
         jTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(180);
         jTable.getColumnModel().getColumn(2).setPreferredWidth(50);
-        jTable.getColumnModel().getColumn(3).setPreferredWidth(30);
-        jTable.getColumnModel().getColumn(4).setPreferredWidth(30);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(40);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(40);
         jTable.getColumnModel().getColumn(5).setPreferredWidth(225);
         jTable.getColumnModel().getColumn(6).setPreferredWidth(30);
         jTable.getColumnModel().getColumn(7).setPreferredWidth(30);

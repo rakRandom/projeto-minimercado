@@ -4,15 +4,69 @@
  */
 package view.crud.produtoscompras;
 
+import controller.CRUD;
+import controller.enums.TipoAtributo;
+import controller.db.Conexao;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author neo
  */
 public class DialogCompra extends javax.swing.JDialog {
+    Conexao conexao;
+    CRUD crud;
 
     public DialogCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(120);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(140);
+        jTable.getColumnModel().getColumn(6).setPreferredWidth(140);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
+        
+        crud = new CRUD(
+                conexao,
+                modelo,
+                "compra",
+                new String[] {
+                    "cod_compra",
+                    "id_func",
+                    "id_cliente",
+                    "data_compra",
+                    "metodo_pag",
+                    "preco_bruto",
+                    "valor_desconto"
+                },
+                new TipoAtributo[] {
+                    TipoAtributo.PK,
+                    TipoAtributo.Number,
+                    TipoAtributo.Number,
+                    TipoAtributo.String,
+                    TipoAtributo.Number,
+                    TipoAtributo.Money,
+                    TipoAtributo.Money
+                },
+                new JTextField[] {
+                    jTextFieldCodigo,
+                    jTextFieldFunc,
+                    jTextFieldCliente,
+                    jFormattedTextFieldData,
+                    jTextFieldPag,
+                    jTextFieldBruto,
+                    jTextFieldDesconto
+                }
+        );
     }
 
     /**
@@ -43,28 +97,31 @@ public class DialogCompra extends javax.swing.JDialog {
         jButtonSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldCodigo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
-        jFormattedTextField9 = new javax.swing.JFormattedTextField();
-        jFormattedTextField10 = new javax.swing.JFormattedTextField();
+        jButtonTiposDeTelefone = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldFunc = new javax.swing.JTextField();
+        jTextFieldCliente = new javax.swing.JTextField();
+        jTextFieldPag = new javax.swing.JTextField();
+        jTextFieldBruto = new javax.swing.JTextField();
+        jTextFieldDesconto = new javax.swing.JTextField();
+        jFormattedTextFieldData = new javax.swing.JFormattedTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jComboBoxPesquisa1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Compras");
-        setPreferredSize(new java.awt.Dimension(1040, 520));
+        setPreferredSize(new java.awt.Dimension(1080, 510));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -76,11 +133,11 @@ public class DialogCompra extends javax.swing.JDialog {
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, -1, 20));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 410, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, 20));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 410, -1));
 
         jButtonPesquisar.setText("Pesquisar");
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, -1, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, -1, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -94,6 +151,11 @@ public class DialogCompra extends javax.swing.JDialog {
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
         jButtonNovoRegistro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonNovoRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoRegistroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonNovoRegistro);
 
         jButtonGravar.setText(" Gravar ");
@@ -101,6 +163,11 @@ public class DialogCompra extends javax.swing.JDialog {
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
         jButtonGravar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonGravar);
 
         jButtonAlterar.setText(" Alterar ");
@@ -108,12 +175,22 @@ public class DialogCompra extends javax.swing.JDialog {
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAlterar);
 
         jButtonExcluir.setText(" Excluir ");
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
@@ -121,24 +198,44 @@ public class DialogCompra extends javax.swing.JDialog {
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrimeiroActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonPrimeiro);
 
         jButtonAnterior.setText(" Anterior ");
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonAnterior);
 
         jButtonProximo.setText(" Próximo ");
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProximoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonProximo);
 
         jButtonUltimo.setText(" Último ");
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUltimoActionPerformed(evt);
+            }
+        });
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
@@ -153,29 +250,26 @@ public class DialogCompra extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonSair);
 
-        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 40));
+        jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 40));
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cód. da Compra:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 30));
 
-        jTextField2.setEditable(false);
-        jTextField2.setPreferredSize(new java.awt.Dimension(26, 22));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 60, -1));
+        jTextFieldCodigo.setEditable(false);
+        jTextFieldCodigo.setPreferredSize(new java.awt.Dimension(60, 27));
+        jPanel3.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 90, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Id. do Funcionário:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
-
-        jFormattedTextField4.setPreferredSize(new java.awt.Dimension(60, 22));
-        jPanel3.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 30));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Preço Bruto:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 20));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
 
         jLabel11.setBackground(new java.awt.Color(200, 200, 200));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -184,11 +278,24 @@ public class DialogCompra extends javax.swing.JDialog {
         jLabel11.setText("Atributos");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, -1));
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 235, 2));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 190, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,63 +306,45 @@ public class DialogCompra extends javax.swing.JDialog {
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Id. do Cliente:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 20));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Valor Desconto:");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 20));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 30));
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Método de Pagamento:");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 20));
-
-        jFormattedTextField5.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 60, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 30));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Data da Compra:");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 30));
 
-        jFormattedTextField6.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTiposDeTelefone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonTiposDeTelefone.setText("Itens das Compras");
+        jButtonTiposDeTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField6ActionPerformed(evt);
+                jButtonTiposDeTelefoneActionPerformed(evt);
             }
         });
-        jPanel3.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 90, -1));
+        jPanel3.add(jButtonTiposDeTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 190, 40));
 
-        jFormattedTextField8.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField8ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 90, -1));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Sub-tabela");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 160, -1));
+        jPanel3.add(jTextFieldFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 90, -1));
+        jPanel3.add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 90, -1));
+        jPanel3.add(jTextFieldPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 90, -1));
+        jPanel3.add(jTextFieldBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 120, -1));
+        jPanel3.add(jTextFieldDesconto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 120, -1));
 
-        jFormattedTextField9.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField9ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jFormattedTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 90, -1));
+        jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss "))));
+        jPanel3.add(jFormattedTextFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 120, -1));
 
-        jFormattedTextField10.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField10ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jFormattedTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 190, -1));
+        jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, 400));
 
-        jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 410));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -264,7 +353,7 @@ public class DialogCompra extends javax.swing.JDialog {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -278,18 +367,18 @@ public class DialogCompra extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane12.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(75);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(75);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(75);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(150);
-            jTable2.getColumnModel().getColumn(5).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(6).setPreferredWidth(100);
+        jScrollPane12.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(75);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(75);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(75);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(6).setPreferredWidth(100);
         }
 
-        jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 760, 380));
+        jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 760, 410));
 
         jComboBoxPesquisa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da Compra", "Id. do Funcionário", "Id. do Cliente", "Data da Compra", "Método de Pagamento", "Preço Bruto", "Valor Desconto" }));
         jComboBoxPesquisa1.addActionListener(new java.awt.event.ActionListener() {
@@ -297,9 +386,9 @@ public class DialogCompra extends javax.swing.JDialog {
                 jComboBoxPesquisa1ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
 
-        getContentPane().add(jPanelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
+        getContentPane().add(jPanelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -309,29 +398,46 @@ public class DialogCompra extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField5ActionPerformed
-
-    private void jFormattedTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField6ActionPerformed
-
-    private void jFormattedTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField8ActionPerformed
-
-    private void jFormattedTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField9ActionPerformed
-
-    private void jFormattedTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField10ActionPerformed
-
     private void jComboBoxPesquisa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisa1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxPesquisa1ActionPerformed
+
+    private void jButtonTiposDeTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiposDeTelefoneActionPerformed
+        var painel = new DialogItens(this, true);
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButtonTiposDeTelefoneActionPerformed
+
+    private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistroActionPerformed
+        crud.novoRegistro();
+    }//GEN-LAST:event_jButtonNovoRegistroActionPerformed
+
+    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
+        crud.gravar();
+    }//GEN-LAST:event_jButtonGravarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        crud.alterar();
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        crud.excluir();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiroActionPerformed
+        crud.primeiro();
+    }//GEN-LAST:event_jButtonPrimeiroActionPerformed
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+        crud.anterior();
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
+        crud.proximo();
+    }//GEN-LAST:event_jButtonProximoActionPerformed
+
+    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
+        crud.ultimo();
+    }//GEN-LAST:event_jButtonUltimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
@@ -343,14 +449,10 @@ public class DialogCompra extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa1;
-    private javax.swing.JFormattedTextField jFormattedTextField10;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField8;
-    private javax.swing.JFormattedTextField jFormattedTextField9;
+    private javax.swing.JFormattedTextField jFormattedTextFieldData;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -358,17 +460,24 @@ public class DialogCompra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTextField jTextFieldBruto;
+    private javax.swing.JTextField jTextFieldCliente;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldDesconto;
+    private javax.swing.JTextField jTextFieldFunc;
+    private javax.swing.JTextField jTextFieldPag;
     private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables

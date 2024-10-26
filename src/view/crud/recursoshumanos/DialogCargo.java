@@ -46,40 +46,14 @@ public class DialogCargo extends javax.swing.JDialog {
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,
-                    TipoAtributo.Number
+                    TipoAtributo.Money
                 },
                 new JTextField[] {
                     jTextFieldCodigo,
                     jTextFieldDescricao,
                     jTextFieldSalario
                 }
-        ) {
-            @Override
-            public void preencherTabela() {
-                modelo.setNumRows(0);
-
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        var row = new Object[campos.length];
-
-                        for (int i = 0; i < campos.length; i++) {
-                            row[i] = conexao.resultset.getString(atributos[i]);
-                        }
-                        
-                        row[2] = "R$ " + row[2];
-
-                        modelo.addRow(row);
-                    }
-                }catch(SQLException erro) {
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "\n Erro ao listar dados da tabela!!:\n"+erro,
-                            "Mensagem do programa", 
-                            JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-        };
+        );
     }
 
     /**

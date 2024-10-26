@@ -11,5 +11,6 @@ package controller.enums;
 public enum TipoAtributo {
     PK,
     String,
-    Number
+    Number,
+    Money
 }
