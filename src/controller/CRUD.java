@@ -254,21 +254,33 @@ public class CRUD
 
     public void anterior() 
     {                                                
-        try{
-            conexao.resultset.previous();
+        try {
+            if (!conexao.resultset.previous()) {
+                conexao.resultset.next();
+                return;
+            }
             mostrarDados();
-        }catch(SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro anterior", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,
+                    "Não foi possível acessar o registro anterior",
+                    "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE
+            );
         }
     }                                               
 
     public void proximo() 
     {                                               
-        try{
-            conexao.resultset.next();
+        try {
+            if (!conexao.resultset.next()) {
+                conexao.resultset.previous();
+                return;
+            }
             mostrarDados();
-        }catch(SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro seguinte", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,
+                    "Não foi possível acessar o próximo registro",
+                    "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE
+            );
         }
     }                                              
 
