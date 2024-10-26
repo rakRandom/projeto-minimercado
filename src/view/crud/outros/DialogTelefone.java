@@ -52,12 +52,33 @@ public class DialogTelefone extends javax.swing.JDialog {
                     jTextFieldIdDono,
                     jTextFieldTipoTelefone,
                     jTextFieldTipoDono,
-                    jTextFieldTelefone
+                    jFormattedTextFieldTelefone
                 }
         ) {
             @Override
+            public String calcularUpdate() {
+                var sqlSet = "";
+
+                if (tiposAtributo[1] == TipoAtributo.String) {
+                    sqlSet += atributos[1] + "='" + campos[1].getText() + "'";
+                } else {
+                    sqlSet += atributos[1] + "=" + campos[1].getText();
+                }
+
+                for (int i = 2; i < campos.length; i++) {
+                    if (tiposAtributo[i] == TipoAtributo.String) {
+                        sqlSet += ", " + atributos[i] + "='" + campos[i].getText() + "'";
+                    } else {
+                        sqlSet += ", " + atributos[i] + "=" + campos[i].getText();
+                    }
+                }
+
+                return "update " + nome_tabela + " set " + sqlSet + " where id_dono = " + jTextFieldIdDono.getText() + " and tipo_dono like '" + jTextFieldTipoDono.getText() + "'";
+            }
+            
+            @Override
             public String calcularDelete() {
-                return "delete from telefone where telefone like '" + jTextFieldTelefone.getText() + "'";
+                return "delete from telefone where telefone like '" + jFormattedTextFieldTelefone.getText() + "'";
             }
         };
     }
@@ -97,12 +118,12 @@ public class DialogTelefone extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldIdDono = new javax.swing.JTextField();
-        jTextFieldTelefone = new javax.swing.JTextField();
         jButtonTiposDeTelefone = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldTipoTelefone = new javax.swing.JTextField();
         jTextFieldTipoDono = new javax.swing.JTextField();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Telefone");
@@ -295,7 +316,6 @@ public class DialogTelefone extends javax.swing.JDialog {
         jLabel4.setText("Tipo do Dono:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
         jPanel1.add(jTextFieldIdDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 90, -1));
-        jPanel1.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, -1));
 
         jButtonTiposDeTelefone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonTiposDeTelefone.setText("Tipos de Telefone");
@@ -331,6 +351,13 @@ public class DialogTelefone extends javax.swing.JDialog {
         });
         jPanel1.add(jTextFieldTipoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 150, -1));
         jPanel1.add(jTextFieldTipoDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 90, -1));
+
+        try {
+            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(jFormattedTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, -1));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 680, 80));
 
@@ -407,6 +434,7 @@ public class DialogTelefone extends javax.swing.JDialog {
     private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -423,7 +451,6 @@ public class DialogTelefone extends javax.swing.JDialog {
     private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextFieldIdDono;
     private javax.swing.JTextField jTextFieldPesquisa;
-    private javax.swing.JTextField jTextFieldTelefone;
     private javax.swing.JTextField jTextFieldTipoDono;
     private javax.swing.JTextField jTextFieldTipoTelefone;
     private javax.swing.JToolBar jToolBar;
