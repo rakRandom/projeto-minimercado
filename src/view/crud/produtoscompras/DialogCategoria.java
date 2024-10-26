@@ -50,7 +50,11 @@ public class DialogCategoria extends javax.swing.JDialog {
                     jTextFieldPromo,
                     jTextFieldDescricao
                 }
-        );
+        ) {
+            public String calcularPesquisa() {
+                return "";
+            }
+        };
     }
 
     /**
@@ -191,6 +195,11 @@ public class DialogCategoria extends javax.swing.JDialog {
         jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
         jButtonPesquisar1.setText("Pesquisar");
+        jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisar1ActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 220, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
@@ -364,6 +373,10 @@ public class DialogCategoria extends javax.swing.JDialog {
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
+
+    private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;

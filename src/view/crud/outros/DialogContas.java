@@ -50,7 +50,11 @@ public class DialogContas extends javax.swing.JDialog {
                     jTextFieldSenha,
                     jTextFieldTipo
                 }
-        );
+        ) {
+            public String calcularPesquisa() {
+                return "";
+            }
+        };
     }
 
     /**
@@ -334,7 +338,7 @@ public class DialogContas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        // TODO add your handling code here:
+        crud.pesquisar();
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jTextFieldTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTipoActionPerformed

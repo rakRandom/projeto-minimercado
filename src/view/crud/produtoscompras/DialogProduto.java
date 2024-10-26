@@ -74,7 +74,11 @@ public class DialogProduto extends javax.swing.JDialog {
                     jTextFieldEstoque,
                     jTextFieldPreco
                 }
-        );
+        ) {
+            public String calcularPesquisa() {
+                return "";
+            }
+        };
     }
 
     /**
@@ -145,6 +149,11 @@ public class DialogProduto extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 680, 410, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 680, -1, -1));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -456,6 +465,10 @@ public class DialogProduto extends javax.swing.JDialog {
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
