@@ -7,6 +7,7 @@ package view.crud.produtoscompras;
 import controller.CRUD;
 import controller.enums.TipoAtributo;
 import controller.db.Conexao;
+import java.sql.SQLException;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -77,7 +78,34 @@ public class DialogCompra extends javax.swing.JDialog {
                 },
                 jComboBoxPesquisa,
                 jTextFieldPesquisa
-        );
+        ) {
+            @Override
+            public int verificarFK() {
+                for (int i = 0; i < atributos.length; i++) {
+                    if (tiposAtributo[i] != TipoAtributo.FK)
+                        continue;
+                    
+                    String sql;
+                    if ("metodo_pag".equals(atributos[i])) {
+                        sql = "select * from " + tabelasFK[i] + " where cod_pagamento = " + campos[i].getText();
+                    } else {
+                        sql = "select * from " + tabelasFK[i] + " where " + atributos[i] + " = " + campos[i].getText();
+                    }
+                    
+                    try {
+                        conexao.executarSQL(sql);
+
+                        if (!conexao.resultset.first()) {
+                            return i;
+                        }
+                    } catch (SQLException e) {
+                        return i;
+                    }
+                }
+
+                return -1;
+            }
+        };
     }
 
     /**
