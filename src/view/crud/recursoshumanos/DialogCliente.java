@@ -46,6 +46,14 @@ public class DialogCliente extends javax.swing.JDialog {
                     "rg",
                     "endereco"
                 },
+                new String[] {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,

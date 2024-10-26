@@ -33,6 +33,7 @@ public class CRUD
     public DefaultTableModel modelo;
     public String nome_tabela;
     public String[] atributos;
+    public String[] tabelasFK;
     public TipoAtributo[] tiposAtributo;
     public JTextField[] campos;
     public Integer pkIndex = 0;
@@ -46,6 +47,7 @@ public class CRUD
             DefaultTableModel modelo, 
             String nome_tabela, 
             String[] atributos, 
+            String[] tabelasFK, 
             TipoAtributo[] tiposAtributo,
             JTextField[] campos,
             JComboBox jComboBoxPesquisa,
@@ -55,6 +57,7 @@ public class CRUD
         this.modelo = modelo;
         this.nome_tabela = nome_tabela;
         this.atributos = atributos;
+        this.tabelasFK = tabelasFK;
         this.tiposAtributo = tiposAtributo;
         this.campos = campos;
         this.jComboBoxPesquisa = jComboBoxPesquisa;
@@ -134,6 +137,27 @@ public class CRUD
         return "delete from " + nome_tabela + " where " + atributos[0] + " = " + whereValue;
     }
     
+    public int verificarFK() {
+        for (int i = 0; i < atributos.length; i++) {
+            if (tiposAtributo[i] != TipoAtributo.FK)
+                continue;
+            
+            String sql = "select * from " + tabelasFK[i] + " where " + atributos[i] + " = " + campos[i].getText();
+            
+            try {
+                conexao.executarSQL(sql);
+
+                if (!conexao.resultset.first()) {
+                    return i;
+                }
+            } catch (SQLException e) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
     // ===================================
     
     public String calcularSQL(TipoSQL tipo) 
@@ -154,11 +178,8 @@ public class CRUD
             case Delete -> {
                 return calcularDelete();
             }
-            
-            default -> {
-                return "";
-            }
         }
+        return "";
     }
     
     // =========================================================================
@@ -174,6 +195,17 @@ public class CRUD
     
     public void gravar() 
     {                                              
+        int fkInexistente = verificarFK();
+        
+        if (fkInexistente != -1) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "FK inexistente: " + atributos[(fkInexistente)], 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja salvar os dados?", "Confirmar Gravação de Dados", JOptionPane.YES_NO_OPTION);
         
         if(opcao == 0) {
@@ -194,6 +226,17 @@ public class CRUD
 
     public void alterar() 
     {                                               
+        int fkInexistente = verificarFK();
+        
+        if (fkInexistente != -1) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "FK inexistente: " + atributos[(fkInexistente)], 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja salvar as alterações?", "Confirmar Alteração de Dados", JOptionPane.YES_NO_OPTION);
         
         if(opcao == 0) {
@@ -222,14 +265,22 @@ public class CRUD
     public void excluir() 
     {                                               
         try {
-            int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o registro?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
+            int resposta = JOptionPane.showConfirmDialog(
+                    null, 
+                    "Deseja excluir o registro?", 
+                    "Confirmar Exclusão", 
+                    JOptionPane.YES_NO_OPTION);
                 
             if (resposta == JOptionPane.OK_OPTION) {
                 String sql = calcularSQL(TipoSQL.Delete);
                 int excluir = conexao.statement.executeUpdate(sql);
                     
                 if (excluir != 0) {
-                    JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(
+                            null, 
+                            "Exclusão realizada com sucesso", 
+                            "Mensagem do Programa", 
+                            JOptionPane.INFORMATION_MESSAGE);
                         
                     conexao.executarSQL(calcularSQL(TipoSQL.Select));
                     conexao.resultset.first();
@@ -237,10 +288,18 @@ public class CRUD
                     posicionarRegistro();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Operação cancelada pelo usuário", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch(SQLException excecao) {
-            JOptionPane.showMessageDialog(null, "Erro na exclusão: " +excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro na exclusão: " + e, 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }                                   
     
@@ -343,7 +402,7 @@ public class CRUD
     }
     
     public void resetarTabela() {
-        conexao.executarSQL(calcularSelect());
+        conexao.executarSQL(calcularSQL(TipoSQL.Select));
         
         preencherTabela();
         posicionarRegistro();

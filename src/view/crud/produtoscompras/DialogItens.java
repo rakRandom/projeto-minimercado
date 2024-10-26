@@ -40,9 +40,14 @@ public class DialogItens extends javax.swing.JDialog {
                     "cod_compra",
                     "quantidade"
                 },
+                new String[] {
+                    "lote",
+                    "compra",
+                    ""
+                },
                 new TipoAtributo[] {
-                    TipoAtributo.Number,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
+                    TipoAtributo.FK,
                     TipoAtributo.Number,
                 },
                 new JTextField[] {

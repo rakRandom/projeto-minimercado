@@ -7,6 +7,7 @@ package view.crud.outros;
 import controller.CRUD;
 import controller.enums.TipoAtributo;
 import controller.db.Conexao;
+import java.sql.SQLException;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,10 +41,15 @@ public class DialogContas extends javax.swing.JDialog {
                     "senha",
                     "cod_acesso"
                 },
+                new String[] {
+                    "",
+                    "",
+                    "nivel_acesso"
+                },
                 new TipoAtributo[] {
                     TipoAtributo.String,
                     TipoAtributo.String,
-                    TipoAtributo.Number
+                    TipoAtributo.FK
                 },
                 new JTextField[] {
                     jTextFieldUsuario,
@@ -52,7 +58,24 @@ public class DialogContas extends javax.swing.JDialog {
                 },
                 jComboBoxPesquisa,
                 jTextFieldPesquisa
-        );
+        ) {
+            @Override
+            public int verificarFK() {
+                try {
+                    String sql = "select * from nivel_acesso where cod_nivel = " + jTextFieldTipo.getText();
+                    conexao.executarSQL(sql);
+
+                    if (!conexao.resultset.first()) {
+                        return 2;
+                    }
+                } catch (SQLException | NullPointerException e) {
+                    return 2;
+                }
+
+
+                return -1;
+            }
+        };
     }
 
     /**
@@ -84,16 +107,19 @@ public class DialogContas extends javax.swing.JDialog {
         jButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jLabelUsuario = new javax.swing.JLabel();
-        jLabelSenha = new javax.swing.JLabel();
-        jLabelTipo = new javax.swing.JLabel();
-        jTextFieldUsuario = new javax.swing.JTextField();
-        jTextFieldSenha = new javax.swing.JTextField();
-        jTextFieldTipo = new javax.swing.JTextField();
         jButtonResetar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelSenha = new javax.swing.JLabel();
+        jLabelUsuario = new javax.swing.JLabel();
+        jLabelTipo = new javax.swing.JLabel();
+        jTextFieldTipo = new javax.swing.JTextField();
+        jTextFieldSenha = new javax.swing.JTextField();
+        jTextFieldUsuario = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -265,25 +291,7 @@ public class DialogContas extends javax.swing.JDialog {
             jTable.getColumnModel().getColumn(2).setPreferredWidth(120);
         }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
-
-        jLabelUsuario.setText("Usuário:");
-        jPanelMain.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
-
-        jLabelSenha.setText("Senha:");
-        jPanelMain.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 30));
-
-        jLabelTipo.setText("Tipo:");
-        jPanelMain.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, 30));
-        jPanelMain.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, -1));
-        jPanelMain.add(jTextFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 200, -1));
-
-        jTextFieldTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTipoActionPerformed(evt);
-            }
-        });
-        jPanelMain.add(jTextFieldTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 110, -1));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 680, 260));
 
         jButtonResetar.setText("Resetar");
         jButtonResetar.addActionListener(new java.awt.event.ActionListener() {
@@ -292,6 +300,57 @@ public class DialogContas extends javax.swing.JDialog {
             }
         });
         jPanelMain.add(jButtonResetar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSenha.setText("Senha:");
+        jPanel1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 30));
+
+        jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelUsuario.setText("Usuário:");
+        jPanel1.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+
+        jLabelTipo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTipo.setText("Tipo:");
+        jPanel1.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
+
+        jTextFieldTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTipoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 150, -1));
+        jPanel1.add(jTextFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 200, -1));
+        jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 200, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 2, 60));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Sub-tabela");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+
+        jButton1.setText("Nível de Acesso");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 33, 150, 30));
+
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 680, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -356,7 +415,13 @@ public class DialogContas extends javax.swing.JDialog {
         crud.resetarTabela();
     }//GEN-LAST:event_jButtonResetarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        var painel = new DialogNivelAcesso(this, true);
+        painel.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonExcluir;
@@ -369,11 +434,14 @@ public class DialogContas extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTipo;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;

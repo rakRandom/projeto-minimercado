@@ -38,6 +38,10 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
                     "id_tipo",
                     "descricao"
                 },
+                new String[] {
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String

@@ -40,9 +40,14 @@ public class DialogCategoria extends javax.swing.JDialog {
                     "cod_promo_cate",
                     "descricao"
                 },
+                new String[] {
+                    "",
+                    "promocao_categoria",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
                     TipoAtributo.String,
                 },
                 new JTextField[] {

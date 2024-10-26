@@ -40,6 +40,11 @@ public class DialogExpediente extends javax.swing.JDialog {
                     "hora_inicio",
                     "hora_fim"
                 },
+                new String[] {
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,

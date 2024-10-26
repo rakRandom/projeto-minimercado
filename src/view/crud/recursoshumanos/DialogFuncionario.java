@@ -50,6 +50,16 @@ public class DialogFuncionario extends javax.swing.JDialog {
                     "cod_cargo",
                     "cod_expediente"
                 },
+                new String[] {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "cargo",
+                    "expediente"
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,
@@ -57,8 +67,8 @@ public class DialogFuncionario extends javax.swing.JDialog {
                     TipoAtributo.String,
                     TipoAtributo.String,
                     TipoAtributo.String,
-                    TipoAtributo.Number,
-                    TipoAtributo.Number
+                    TipoAtributo.FK,
+                    TipoAtributo.FK
                 },
                 new JTextField[] {
                     jTextFieldID,

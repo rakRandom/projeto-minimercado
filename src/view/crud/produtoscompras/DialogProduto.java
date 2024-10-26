@@ -52,12 +52,23 @@ public class DialogProduto extends javax.swing.JDialog {
                     "estoque",
                     "preco"
                 },
+                new String[] {
+                    "",
+                    "categoria",
+                    "promocao_produto",
+                    "classificacao",
+                    "fabricante",
+                    "",
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
-                    TipoAtributo.Number,
-                    TipoAtributo.Number,
-                    TipoAtributo.Number,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
+                    TipoAtributo.FK,
+                    TipoAtributo.FK,
+                    TipoAtributo.FK,
                     TipoAtributo.String,
                     TipoAtributo.String,
                     TipoAtributo.Number,

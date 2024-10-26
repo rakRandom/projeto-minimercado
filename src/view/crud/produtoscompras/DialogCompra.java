@@ -48,12 +48,21 @@ public class DialogCompra extends javax.swing.JDialog {
                     "preco_bruto",
                     "valor_desconto"
                 },
+                new String[] {
+                    "",
+                    "funcionario",
+                    "cliente",
+                    "",
+                    "metodo_pagamento",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
-                    TipoAtributo.Number,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
+                    TipoAtributo.FK,
                     TipoAtributo.String,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
                     TipoAtributo.Money,
                     TipoAtributo.Money
                 },

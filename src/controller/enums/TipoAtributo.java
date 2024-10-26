@@ -10,6 +10,7 @@ package controller.enums;
  */
 public enum TipoAtributo {
     PK,
+    FK,
     String,
     Number,
     Money

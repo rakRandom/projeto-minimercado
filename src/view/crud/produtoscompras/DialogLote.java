@@ -44,9 +44,16 @@ public class DialogLote extends javax.swing.JDialog {
                     "data_compra",
                     "quantidade"
                 },
+                new String[] {
+                    "",
+                    "produto",
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
                     TipoAtributo.String,
                     TipoAtributo.String,
                     TipoAtributo.Number

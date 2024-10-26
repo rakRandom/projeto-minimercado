@@ -44,6 +44,13 @@ public class DialogFabricante extends javax.swing.JDialog {
                     "cnpj",
                     "website_url"
                 },
+                new String[] {
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,

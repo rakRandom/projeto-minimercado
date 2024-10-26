@@ -42,6 +42,12 @@ public class DialogPromoProd extends javax.swing.JDialog {
                     "data_inicio",
                     "data_termino"
                 },
+                new String[] {
+                    "",
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.Number,

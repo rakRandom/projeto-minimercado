@@ -38,6 +38,10 @@ public class DialogMetodosPag extends javax.swing.JDialog {
                     "cod_pagamento",
                     "descricao"
                 },
+                new String[] {
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String

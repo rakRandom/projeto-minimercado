@@ -41,6 +41,10 @@ public class DialogClassific extends javax.swing.JDialog {
                     "cod_classific",
                     "descricao"
                 },
+                new String[] {
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String

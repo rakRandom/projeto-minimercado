@@ -43,6 +43,11 @@ public class DialogCargo extends javax.swing.JDialog {
                     "descricao",
                     "salario"
                 },
+                new String[] {
+                    "",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.PK,
                     TipoAtributo.String,

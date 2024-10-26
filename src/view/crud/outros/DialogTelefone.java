@@ -42,9 +42,15 @@ public class DialogTelefone extends javax.swing.JDialog {
                     "tipo_dono",
                     "telefone"
                 },
+                new String[] {
+                    "",
+                    "tipo_telefone",
+                    "",
+                    ""
+                },
                 new TipoAtributo[] {
                     TipoAtributo.Number,
-                    TipoAtributo.Number,
+                    TipoAtributo.FK,
                     TipoAtributo.String,
                     TipoAtributo.String
                 },
