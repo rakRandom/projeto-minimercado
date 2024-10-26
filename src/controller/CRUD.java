@@ -10,6 +10,7 @@ import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import controller.enums.TipoSQL;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  * @author Neo / rakRandom / Fellipe Leonardo
  */
-public abstract class CRUD 
+public class CRUD 
 {
     public Conexao conexao;
     public DefaultTableModel modelo;
@@ -35,6 +36,8 @@ public abstract class CRUD
     public TipoAtributo[] tiposAtributo;
     public JTextField[] campos;
     public Integer pkIndex = 0;
+    public JComboBox jComboBoxPesquisa;
+    public JTextField jTextFieldPesquisa;
     
     // =========================================================================
     
@@ -44,7 +47,9 @@ public abstract class CRUD
             String nome_tabela, 
             String[] atributos, 
             TipoAtributo[] tiposAtributo,
-            JTextField[] campos
+            JTextField[] campos,
+            JComboBox jComboBoxPesquisa,
+            JTextField jTextFieldPesquisa
     ) {
         this.conexao = conexao;
         this.modelo = modelo;
@@ -52,6 +57,8 @@ public abstract class CRUD
         this.atributos = atributos;
         this.tiposAtributo = tiposAtributo;
         this.campos = campos;
+        this.jComboBoxPesquisa = jComboBoxPesquisa;
+        this.jTextFieldPesquisa = jTextFieldPesquisa;
         
         for (int i = 0; i < tiposAtributo.length; i++) {
             if (tiposAtributo[i] == TipoAtributo.PK) {
@@ -296,7 +303,25 @@ public abstract class CRUD
     
     // =========================================================================
     
-    public abstract String calcularPesquisa();
+    public String calcularPesquisa() {
+        String conteudo = jTextFieldPesquisa.getText();
+
+        if (conteudo.isBlank())
+            return "";
+        
+        String sql;
+        
+        int selected = jComboBoxPesquisa.getSelectedIndex();
+        
+        if (tiposAtributo[selected] == TipoAtributo.String) {
+            sql = "select * from " + nome_tabela + " where " + atributos[selected] + " like '%" + conteudo + "%'";
+        }
+        else {
+            sql = "select * from " + nome_tabela + " where " + atributos[selected] + " = " + conteudo;
+        }
+        
+        return sql;
+    }
     
     public void pesquisar() {
         try {

@@ -45,12 +45,10 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
                 new JTextField[] {
                     jTextFieldCodigo,
                     jTextFieldDescricao
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**
@@ -263,12 +261,12 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 290));
 
         jLabel1.setText("Código do Tipo:");
-        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
-        jPanelMain.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 70, -1));
+        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+        jPanelMain.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 70, -1));
 
         jLabel2.setText("Descrição:");
-        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, 20));
-        jPanelMain.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 450, -1));
+        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 30));
+        jPanelMain.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 430, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

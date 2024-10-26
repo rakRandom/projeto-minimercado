@@ -45,12 +45,10 @@ public class DialogMetodosPag extends javax.swing.JDialog {
                 new JTextField[] {
                     jTextFieldCodigo,
                     jTextFieldDescricao
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

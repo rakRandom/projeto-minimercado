@@ -48,12 +48,10 @@ public class DialogClassific extends javax.swing.JDialog {
                 new JTextField[] {
                     jTextFieldCodigo,
                     jTextFieldDescricao
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**
@@ -141,10 +139,10 @@ public class DialogClassific extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 90, -1));
 
         jLabel1.setText("Cód. Classificação:");
-        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
+        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
 
         jLabel2.setText("Descrição:");
-        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 20));
+        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 30));
         jPanelMain.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 410, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
@@ -262,11 +260,11 @@ public class DialogClassific extends javax.swing.JDialog {
 
         jLabelPesquisa.setText("Pesquisar por");
         jLabelPesquisa.setPreferredSize(new java.awt.Dimension(71, 20));
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 90, -1));
 
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, -1, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 400, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, -1, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 380, -1));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
         jButtonPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

@@ -49,12 +49,10 @@ public class DialogContas extends javax.swing.JDialog {
                     jTextFieldUsuario,
                     jTextFieldSenha,
                     jTextFieldTipo
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**
@@ -269,13 +267,13 @@ public class DialogContas extends javax.swing.JDialog {
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
 
         jLabelUsuario.setText("Usuário:");
-        jPanelMain.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
+        jPanelMain.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
 
         jLabelSenha.setText("Senha:");
-        jPanelMain.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 20));
+        jPanelMain.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 30));
 
         jLabelTipo.setText("Tipo:");
-        jPanelMain.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, 20));
+        jPanelMain.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, 30));
         jPanelMain.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, -1));
         jPanelMain.add(jTextFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 200, -1));
 
