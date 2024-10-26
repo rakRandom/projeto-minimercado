@@ -57,12 +57,10 @@ public class DialogFabricante extends javax.swing.JDialog {
                     jTextFieldEmail,
                     jFormattedTextFieldCNPJ,
                     jTextFieldSite
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

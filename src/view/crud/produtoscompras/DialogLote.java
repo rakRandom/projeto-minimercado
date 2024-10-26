@@ -57,12 +57,10 @@ public class DialogLote extends javax.swing.JDialog {
                     jFormattedTextFieldValidade,
                     jFormattedTextFieldCompra,
                     jTextFieldQuantidade
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

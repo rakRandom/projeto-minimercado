@@ -49,12 +49,10 @@ public class DialogItens extends javax.swing.JDialog {
                     jTextFieldLote,
                     jTextFieldCompra,
                     jTextFieldQt
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-            
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        ) { 
             @Override
             public String calcularUpdate() {
                 var sqlSet = "";
@@ -325,7 +323,7 @@ public class DialogItens extends javax.swing.JDialog {
         jLabelPesquisa.setText("Pesquisar por");
         jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
-        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Expediente", "Hora de Início", "Hora de Término" }));
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Expediente", "Cód. da Compra", "Quantidade" }));
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 140, -1));
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 220, -1));
 

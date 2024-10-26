@@ -53,12 +53,10 @@ public class DialogPromoCate extends javax.swing.JDialog {
                     jTextFieldPorcentagem,
                     jFormattedTextFieldInicio,
                     jFormattedTextFieldTermino
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

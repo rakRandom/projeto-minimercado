@@ -307,7 +307,7 @@ public class CRUD
         String conteudo = jTextFieldPesquisa.getText();
 
         if (conteudo.isBlank())
-            return "";
+            return "select * from " + nome_tabela + " where 1=0";
         
         String sql;
         
@@ -331,6 +331,7 @@ public class CRUD
 
             if (conexao.resultset.first()) {
                 preencherTabela();
+                posicionarRegistro();
             }
             else {
                 JOptionPane.showMessageDialog(null,
