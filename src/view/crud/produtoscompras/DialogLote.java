@@ -26,10 +26,10 @@ public class DialogLote extends javax.swing.JDialog {
         conexao.conectar();
         
         jTable.getColumnModel().getColumn(0).setPreferredWidth(75);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(75);
         jTable.getColumnModel().getColumn(2).setPreferredWidth(200);
-        jTable.getColumnModel().getColumn(3).setPreferredWidth(150);
-        jTable.getColumnModel().getColumn(4).setPreferredWidth(200);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(200);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(150);
         
         DefaultTableModel modelo = (DefaultTableModel) jTable.getModel();
         
