@@ -61,12 +61,10 @@ public class DialogCliente extends javax.swing.JDialog {
                     jFormattedTextFieldCPF,
                     jFormattedTextFieldRG,
                     jTextFieldEndereco
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

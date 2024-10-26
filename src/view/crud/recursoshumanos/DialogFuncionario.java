@@ -69,12 +69,10 @@ public class DialogFuncionario extends javax.swing.JDialog {
                     jTextFieldEndereco,
                     jTextFieldCargo,
                     jTextFieldExpediente
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

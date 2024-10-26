@@ -49,12 +49,10 @@ public class DialogExpediente extends javax.swing.JDialog {
                     jTextFieldCodigo,
                     jFormattedTextFieldInicio,
                     jFormattedTextFieldTermino,
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**

@@ -52,12 +52,10 @@ public class DialogCargo extends javax.swing.JDialog {
                     jTextFieldCodigo,
                     jTextFieldDescricao,
                     jTextFieldSalario
-                }
-        ) {
-            public String calcularPesquisa() {
-                return "";
-            }
-        };
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
+        );
     }
 
     /**
