@@ -66,10 +66,7 @@ public class CRUD
             }
         }
         
-        conexao.executarSQL(calcularSelect());
-        
-        preencherTabela();
-        posicionarRegistro();
+        resetarTabela();
     }
     
     // =========================================================================
@@ -343,6 +340,13 @@ public class CRUD
                     "Os dados digitados não foram localizados:\n" + erro, 
                     "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    
+    public void resetarTabela() {
+        conexao.executarSQL(calcularSelect());
+        
+        preencherTabela();
+        posicionarRegistro();
     }
 
     // =========================================================================

@@ -84,6 +84,7 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jTextFieldCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldDescricao = new javax.swing.JTextField();
+        jButtonResetar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(735, 515));
@@ -208,11 +209,11 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, 20));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 20));
 
-        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código do Tipo", "Descrição" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 120, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 360, -1));
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição" }));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 110, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 330, -1));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
         jButtonPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -224,7 +225,7 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 428, 100, 24));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 100, 24));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -258,7 +259,7 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
             jTable.getColumnModel().getColumn(1).setPreferredWidth(500);
         }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 290));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
 
         jLabel1.setText("Código do Tipo:");
         jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
@@ -267,6 +268,14 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jLabel2.setText("Descrição:");
         jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 30));
         jPanelMain.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 430, -1));
+
+        jButtonResetar.setText("Resetar");
+        jButtonResetar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetarActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,6 +332,10 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         crud.pesquisar();
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
+    private void jButtonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetarActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -332,6 +345,7 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;

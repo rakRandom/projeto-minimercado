@@ -90,6 +90,7 @@ public class DialogContas extends javax.swing.JDialog {
         jTextFieldUsuario = new javax.swing.JTextField();
         jTextFieldSenha = new javax.swing.JTextField();
         jTextFieldTipo = new javax.swing.JTextField();
+        jButtonResetar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(735, 515));
@@ -213,11 +214,11 @@ public class DialogContas extends javax.swing.JDialog {
 
         jLabelPesquisa.setText("Pesquisar por");
         jLabelPesquisa.setPreferredSize(new java.awt.Dimension(71, 20));
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 100, -1));
 
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuário", "Senha", "Tipo" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, -1, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 400, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 430, 100, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 340, -1));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
         jButtonPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -229,7 +230,7 @@ public class DialogContas extends javax.swing.JDialog {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 428, 100, 24));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 100, 24));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -283,6 +284,14 @@ public class DialogContas extends javax.swing.JDialog {
             }
         });
         jPanelMain.add(jTextFieldTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 110, -1));
+
+        jButtonResetar.setText("Resetar");
+        jButtonResetar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetarActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,6 +352,10 @@ public class DialogContas extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTipoActionPerformed
 
+    private void jButtonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetarActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -352,6 +365,7 @@ public class DialogContas extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;

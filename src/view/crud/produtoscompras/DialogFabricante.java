@@ -74,7 +74,6 @@ public class DialogFabricante extends javax.swing.JDialog {
 
         jPanelMain = new javax.swing.JPanel();
         jLabelPesquisa = new javax.swing.JLabel();
-        jButtonPesquisar = new javax.swing.JButton();
         jToolBar = new javax.swing.JToolBar();
         jLabel5 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
@@ -105,6 +104,8 @@ public class DialogFabricante extends javax.swing.JDialog {
         jTable = new javax.swing.JTable();
         jTextFieldPesquisa = new javax.swing.JTextField();
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
+        jButtonPesquisar = new javax.swing.JButton();
+        jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Controle de Fabricantes");
@@ -118,14 +119,6 @@ public class DialogFabricante extends javax.swing.JDialog {
 
         jLabelPesquisa.setText("Pesquisar por");
         jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 20));
-
-        jButtonPesquisar.setText("Pesquisar");
-        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarActionPerformed(evt);
-            }
-        });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 230, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -338,6 +331,25 @@ public class DialogFabricante extends javax.swing.JDialog {
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome", "Email", "CNPJ", "Website" }));
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 140, -1));
 
+        jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 115, -1));
+
+        jButtonResetar2.setText("Resetar");
+        jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetar2ActionPerformed(evt);
+            }
+        });
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 115, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -395,6 +407,10 @@ public class DialogFabricante extends javax.swing.JDialog {
         crud.pesquisar();
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
+    private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
+        crud.resetarTabela();
+    }//GEN-LAST:event_jButtonResetar2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -404,6 +420,7 @@ public class DialogFabricante extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
+    private javax.swing.JButton jButtonResetar2;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
