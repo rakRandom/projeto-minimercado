@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  * @author Neo / rakRandom / Fellipe Leonardo
  */
-public class CRUD 
+public abstract class CRUD 
 {
     public Conexao conexao;
     public DefaultTableModel modelo;
@@ -292,7 +292,32 @@ public class CRUD
         }catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o último registro", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
-    }                                             
+    }                
+    
+    // =========================================================================
+    
+    public abstract String calcularPesquisa();
+    
+    public void pesquisar() {
+        try {
+            String pesquisa = calcularPesquisa();
+            
+            conexao.executarSQL(pesquisa);
+
+            if (conexao.resultset.first()) {
+                preencherTabela();
+            }
+            else {
+                JOptionPane.showMessageDialog(null,
+                        "Não existem dados com este paramêtro",
+                        "Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE); 
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, 
+                    "Os dados digitados não foram localizados:\n" + erro, 
+                    "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
     // =========================================================================
     
