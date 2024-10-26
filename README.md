@@ -13,15 +13,16 @@ Utiliza Java com Swing e MySQL.
 <br />
 
 ## To-do list (features):
-- [ ] Frames
+- [x] Frames
     - [x] Main
 
     - [x] Login
 
     - [x] Painel de controle
         - [x] Gerenciar Funcionários
-        - [x] Gerenciar Produtos (Falta adicionar um Dialog interno (Itens) no CRUD de Compra)
-        - [ ] Relatório Geral de Gastos
+        - [x] Gerenciar Produtos
+        - [x] Relatório Geral de Gastos
+        - [x] Sistema de Notificações
         - [x] Gerenciar Contas/Credenciais
         - [x] Outros Frames de CRUDs
     
@@ -34,20 +35,27 @@ Utiliza Java com Swing e MySQL.
     - [x] Login (verificação de credenciais)
 
     - [ ] Painel de controle
-        - [ ] Gerenciar Funcionários
-        - [ ] Gerenciar Produtos
+        - [x] Gerenciar Funcionários
+        - [x] Gerenciar Produtos
         - [ ] Relatório Geral de Gastos
-        - [ ] Gerenciar Contas/Credenciais
-        - [ ] CRUD de outros Frames
+        - [ ] Sistema de Notificações
+        - [x] Gerenciar Contas/Credenciais
+        - [x] CRUD de outros Frames
 
     - [ ] Sistema de Caixa
 
-    - [ ] Automação do Sistema (notificações, verificações periódicas etc.)
-    
- 
-Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
+- [ ] Design
+    - [ ] Nome do minimercado
+    - [ ] Criar Logo
+    - [ ] Adicionar Imagens
+        - [ ] Main
+        - [ ] Desenvolvedores
+            - [ ] Foto dos desenvolvedores
+            - [ ] Banner do minimercado
+    - [ ] Alinhar e padronizar todos os elementos
+    - [ ] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
+    - [ ] Verificar o título dos Frames, eles somem do nada
 
-Verificar o título dos Frames, eles somem do nada
-
-Fazer a To-do list da classe CRUD
+- [ ] Outros
+    - [ ] Fazer a To-do list da classe CRUD
 
