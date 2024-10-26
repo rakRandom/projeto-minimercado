@@ -53,7 +53,9 @@ public class DialogPromoCate extends javax.swing.JDialog {
                     jTextFieldPorcentagem,
                     jFormattedTextFieldInicio,
                     jFormattedTextFieldTermino
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         );
     }
 
@@ -208,6 +210,11 @@ public class DialogPromoCate extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 230, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
@@ -377,6 +384,10 @@ public class DialogPromoCate extends javax.swing.JDialog {
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;

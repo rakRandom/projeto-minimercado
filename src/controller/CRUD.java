@@ -10,6 +10,7 @@ import controller.enums.TipoAtributo;
 import controller.db.Conexao;
 import controller.enums.TipoSQL;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +36,8 @@ public class CRUD
     public TipoAtributo[] tiposAtributo;
     public JTextField[] campos;
     public Integer pkIndex = 0;
+    public JComboBox jComboBoxPesquisa;
+    public JTextField jTextFieldPesquisa;
     
     // =========================================================================
     
@@ -44,7 +47,9 @@ public class CRUD
             String nome_tabela, 
             String[] atributos, 
             TipoAtributo[] tiposAtributo,
-            JTextField[] campos
+            JTextField[] campos,
+            JComboBox jComboBoxPesquisa,
+            JTextField jTextFieldPesquisa
     ) {
         this.conexao = conexao;
         this.modelo = modelo;
@@ -52,6 +57,8 @@ public class CRUD
         this.atributos = atributos;
         this.tiposAtributo = tiposAtributo;
         this.campos = campos;
+        this.jComboBoxPesquisa = jComboBoxPesquisa;
+        this.jTextFieldPesquisa = jTextFieldPesquisa;
         
         for (int i = 0; i < tiposAtributo.length; i++) {
             if (tiposAtributo[i] == TipoAtributo.PK) {
@@ -254,21 +261,33 @@ public class CRUD
 
     public void anterior() 
     {                                                
-        try{
-            conexao.resultset.previous();
+        try {
+            if (!conexao.resultset.previous()) {
+                conexao.resultset.next();
+                return;
+            }
             mostrarDados();
-        }catch(SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro anterior", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,
+                    "Não foi possível acessar o registro anterior",
+                    "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE
+            );
         }
     }                                               
 
     public void proximo() 
     {                                               
-        try{
-            conexao.resultset.next();
+        try {
+            if (!conexao.resultset.next()) {
+                conexao.resultset.previous();
+                return;
+            }
             mostrarDados();
-        }catch(SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro seguinte", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,
+                    "Não foi possível acessar o próximo registro",
+                    "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE
+            );
         }
     }                                              
 
@@ -280,7 +299,51 @@ public class CRUD
         }catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o último registro", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
-    }                                             
+    }                
+    
+    // =========================================================================
+    
+    public String calcularPesquisa() {
+        String conteudo = jTextFieldPesquisa.getText();
+
+        if (conteudo.isBlank())
+            return "select * from " + nome_tabela + " where 1=0";
+        
+        String sql;
+        
+        int selected = jComboBoxPesquisa.getSelectedIndex();
+        
+        if (tiposAtributo[selected] == TipoAtributo.String) {
+            sql = "select * from " + nome_tabela + " where " + atributos[selected] + " like '%" + conteudo + "%'";
+        }
+        else {
+            sql = "select * from " + nome_tabela + " where " + atributos[selected] + " = " + conteudo;
+        }
+        
+        return sql;
+    }
+    
+    public void pesquisar() {
+        try {
+            String pesquisa = calcularPesquisa();
+            
+            conexao.executarSQL(pesquisa);
+
+            if (conexao.resultset.first()) {
+                preencherTabela();
+                posicionarRegistro();
+            }
+            else {
+                JOptionPane.showMessageDialog(null,
+                        "Não existem dados com este paramêtro",
+                        "Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE); 
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, 
+                    "Os dados digitados não foram localizados:\n" + erro, 
+                    "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
     // =========================================================================
     

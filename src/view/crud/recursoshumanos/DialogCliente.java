@@ -61,7 +61,9 @@ public class DialogCliente extends javax.swing.JDialog {
                     jFormattedTextFieldCPF,
                     jFormattedTextFieldRG,
                     jTextFieldEndereco
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         );
     }
 
@@ -238,6 +240,11 @@ public class DialogCliente extends javax.swing.JDialog {
         jPanelMain2.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 670, 420, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain2.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 670, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
@@ -388,6 +395,10 @@ public class DialogCliente extends javax.swing.JDialog {
     private void jButtonUltimo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimo2ActionPerformed
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimo2ActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar2;

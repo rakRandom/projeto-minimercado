@@ -73,7 +73,9 @@ public class DialogProduto extends javax.swing.JDialog {
                     jTextFieldDescricao,
                     jTextFieldEstoque,
                     jTextFieldPreco
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         );
     }
 
@@ -92,7 +94,7 @@ public class DialogProduto extends javax.swing.JDialog {
         jButtonPesquisar = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jComboBoxPesquisa1 = new javax.swing.JComboBox<>();
+        jComboBoxPesquisa = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -145,6 +147,11 @@ public class DialogProduto extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 680, 410, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 680, -1, -1));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -185,13 +192,13 @@ public class DialogProduto extends javax.swing.JDialog {
 
         jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1040, 450));
 
-        jComboBoxPesquisa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Produto", "Cód. da Categoria", "Cód. da Classific", "Cód. da PromoProd", "Id. do Fabricante", "Nome", "Descrição", "Estoque", "Preço" }));
-        jComboBoxPesquisa1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Produto", "Cód. da Categoria", "Cód. da Classific", "Cód. da PromoProd", "Id. do Fabricante", "Nome", "Descrição", "Estoque", "Preço" }));
+        jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxPesquisa1ActionPerformed(evt);
+                jComboBoxPesquisaActionPerformed(evt);
             }
         });
-        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -417,9 +424,9 @@ public class DialogProduto extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxPesquisa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisa1ActionPerformed
+    private void jComboBoxPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxPesquisa1ActionPerformed
+    }//GEN-LAST:event_jComboBoxPesquisaActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         dispose();
@@ -457,6 +464,10 @@ public class DialogProduto extends javax.swing.JDialog {
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -468,7 +479,7 @@ public class DialogProduto extends javax.swing.JDialog {
     private javax.swing.JButton jButtonProximo;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
-    private javax.swing.JComboBox<String> jComboBoxPesquisa1;
+    private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -53,7 +53,9 @@ public class DialogPromoProd extends javax.swing.JDialog {
                     jTextFieldPorcentagem,
                     jFormattedTextFieldInicio,
                     jFormattedTextFieldTermino
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         );
     }
 
@@ -321,6 +323,11 @@ public class DialogPromoProd extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 230, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -377,6 +384,10 @@ public class DialogPromoProd extends javax.swing.JDialog {
     private void jTextFieldPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaActionPerformed
 
     }//GEN-LAST:event_jTextFieldPesquisaActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;

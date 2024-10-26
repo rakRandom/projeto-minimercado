@@ -53,7 +53,9 @@ public class DialogTelefone extends javax.swing.JDialog {
                     jTextFieldTipoTelefone,
                     jTextFieldTipoDono,
                     jFormattedTextFieldTelefone
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         ) {
             @Override
             public String calcularUpdate() {
@@ -259,6 +261,11 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.setBorderPainted(false);
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 428, 100, 24));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -306,16 +313,16 @@ public class DialogTelefone extends javax.swing.JDialog {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Telefone:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, 20));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de Telefone:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, 20));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo do Dono:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
-        jPanel1.add(jTextFieldIdDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 90, -1));
+        jPanel1.add(jTextFieldIdDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, -1));
 
         jButtonTiposDeTelefone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonTiposDeTelefone.setText("Tipos de Telefone");
@@ -337,7 +344,7 @@ public class DialogTelefone extends javax.swing.JDialog {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 10, 2, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 10, 2, 60));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -349,15 +356,15 @@ public class DialogTelefone extends javax.swing.JDialog {
                 jTextFieldTipoTelefoneActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldTipoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 150, -1));
-        jPanel1.add(jTextFieldTipoDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 90, -1));
+        jPanel1.add(jTextFieldTipoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 150, -1));
+        jPanel1.add(jTextFieldTipoDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 90, -1));
 
         try {
             jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel1.add(jFormattedTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, -1));
+        jPanel1.add(jFormattedTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 150, -1));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 680, 80));
 
@@ -420,6 +427,10 @@ public class DialogTelefone extends javax.swing.JDialog {
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;

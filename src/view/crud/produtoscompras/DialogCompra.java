@@ -65,7 +65,9 @@ public class DialogCompra extends javax.swing.JDialog {
                     jTextFieldPag,
                     jTextFieldBruto,
                     jTextFieldDesconto
-                }
+                },
+                jComboBoxPesquisa,
+                jTextFieldPesquisa
         );
     }
 
@@ -117,11 +119,10 @@ public class DialogCompra extends javax.swing.JDialog {
         jFormattedTextFieldData = new javax.swing.JFormattedTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jComboBoxPesquisa1 = new javax.swing.JComboBox<>();
+        jComboBoxPesquisa = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Compras");
-        setPreferredSize(new java.awt.Dimension(1080, 510));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -137,6 +138,11 @@ public class DialogCompra extends javax.swing.JDialog {
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 410, -1));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, -1, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
@@ -380,13 +386,13 @@ public class DialogCompra extends javax.swing.JDialog {
 
         jPanelMain.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 760, 410));
 
-        jComboBoxPesquisa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da Compra", "Id. do Funcionário", "Id. do Cliente", "Data da Compra", "Método de Pagamento", "Preço Bruto", "Valor Desconto" }));
-        jComboBoxPesquisa1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. da Compra", "Id. do Funcionário", "Id. do Cliente", "Data da Compra", "Método de Pagamento", "Preço Bruto", "Valor Desconto" }));
+        jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxPesquisa1ActionPerformed(evt);
+                jComboBoxPesquisaActionPerformed(evt);
             }
         });
-        jPanelMain.add(jComboBoxPesquisa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
 
         getContentPane().add(jPanelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 510));
 
@@ -398,9 +404,9 @@ public class DialogCompra extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jComboBoxPesquisa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisa1ActionPerformed
+    private void jComboBoxPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxPesquisa1ActionPerformed
+    }//GEN-LAST:event_jComboBoxPesquisaActionPerformed
 
     private void jButtonTiposDeTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiposDeTelefoneActionPerformed
         var painel = new DialogItens(this, true);
@@ -439,6 +445,10 @@ public class DialogCompra extends javax.swing.JDialog {
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        crud.pesquisar();
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -451,7 +461,7 @@ public class DialogCompra extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;
-    private javax.swing.JComboBox<String> jComboBoxPesquisa1;
+    private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JFormattedTextField jFormattedTextFieldData;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
