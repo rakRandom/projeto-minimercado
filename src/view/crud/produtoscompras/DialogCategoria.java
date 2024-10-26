@@ -79,7 +79,7 @@ public class DialogCategoria extends javax.swing.JDialog {
         jTable = new javax.swing.JTable();
         jTextFieldPesquisa = new javax.swing.JTextField();
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
-        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
         jToolBar = new javax.swing.JToolBar();
         jLabel5 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
@@ -193,16 +193,16 @@ public class DialogCategoria extends javax.swing.JDialog {
         });
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
-        jButtonPesquisar1.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonPesquisar1.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
-        jButtonPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonPesquisar1.setText("Pesquisar");
-        jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisar1ActionPerformed(evt);
+                jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 115, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 115, -1));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -384,9 +384,9 @@ public class DialogCategoria extends javax.swing.JDialog {
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
-    private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         crud.pesquisar();
-    }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
         crud.resetarTabela();
@@ -398,11 +398,9 @@ public class DialogCategoria extends javax.swing.JDialog {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovoRegistro;
-    private javax.swing.JButton jButtonPesquisar1;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
-    private javax.swing.JButton jButtonResetar;
-    private javax.swing.JButton jButtonResetar1;
     private javax.swing.JButton jButtonResetar2;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;

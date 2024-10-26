@@ -130,7 +130,7 @@ public class DialogProduto extends javax.swing.JDialog {
         jButtonUltimo = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
-        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
         jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -402,16 +402,16 @@ public class DialogProduto extends javax.swing.JDialog {
 
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 40));
 
-        jButtonPesquisar1.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonPesquisar1.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
-        jButtonPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonPesquisar1.setText("Pesquisar");
-        jButtonPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisar1ActionPerformed(evt);
+                jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 680, 115, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 680, 115, -1));
 
         jButtonResetar2.setText("Resetar");
         jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
@@ -476,9 +476,9 @@ public class DialogProduto extends javax.swing.JDialog {
         crud.ultimo();
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
-    private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         crud.pesquisar();
-    }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonResetar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetar2ActionPerformed
         crud.resetarTabela();
@@ -490,7 +490,7 @@ public class DialogProduto extends javax.swing.JDialog {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovoRegistro;
-    private javax.swing.JButton jButtonPesquisar1;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonPrimeiro;
     private javax.swing.JButton jButtonProximo;
     private javax.swing.JButton jButtonResetar2;
