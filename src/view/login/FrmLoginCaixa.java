@@ -4,6 +4,8 @@
  */
 package view.login;
 
+import controller.db.Conexao;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import view.FrmCaixa;
 import view.FrmMain;
@@ -13,12 +15,16 @@ import view.FrmMain;
  * @author Fellipe Leonardo
  */
 public class FrmLoginCaixa extends javax.swing.JFrame {
-
+    Conexao conexao;
+    
     /**
      * Creates new form FrmLoginCaixa
      */
     public FrmLoginCaixa() {
         initComponents();
+    
+        conexao = new Conexao();
+        conexao.conectar();
     }
 
     /**
@@ -196,9 +202,31 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
             return;
         }
         
-        dispose();
-        var painel = new FrmCaixa(numCaixa, jTextFieldCodOperador.getText());
-        painel.setVisible(true);
+        if (jTextFieldUsuario.getText().isBlank() || jPasswordField.getText().isBlank()) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Cerifique-se de digitar o usuário e senha.", 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        String sql = "SELECT * FROM credenciais WHERE usuario LIKE '" + jTextFieldUsuario.getText() + "' AND senha LIKE '" + jPasswordField.getText() + "' AND cod_acesso = 2";
+        conexao.executarSQL(sql);
+        
+        try {
+            if (conexao.resultset.first()) {
+                dispose();
+                var painel = new FrmCaixa(numCaixa, jTextFieldCodOperador.getText());
+                painel.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Usuário ou senha inválido.", 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException e) {}
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jTextFieldCodOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodOperadorActionPerformed
