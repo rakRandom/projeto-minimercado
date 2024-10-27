@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.db.Conexao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import view.crud.outros.DialogClassific;
 import view.crud.outros.DialogContas;
 import view.crud.outros.DialogMetodosPag;
@@ -25,6 +29,9 @@ import view.crud.recursoshumanos.DialogFuncionario;
  * @author user
  */
 public class FrmPainelControle extends javax.swing.JFrame {
+    Conexao conexao;
+    DefaultTableModel modelo;
+    
     private static final String[] promocaoOpcoes = {
         "Produtos", 
         "Categorias", 
@@ -36,6 +43,60 @@ public class FrmPainelControle extends javax.swing.JFrame {
      */
     public FrmPainelControle() {
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        jTable.setRowHeight(20);
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(150);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(550);
+        
+        modelo = (DefaultTableModel) jTable.getModel();
+        
+        adicionarNotificacoes();
+    }
+    
+    public void notificarValidade() {
+        try {
+            String sql = "SELECT * FROM lote WHERE data_validade <= DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH)";
+            conexao.executarSQL(sql);
+            while (conexao.resultset.next()) {
+                Conexao conexaoProd = new Conexao();
+                conexaoProd.conectar();
+                
+                conexaoProd.executarSQL("SELECT * FROM produto WHERE cod_prod = " + conexao.resultset.getString("cod_prod"));
+                conexaoProd.resultset.first();
+                
+                
+                var row = new Object[] {
+                    "Aviso de Vencimento",
+                    "O lote " + 
+                    conexao.resultset.getString("cod_lote") + 
+                    ", do produto \"" + 
+                    conexaoProd.resultset.getString("nome") + 
+                    "\", está perto da data de validade (" +
+                    conexao.resultset.getString("data_validade") +
+                    ")."
+                };
+
+                modelo.addRow(row);
+            }
+        } catch (SQLException | NullPointerException e) {
+            JOptionPane.showMessageDialog(
+                null, 
+                "Não foi possível verificar os dados\n sobre a validade dos produtos.", 
+                "Mensagem do Programa", 
+                JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    /* 
+     * Adicionar novos métodos para as notificações no futuro. 
+     * Por enquanto só notificarValidade está bom. 
+    */
+    public final void adicionarNotificacoes() {
+        modelo.setNumRows(0);
+        notificarValidade();
     }
 
     /**
@@ -58,7 +119,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
         jLabelRelatorio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuRecursosHumanos = new javax.swing.JMenu();
         jMenuItemClientes = new javax.swing.JMenuItem();
@@ -158,7 +219,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jLabelRelatorio.setText("Notificações:");
         jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -166,7 +227,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Title", "Description"
+                "Título", "Descrição"
             }
         ) {
             Class[] types = new Class [] {
@@ -184,10 +245,10 @@ public class FrmPainelControle extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(500);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(200);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(500);
         }
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 700, 330));
@@ -462,7 +523,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

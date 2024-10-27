@@ -206,20 +206,33 @@ public class CRUD
             return;
         }
         
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja salvar os dados?", "Confirmar Gravação de Dados", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(
+                null, 
+                "Deseja salvar os dados?",
+                "Confirmar Gravação de Dados", 
+                JOptionPane.YES_NO_OPTION);
         
         if(opcao == 0) {
             try {
                 String insertSql = calcularSQL(TipoSQL.Insert);
                 conexao.statement.executeUpdate(insertSql);
-                JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Gravação realizada com sucesso", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
 
                 conexao.executarSQL(calcularSQL(TipoSQL.Select));
                 conexao.resultset.first();
                 preencherTabela();
                 ultimo();
-            } catch(SQLException erroSql) {
-                JOptionPane.showMessageDialog( null, "\n Erro na gravação: \n " +erroSql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            catch(SQLException erroSql) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "\n Erro na gravação: \n " +erroSql, 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }                                             
@@ -237,7 +250,11 @@ public class CRUD
             return;
         }
         
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja salvar as alterações?", "Confirmar Alteração de Dados", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(
+                null, 
+                "Deseja salvar as alterações?", 
+                "Confirmar Alteração de Dados", 
+                JOptionPane.YES_NO_OPTION);
         
         if(opcao == 0) {
             String sql;
@@ -250,14 +267,23 @@ public class CRUD
                 }
 
                 conexao.statement.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Gravação realizada com sucesso", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
 
                 conexao.executarSQL(calcularSQL(TipoSQL.Select));
                 conexao.resultset.first();
                 preencherTabela();
                 posicionarRegistro();
-            } catch(SQLException erroSql) {
-                JOptionPane.showMessageDialog(null, "\n Erro na gravação: \n" +erroSql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            catch(SQLException erroSql) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "\n Erro na gravação: \n" +erroSql, 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }                                              
@@ -294,7 +320,8 @@ public class CRUD
                         "Mensagem do Programa", 
                         JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch(SQLException e) {
+        } 
+        catch(SQLException e) {
             JOptionPane.showMessageDialog(
                     null, 
                     "Erro na exclusão: " + e, 

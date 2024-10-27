@@ -285,10 +285,10 @@ public class DialogLote extends javax.swing.JDialog {
         jPanel3.add(jTextFieldProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 190, -1));
         jPanel3.add(jTextFieldQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, -1));
 
-        jFormattedTextFieldValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
+        jFormattedTextFieldValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         jPanel3.add(jFormattedTextFieldValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, -1));
 
-        jFormattedTextFieldCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
+        jFormattedTextFieldCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         jPanel3.add(jFormattedTextFieldCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 190, -1));
 
         jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 320));

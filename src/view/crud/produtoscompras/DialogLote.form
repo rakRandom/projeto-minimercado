@@ -347,7 +347,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldValidade">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="dd-MM-yyyy" subtype="-1" type="1"/>
+                  <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -359,7 +359,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldCompra">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="dd-MM-yyyy" subtype="-1" type="1"/>
+                  <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
                 </Property>
               </Properties>
               <Constraints>

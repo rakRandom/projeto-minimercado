@@ -61,7 +61,6 @@ public class DialogRelatorioGastos extends javax.swing.JDialog {
         
         Double mesSalario = 0.0;
         Double anoSalario = 0.0;
-        Double totalSalario = 0.0;
         
         Object[] rowTotalBrutoEmVendas;
         Object[] rowTotalEmDesconto;
