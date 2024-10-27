@@ -4,17 +4,48 @@
  */
 package view;
 
+import controller.db.Conexao;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Fellipe Leonardo
  */
 public class FrmCaixa extends javax.swing.JFrame {
-
+    Conexao conexao;
+    
     /**
      * Creates new form FrmCaixa
      */
-    public FrmCaixa() {
+    public FrmCaixa(int numCaixa, String operador) {
         initComponents();
+        
+        conexao = new Conexao();
+        conexao.conectar();
+        
+        definirNumCaixaEVenda(numCaixa);
+        definirDataEOperador(operador);
+    }
+    
+    public final void definirNumCaixaEVenda(int numCaixa) {
+        int numCompra = 0;
+        
+        conexao.executarSQL("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'compra'");
+        
+        try {
+            conexao.resultset.first();
+            numCompra = conexao.resultset.getInt("AUTO_INCREMENT");
+        } catch (SQLException e) { }
+        
+        jLabelNumCaixaEVenda.setText("Caixa: %02d    |    Nº da venda: %04d".formatted(numCaixa, numCompra));
+    }
+    
+    public final void definirDataEOperador(String operador) {
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        
+        jLabelDataEOperador.setText("%s    |    Operador: %s".formatted(data, operador));
     }
 
     /**
@@ -29,13 +60,15 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelMain = new javax.swing.JPanel();
         jPanelHeader = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabelDataEOperador = new javax.swing.JLabel();
+        jLabelNumCaixaEVenda = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanelBody = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jPanelCodigo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
@@ -56,6 +89,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jButtonLimpar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,40 +104,40 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Small_Logo.png"))); // NOI18N
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanelHeader.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 70));
+        jPanelHeader.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 70));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel2.setText("31/12/9999  23:59    |    Operador: 0123456789");
-        jPanelHeader.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 500, -1));
+        jLabelDataEOperador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelDataEOperador.setForeground(new java.awt.Color(240, 240, 240));
+        jLabelDataEOperador.setText("31/12/9999    |    Operador: 0123456789");
+        jPanelHeader.add(jLabelDataEOperador, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 5, 500, 60));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel1.setText("Caixa: 02    |    Nº da venda: 1234");
-        jPanelHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+        jLabelNumCaixaEVenda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNumCaixaEVenda.setForeground(new java.awt.Color(240, 240, 240));
+        jLabelNumCaixaEVenda.setText("Caixa: 02    |    Nº da venda: 1234");
+        jPanelHeader.add(jLabelNumCaixaEVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 5, -1, 60));
 
+        jButton1.setBackground(new java.awt.Color(254, 254, 254));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Sair");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanelHeader.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, 90, 30));
 
         jPanelMain.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 70));
 
         jPanelBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -111,11 +145,11 @@ public class FrmCaixa extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Item", "Código", "Descrição", "Qtde", "Preço Un.", "Subtotal"
+                "Item", "Código", "Descrição", "Qtde", "Preço Unitário", "Subtotal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -129,57 +163,54 @@ public class FrmCaixa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(25);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(25);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(25);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(275);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(25);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(50);
+        jTable.setRowHeight(25);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setResizable(false);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+            jTable.getColumnModel().getColumn(1).setResizable(false);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(25);
+            jTable.getColumnModel().getColumn(2).setResizable(false);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(275);
+            jTable.getColumnModel().getColumn(3).setResizable(false);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(25);
+            jTable.getColumnModel().getColumn(4).setResizable(false);
+            jTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+            jTable.getColumnModel().getColumn(5).setResizable(false);
+            jTable.getColumnModel().getColumn(5).setPreferredWidth(50);
         }
 
-        jPanelBody.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 840, 540));
+        jPanelBody.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 750, 540));
 
         jPanel3.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Small_Horizontal_Banner.png"))); // NOI18N
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 170));
 
-        jPanelBody.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 320, 180));
+        jPanelBody.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 430, 170));
 
         jPanelCodigo.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCodigo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel3.setText("Código:");
-        jPanelCodigo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
-        jPanelCodigo.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 0, 250, 30));
+        jPanelCodigo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
-        jPanelBody.add(jPanelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 220, 320, 30));
+        jTextFieldCodigo.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        jTextFieldCodigo.setText("123123");
+        jPanelCodigo.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 340, 50));
+
+        jPanelBody.add(jPanelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 430, 50));
 
         jPanelQtde.setBackground(new java.awt.Color(255, 255, 255));
         jPanelQtde.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("Qtde:");
         jPanelQtde.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
-        jPanelQtde.add(jTextFieldQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 90, 30));
+        jPanelQtde.add(jTextFieldQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 30));
 
-        jPanelBody.add(jPanelQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 260, 150, 30));
+        jPanelBody.add(jPanelQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 260, 200, 30));
 
         jPanelPreco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelPreco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,9 +219,9 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelPreco.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
 
         jTextFieldPreco.setToolTipText("");
-        jPanelPreco.add(jTextFieldPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 90, 30));
+        jPanelPreco.add(jTextFieldPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 30));
 
-        jPanelBody.add(jPanelPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 260, 150, 30));
+        jPanelBody.add(jPanelPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 260, 200, 30));
 
         jPanelSubtotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelSubtotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -198,12 +229,12 @@ public class FrmCaixa extends javax.swing.JFrame {
         jLabelSubtotal1.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
         jLabelSubtotal1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSubtotal1.setText("R$ 00.000,00");
-        jPanelSubtotal.add(jLabelSubtotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 240, 40));
+        jPanelSubtotal.add(jLabelSubtotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 350, 50));
 
         jLabel6.setText("Subtotal:");
         jPanelSubtotal.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanelBody.add(jPanelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 320, 50));
+        jPanelBody.add(jPanelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 430, 60));
 
         jPanelTotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,18 +246,26 @@ public class FrmCaixa extends javax.swing.JFrame {
         jLabelSubtotal.setForeground(new java.awt.Color(0, 51, 102));
         jLabelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSubtotal.setText("R$ 00.000,00");
-        jPanelTotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 260, 60));
+        jPanelTotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 370, 70));
 
-        jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 320, 60));
+        jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 450, 430, 70));
 
+        jButtonAdicionar.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonAdicionar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAdicionar.setText("Adicionar");
-        jPanelBody.add(jButtonAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, 140, 30));
+        jButtonAdicionar.setBorderPainted(false);
+        jPanelBody.add(jButtonAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 200, 30));
 
+        jButtonRemover.setBackground(new java.awt.Color(254, 254, 254));
         jButtonRemover.setText("Remover");
-        jPanelBody.add(jButtonRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 310, 80, 30));
+        jButtonRemover.setBorderPainted(false);
+        jPanelBody.add(jButtonRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 310, 100, 30));
 
+        jButtonLimpar.setBackground(new java.awt.Color(254, 254, 254));
         jButtonLimpar.setText("Limpar");
-        jPanelBody.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 310, 80, 30));
+        jButtonLimpar.setBorderPainted(false);
+        jPanelBody.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 310, 100, 30));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
@@ -234,22 +273,31 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        jPanelBody.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 320, 2));
+        jPanelBody.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, 430, 2));
 
+        jButton2.setBackground(new java.awt.Color(0, 51, 102));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Finalizar Compra");
-        jPanelBody.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 320, 30));
+        jButton2.setBorderPainted(false);
+        jPanelBody.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 290, 30));
+
+        jButton3.setBackground(new java.awt.Color(254, 254, 254));
+        jButton3.setText("Cancelar compra");
+        jButton3.setBorderPainted(false);
+        jPanelBody.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 530, 130, 30));
 
         jPanelMain.add(jPanelBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 94, 1240, 580));
 
         jLabel8.setText("Controles: Alt + S - Sair | [...]");
-        jPanelMain.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 1240, 30));
+        jPanelMain.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 1240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,27 +307,45 @@ public class FrmCaixa extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int op = javax.swing.JOptionPane.showConfirmDialog(
+                null, 
+                "Você realmente deseja sair do Sistema de Caixa?", 
+                "Confirmar logout", 
+                javax.swing.JOptionPane.YES_NO_OPTION, 
+                javax.swing.JOptionPane.QUESTION_MESSAGE);
+        
+        if (op == javax.swing.JOptionPane.YES_OPTION) {
+            dispose();
+            var painel = new FrmMain();
+            painel.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonRemover;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelDataEOperador;
+    private javax.swing.JLabel jLabelNumCaixaEVenda;
     private javax.swing.JLabel jLabelSubtotal;
     private javax.swing.JLabel jLabelSubtotal1;
     private javax.swing.JPanel jPanel1;
@@ -294,7 +360,7 @@ public class FrmCaixa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelSubtotal;
     private javax.swing.JPanel jPanelTotal;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldPreco;
     private javax.swing.JTextField jTextFieldQtde;

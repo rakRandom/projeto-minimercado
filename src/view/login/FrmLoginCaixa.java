@@ -4,6 +4,7 @@
  */
 package view.login;
 
+import javax.swing.JOptionPane;
 import view.FrmCaixa;
 import view.FrmMain;
 
@@ -74,8 +75,10 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 270, 30));
 
+        jButtonLogin.setBackground(new java.awt.Color(254, 254, 254));
         jButtonLogin.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButtonLogin.setText("Login");
+        jButtonLogin.setBorderPainted(false);
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
@@ -83,8 +86,10 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 100, 30));
 
+        jButtonLimpar.setBackground(new java.awt.Color(254, 254, 254));
         jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setBorderPainted(false);
         jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 100, 30));
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -172,8 +177,27 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        int numCaixa = 0;
+        
+        if (!jTextFieldNumCaixa.getText().isBlank()) {
+            try {
+                numCaixa = Integer.parseInt(jTextFieldNumCaixa.getText());
+            } catch (NumberFormatException e) {
+                return;
+            }
+        }
+        
+        if (jTextFieldCodOperador.getText().isBlank()) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Não é possível logar como \ncaixa sem um código de operador.", 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         dispose();
-        var painel = new FrmCaixa();
+        var painel = new FrmCaixa(numCaixa, jTextFieldCodOperador.getText());
         painel.setVisible(true);
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
