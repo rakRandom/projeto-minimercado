@@ -37,7 +37,7 @@ Utiliza Java com Swing e MySQL.
     - [ ] Painel de controle
         - [x] Gerenciar Funcionários
         - [x] Gerenciar Produtos
-        - [ ] Relatório Geral de Gastos
+        - [x] Relatório Geral de Gastos
         - [ ] Sistema de Notificações
         - [x] Gerenciar Contas/Credenciais
         - [x] CRUD de outros Frames
@@ -56,6 +56,6 @@ Utiliza Java com Swing e MySQL.
     - [ ] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
     - [ ] Verificar o título dos Frames, eles somem do nada
 
-- [ ] Outros
-    - [ ] Fazer a To-do list da classe CRUD
+- [x] Outros
+    - [x] Fazer a To-do list da classe CRUD
 
