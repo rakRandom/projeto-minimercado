@@ -34,11 +34,11 @@ Utiliza Java com Swing e MySQL.
 
     - [x] Login (verificação de credenciais)
 
-    - [ ] Painel de controle
+    - [x] Painel de controle
         - [x] Gerenciar Funcionários
         - [x] Gerenciar Produtos
         - [x] Relatório Geral de Gastos
-        - [ ] Sistema de Notificações
+        - [x] Sistema de Notificações
         - [x] Gerenciar Contas/Credenciais
         - [x] CRUD de outros Frames
 
