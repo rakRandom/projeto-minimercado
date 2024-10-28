@@ -91,6 +91,7 @@ public class DialogTipoTelefone extends javax.swing.JDialog {
         jButtonResetar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Tipos de Telefone");
         setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 

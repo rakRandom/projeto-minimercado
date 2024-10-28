@@ -135,7 +135,7 @@ public class DialogTelefone extends javax.swing.JDialog {
         jButtonResetar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gerenciar Telefone");
+        setTitle("Gerenciar Telefones");
         setPreferredSize(new java.awt.Dimension(735, 515));
         setResizable(false);
 

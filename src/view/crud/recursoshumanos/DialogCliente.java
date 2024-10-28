@@ -122,6 +122,7 @@ public class DialogCliente extends javax.swing.JDialog {
         jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Controle de Clientes");
         setResizable(false);
 
         jPanelMain2.setBackground(new java.awt.Color(255, 255, 255));

@@ -115,6 +115,7 @@ public class DialogLote extends javax.swing.JDialog {
         jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Controle de Lotes");
         setPreferredSize(new java.awt.Dimension(1040, 520));
         setResizable(false);
 

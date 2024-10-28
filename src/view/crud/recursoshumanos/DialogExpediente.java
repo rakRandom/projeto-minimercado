@@ -101,6 +101,7 @@ public class DialogExpediente extends javax.swing.JDialog {
         jButtonResetar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Administrar Expedientes");
         setPreferredSize(new java.awt.Dimension(735, 450));
         setResizable(false);
 
