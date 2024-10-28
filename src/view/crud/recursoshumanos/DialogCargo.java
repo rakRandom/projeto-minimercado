@@ -313,6 +313,8 @@ public class DialogCargo extends javax.swing.JDialog {
         jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
         jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.setBorderPainted(false);
+        jButtonPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisarActionPerformed(evt);
