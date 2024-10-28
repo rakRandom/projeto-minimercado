@@ -29,7 +29,7 @@ Utiliza Java com Swing e MySQL.
     - [X] Sistema de Caixa
 
 
-- [ ] Funcionalidades
+- [x] Funcionalidades
     - [x] Conectar com o Banco de Dados
 
     - [x] Login (verificação de credenciais)
@@ -42,7 +42,7 @@ Utiliza Java com Swing e MySQL.
         - [x] Gerenciar Contas/Credenciais
         - [x] CRUD de outros Frames
 
-    - [ ] Sistema de Caixa
+    - [x] Sistema de Caixa
 
 - [ ] Design
     - [x] Nome do minimercado
@@ -60,4 +60,5 @@ Utiliza Java com Swing e MySQL.
     - [x] Fazer a To-do list da classe CRUD
     - [ ] Verificar se algum código usa o `conexao.resultset.getString(Integer)` errado.
     - [ ] Colocar verificações no gravar, alterar e excluir da classe CRUD.
+    - [ ] Adicionar verificação de SQL Injection na classe de conexão
 
