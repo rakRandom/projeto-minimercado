@@ -53,8 +53,8 @@ Utiliza Java com Swing e MySQL.
             - [x] Foto dos desenvolvedores
             - [x] Banner do minimercado
     - [ ] Alinhar e padronizar todos os elementos
-    - [ ] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
-    - [ ] Verificar o título dos Frames, eles somem do nada
+    - [x] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
+    - [x] Verificar o título dos Frames, eles somem do nada
     - [ ] Colocar todos os botões com fundo `(244,244,244)` ou `(0,52,102)`, `borderPainted = false` e `cursor = "Hand Cursor"`
 
 - [x] Outros
