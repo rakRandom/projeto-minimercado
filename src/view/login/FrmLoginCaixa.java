@@ -207,11 +207,29 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         }
         try {
             codOperador = Integer.parseInt(jTextFieldCodOperador.getText());
+            
+            conexao.executarSQL("SELECT * FROM funcionario WHERE id_func = " + codOperador);
+            if (!conexao.resultset.first()) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Erro: Funcionário inexistente.", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
         } 
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(
                     null, 
                     "Erro: O código do operador deve ser um número inteiro.", 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Erro na conexão com o banco de dados.\nSe esse erro persistir, consulte os desenvolvedores desse software.", 
                     "Mensagem do Programa", 
                     JOptionPane.INFORMATION_MESSAGE);
             return;
