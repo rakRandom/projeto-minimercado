@@ -13,7 +13,7 @@ public class Conexao {
     final private String usuario = "root";
     final private String senha = "";
     private Connection conexao;
-    public Statement statement;
+    public PreparedStatement preparedStatement;
     public ResultSet resultset;
     
     public boolean conectar() {
@@ -30,17 +30,31 @@ public class Conexao {
     
     public void desconectar() {
         try {
-            conexao.close();
+            if (conexao != null && !conexao.isClosed()) {
+                conexao.close();
+            }
         }
-        catch (SQLException fechar) { }
+        catch (SQLException fechar) { 
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro ao fechar conexão!\nErro: " + fechar, 
+                    "Banco de Dados", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
     
-    public void executarSQL(String sql) {
+    public void executarSQL(String sql, Object... params) {
         try {
-            statement = conexao.createStatement(
+            preparedStatement = conexao.prepareStatement(sql,
                 ResultSet.TYPE_SCROLL_SENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-            resultset = statement.executeQuery(sql);
+            
+            // Preencher os parâmetros
+            for (int i = 0; i < params.length; i++) {
+                preparedStatement.setObject(i + 1, params[i]);
+            }
+
+            resultset = preparedStatement.executeQuery();
         }
         catch (SQLException excecao) {
             JOptionPane.showMessageDialog(

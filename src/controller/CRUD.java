@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import java.sql.PreparedStatement;
 
 /**
  * To do: 
@@ -193,74 +194,77 @@ public class CRUD
         campos[1].requestFocus();
     }                                                   
     
-    public void gravar() 
-    {                                              
+   public void gravar() {
+        if (!validarCampos()) {
+            return;
+        }
+
         int fkInexistente = verificarFK();
-        
         if (fkInexistente != -1) {
             JOptionPane.showMessageDialog(
-                    null, 
-                    "FK inexistente: " + atributos[(fkInexistente)], 
-                    "Mensagem do Programa", 
+                    null,
+                    "FK inexistente: " + atributos[(fkInexistente)],
+                    "Mensagem do Programa",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         int opcao = JOptionPane.showConfirmDialog(
-                null, 
+                null,
                 "Deseja salvar os dados?",
-                "Confirmar Gravação de Dados", 
+                "Confirmar Gravação de Dados",
                 JOptionPane.YES_NO_OPTION);
-        
-        if(opcao == 0) {
+
+        if (opcao == 0) {
             try {
                 String insertSql = calcularSQL(TipoSQL.Insert);
                 conexao.statement.executeUpdate(insertSql);
                 JOptionPane.showMessageDialog(
-                        null, 
-                        "Gravação realizada com sucesso", 
-                        "Mensagem do Programa", 
+                        null,
+                        "Gravação realizada com sucesso",
+                        "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
 
                 conexao.executarSQL(calcularSQL(TipoSQL.Select));
                 conexao.resultset.first();
                 preencherTabela();
                 ultimo();
-            } 
-            catch(SQLException erroSql) {
+            } catch (SQLException erroSql) {
                 JOptionPane.showMessageDialog(
-                        null, 
-                        "\n Erro na gravação: \n " +erroSql, 
-                        "Mensagem do Programa", 
+                        null,
+                        "\n Erro na gravação: \n " + erroSql,
+                        "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }                                             
+    }                    
 
-    public void alterar() 
-    {                                               
+     public void alterar() {
+        if (!validarCampos()) {
+            return;
+        }
+
         int fkInexistente = verificarFK();
-        
         if (fkInexistente != -1) {
             JOptionPane.showMessageDialog(
-                    null, 
-                    "FK inexistente: " + atributos[(fkInexistente)], 
-                    "Mensagem do Programa", 
+                    null,
+                    "FK inexistente: " + atributos[(fkInexistente)],
+                    "Mensagem do Programa",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         int opcao = JOptionPane.showConfirmDialog(
-                null, 
-                "Deseja salvar as alterações?", 
-                "Confirmar Alteração de Dados", 
+                null,
+                "Deseja salvar as alterações?",
+                "Confirmar Alteração de Dados",
                 JOptionPane.YES_NO_OPTION);
-        
-        if(opcao == 0) {
+
+        if (opcao == 0) {
             String sql;
 
             try {
-                if(campos[0].getText().equals("")) {
+                if (campos[0].getText().equals("")) {
                     sql = calcularSQL(TipoSQL.Insert);
                 } else {
                     sql = calcularSQL(TipoSQL.Update);
@@ -268,46 +272,49 @@ public class CRUD
 
                 conexao.statement.executeUpdate(sql);
                 JOptionPane.showMessageDialog(
-                        null, 
-                        "Gravação realizada com sucesso", 
-                        "Mensagem do Programa", 
+                        null,
+                        "Alteração realizada com sucesso",
+                        "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
 
                 conexao.executarSQL(calcularSQL(TipoSQL.Select));
                 conexao.resultset.first();
                 preencherTabela();
                 posicionarRegistro();
-            } 
-            catch(SQLException erroSql) {
+            } catch (SQLException erroSql) {
                 JOptionPane.showMessageDialog(
-                        null, 
-                        "\n Erro na gravação: \n" +erroSql, 
-                        "Mensagem do Programa", 
+                        null,
+                        "\n Erro na alteração: \n" + erroSql,
+                        "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }                                              
+    }                           
 
-    public void excluir() 
-    {                                               
+    public void excluir() {
+        if (campos[0].getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione um registro para excluir.", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
         try {
             int resposta = JOptionPane.showConfirmDialog(
-                    null, 
-                    "Deseja excluir o registro?", 
-                    "Confirmar Exclusão", 
+                    null,
+                    "Deseja excluir o registro?",
+                    "Confirmar Exclusão",
                     JOptionPane.YES_NO_OPTION);
-                
+
             if (resposta == JOptionPane.OK_OPTION) {
                 String sql = calcularSQL(TipoSQL.Delete);
                 int excluir = conexao.statement.executeUpdate(sql);
-                    
+
                 if (excluir != 0) {
                     JOptionPane.showMessageDialog(
-                            null, 
-                            "Exclusão realizada com sucesso", 
-                            "Mensagem do Programa", 
+                            null,
+                            "Exclusão realizada com sucesso",
+                            "Mensagem do Programa",
                             JOptionPane.INFORMATION_MESSAGE);
-                        
+
                     conexao.executarSQL(calcularSQL(TipoSQL.Select));
                     conexao.resultset.first();
                     preencherTabela();
@@ -315,21 +322,30 @@ public class CRUD
                 }
             } else {
                 JOptionPane.showMessageDialog(
-                        null, 
-                        "Operação cancelada pelo usuário", 
-                        "Mensagem do Programa", 
+                        null,
+                        "Operação cancelada pelo usuário",
+                        "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
             }
-        } 
-        catch(SQLException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(
-                    null, 
-                    "Erro na exclusão: " + e, 
-                    "Mensagem do Programa", 
+                    null,
+                    "Erro na exclusão: " + e,
+                    "Mensagem do Programa",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-    }                                   
-    
+    }
+
+    private boolean validarCampos() {
+        for (JTextField campo : campos) {
+            if (campo.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos.", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+        
     // =========================================================================
     
     public void primeiro() 
