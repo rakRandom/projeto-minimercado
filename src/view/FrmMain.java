@@ -35,8 +35,9 @@ public class FrmMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jButtonDev = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Minimercado");
@@ -59,8 +60,9 @@ public class FrmMain extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione o sistema para acessar");
         jLabel2.setName("tTitulo2"); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 15, 400, -1));
 
+        jButton1.setBackground(new java.awt.Color(254, 254, 254));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jButton1.setText("Painel de Controle");
         jButton1.setBorderPainted(false);
@@ -71,8 +73,9 @@ public class FrmMain extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 320, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 320, -1));
 
+        jButton2.setBackground(new java.awt.Color(254, 254, 254));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jButton2.setText("Sistema de Caixa");
         jButton2.setBorderPainted(false);
@@ -81,7 +84,7 @@ public class FrmMain extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 320, 40));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 320, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,19 +94,12 @@ public class FrmMain extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 280, 5));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 55, 280, 3));
 
-        jPanelMain.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Minimercado");
-        jLabel1.setName("tTitulo"); // NOI18N
-        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 720, -1));
+        jPanelMain.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 200));
 
         jButtonDev.setBackground(new java.awt.Color(0, 51, 102));
         jButtonDev.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -121,7 +117,16 @@ public class FrmMain extends javax.swing.JFrame {
                 jButtonDevActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonDev, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 200, -1));
+        jPanelMain.add(jButtonDev, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 200, -1));
+
+        jPanel4.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel4.setPreferredSize(new java.awt.Dimension(430, 170));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/New_Small_Horizontal_Banner.png"))); // NOI18N
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 170));
+
+        jPanelMain.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,10 +168,11 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonDev;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelMain;
     // End of variables declaration//GEN-END:variables
 }

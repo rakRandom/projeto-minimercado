@@ -185,7 +185,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(200, 200, 200));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Small_Horizontal_Banner.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/New_Small_Horizontal_Banner.png"))); // NOI18N
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 170));
 
         jPanelBody.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 430, 170));
