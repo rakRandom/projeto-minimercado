@@ -63,7 +63,7 @@ public class FrmMain extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione o sistema para acessar");
         jLabel2.setName("tTitulo2"); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 15, 400, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 410, -1));
 
         jButton1.setBackground(new java.awt.Color(254, 254, 254));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -76,7 +76,7 @@ public class FrmMain extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 320, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 330, -1));
 
         jButton2.setBackground(new java.awt.Color(254, 254, 254));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -87,22 +87,22 @@ public class FrmMain extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 320, 40));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 330, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 55, 280, 3));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 290, 3));
 
-        jPanelMain.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 200));
+        jPanelMain.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 220, 430, 200));
 
         jButtonDev.setBackground(new java.awt.Color(0, 51, 102));
         jButtonDev.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
