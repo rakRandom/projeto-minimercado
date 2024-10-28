@@ -7,6 +7,7 @@ package view.login;
 import view.FrmMain;
 import view.FrmPainelControle;
 import controller.db.Conexao;
+import java.awt.Toolkit;
 import java.util.Arrays;
 
 /**
@@ -21,6 +22,8 @@ public class FrmLoginAdm extends javax.swing.JFrame {
      */
     public FrmLoginAdm() {
         initComponents();
+        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../img/icone.png")));
         
         conexaoDB = new Conexao();
         conexaoDB.conectar();

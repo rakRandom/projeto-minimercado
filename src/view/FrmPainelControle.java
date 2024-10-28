@@ -5,6 +5,7 @@
 package view;
 
 import controller.db.Conexao;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -43,6 +44,8 @@ public class FrmPainelControle extends javax.swing.JFrame {
      */
     public FrmPainelControle() {
         initComponents();
+        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../img/icone.png")));
         
         conexao = new Conexao();
         conexao.conectar();

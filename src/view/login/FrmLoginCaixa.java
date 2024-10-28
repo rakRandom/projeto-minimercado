@@ -5,6 +5,7 @@
 package view.login;
 
 import controller.db.Conexao;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import view.FrmCaixa;
@@ -22,6 +23,8 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
      */
     public FrmLoginCaixa() {
         initComponents();
+        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../img/icone.png")));
     
         conexao = new Conexao();
         conexao.conectar();

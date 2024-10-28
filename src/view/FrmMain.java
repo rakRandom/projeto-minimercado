@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Toolkit;
 import view.login.FrmLoginAdm;
 import view.login.FrmLoginCaixa;
 
@@ -18,6 +19,8 @@ public class FrmMain extends javax.swing.JFrame {
      */
     public FrmMain() {
         initComponents();
+        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../img/icone.png")));
     }
 
     /**

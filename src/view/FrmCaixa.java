@@ -5,6 +5,7 @@
 package view;
 
 import controller.db.Conexao;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,6 +22,8 @@ public class FrmCaixa extends javax.swing.JFrame {
      */
     public FrmCaixa(int numCaixa, String operador) {
         initComponents();
+        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../img/icone.png")));
         
         conexao = new Conexao();
         conexao.conectar();
