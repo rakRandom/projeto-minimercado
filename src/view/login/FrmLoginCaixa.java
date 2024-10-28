@@ -187,6 +187,7 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         int numCaixa = 0;
+        int codOperador;
         
         if (!jTextFieldNumCaixa.getText().isBlank()) {
             try {
@@ -200,6 +201,17 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(
                     null, 
                     "Não é possível logar como \ncaixa sem um código de operador.", 
+                    "Mensagem do Programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        try {
+            codOperador = Integer.parseInt(jTextFieldCodOperador.getText());
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: O código do operador deve ser um número inteiro.", 
                     "Mensagem do Programa", 
                     JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -220,7 +232,7 @@ public class FrmLoginCaixa extends javax.swing.JFrame {
         try {
             if (conexao.resultset.first()) {
                 dispose();
-                var painel = new FrmCaixa(numCaixa, jTextFieldCodOperador.getText());
+                var painel = new FrmCaixa(numCaixa, codOperador);
                 painel.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(
