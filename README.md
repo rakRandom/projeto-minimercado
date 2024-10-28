@@ -55,7 +55,7 @@ Utiliza Java com Swing e MySQL.
     - [ ] Alinhar e padronizar todos os elementos
     - [x] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
     - [x] Verificar o título dos Frames, eles somem do nada
-    - [ ] Colocar todos os botões com fundo `(244,244,244)` ou `(0,52,102)`, `borderPainted = false` e `cursor = "Hand Cursor"`
+    - [ ] Colocar todos os botões com fundo `(254,254,254)` ou `(0,51,102)`, `borderPainted = false` e `cursor = "Hand Cursor"`
 
 - [x] Outros
     - [x] Fazer a To-do list da classe CRUD
