@@ -472,7 +472,7 @@ public class FrmCaixa extends javax.swing.JFrame {
             if (!conexao.resultset.first()) {
                 JOptionPane.showMessageDialog(
                     null, 
-                    "Erro: Produto inexistente.", 
+                    "Erro: Lote inexistente.", 
                     "Mensagem do programa", 
                     JOptionPane.INFORMATION_MESSAGE);
                 return;
@@ -481,6 +481,15 @@ public class FrmCaixa extends javax.swing.JFrame {
             //
             int cod_prod = conexao.resultset.getInt("cod_prod");
             conexao.executarSQL("SELECT * FROM produto WHERE cod_prod = " + cod_prod);
+            
+            if (!conexao.resultset.first()) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Produto inexistente.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             
             //
             String descricao = conexao.resultset.getString("descricao");
@@ -673,39 +682,98 @@ public class FrmCaixa extends javax.swing.JFrame {
         }
         
         //
-         int cod_compra = 0;
+         int cod_compra;
         
         conexao.executarSQL("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'compra'");
         
         try {
-            conexao.resultset.first();
+            if (!conexao.resultset.first()) {
+                throw new SQLException();
+            }
             cod_compra = conexao.resultset.getInt("AUTO_INCREMENT");
         } 
         catch (SQLException e) {
-            // TODO: JOptionPane warn
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Não foi possível realizar a compra [Etapa: 1/3].\nSe esse erro persistir, consulte os desenvolvedores desse software.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
-        conexao.executarSQL(
-            "INSERT INTO compra (cod_compra, id_func, id_cliente, data_compra, metodo_pag, preco_bruto, valor_desconto) VALUES (" + cod_compra + ", " + id_func + ", " + id_cliente + ", NOW(), " + metodo_pag + ", " + preco_bruto + ", " + valor_desconto + ")"
-        );
-        
-        //
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            int codigo = Integer.parseInt(
-                jTable.getValueAt(i, 1).toString()
-            );
-            double qt = Double.parseDouble(
-                modelo
-                    .getValueAt(i, 3)
-                    .toString()
-                    .replace(',', '.')
-            );
-            
-            conexao.executarSQL(
-                "INSERT INTO itens (cod_lote, cod_compra, quantidade) VALUES (" + codigo + ", " + cod_compra + ", " + qt + ")"
+        try {
+            conexao.statement.executeUpdate(
+                "INSERT INTO compra (cod_compra, id_func, id_cliente, data_compra, metodo_pag, preco_bruto, valor_desconto) VALUES (" + cod_compra + ", " + id_func + ", " + id_cliente + ", NOW(), " + metodo_pag + ", " + preco_bruto + ", " + valor_desconto + ")"
             );
         }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Não foi possível realizar a compra [Etapa: 2/3].\nSe esse erro persistir, consulte os desenvolvedores desse software.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        //
+        try {
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                int codigo = Integer.parseInt(
+                    jTable.getValueAt(i, 1).toString()
+                );
+                double qt = Double.parseDouble(
+                    modelo
+                        .getValueAt(i, 3)
+                        .toString()
+                        .replace(',', '.')
+                );
+
+                conexao.statement.executeUpdate(
+                    "INSERT INTO itens (cod_lote, cod_compra, quantidade) VALUES (" + codigo + ", " + cod_compra + ", " + qt + ")"
+                );
+            }
+        }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Não foi possível realizar a compra [Etapa: 3/3].\nSe esse erro persistir, consulte os desenvolvedores desse software.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        //
+        jTextFieldCodigo.setText("");
+        jTextFieldQtde.setText("");
+        
+        //
+        itemNum = 0;
+                
+        subtotal = 0.0;
+        total = 0.0;
+
+        atualizarValor();
+
+        modelo.setNumRows(0);
+        
+        int numCompra = 0;
+        
+        //
+        conexao.executarSQL("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'compra'");
+        
+        try {
+            conexao.resultset.first();
+            numCompra = conexao.resultset.getInt("AUTO_INCREMENT");
+        } catch (SQLException e) { }
+        
+        jLabelVenda.setText("Nº da venda: %04d".formatted(numCompra));
+        
+        // Mensagem final
+        JOptionPane.showMessageDialog(
+            null, 
+            "Compra realizada com sucesso.", 
+            "Mensagem do programa", 
+            JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
