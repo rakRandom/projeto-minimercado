@@ -45,13 +45,13 @@ Utiliza Java com Swing e MySQL.
     - [ ] Sistema de Caixa
 
 - [ ] Design
-    - [ ] Nome do minimercado
-    - [ ] Criar Logo
+    - [x] Nome do minimercado
+    - [x] Criar Logo
     - [ ] Adicionar Imagens
-        - [ ] Main
+        - [x] Main
         - [ ] Desenvolvedores
             - [ ] Foto dos desenvolvedores
-            - [ ] Banner do minimercado
+            - [x] Banner do minimercado
     - [ ] Alinhar e padronizar todos os elementos
     - [ ] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
     - [ ] Verificar o título dos Frames, eles somem do nada
