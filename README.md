@@ -47,10 +47,10 @@ Utiliza Java com Swing e MySQL.
 - [ ] Design
     - [x] Nome do minimercado
     - [x] Criar Logo
-    - [ ] Adicionar Imagens
+    - [x] Adicionar Imagens
         - [x] Main
-        - [ ] Desenvolvedores
-            - [ ] Foto dos desenvolvedores
+        - [x] Desenvolvedores
+            - [x] Foto dos desenvolvedores
             - [x] Banner do minimercado
     - [ ] Alinhar e padronizar todos os elementos
     - [ ] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
