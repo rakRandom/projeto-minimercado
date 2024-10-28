@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,17 +18,35 @@ import java.util.Date;
  */
 public class FrmCaixa extends javax.swing.JFrame {
     Conexao conexao;
+    DefaultTableModel modelo;
+    int itemNum = 0;
+    double subtotal = 0;
+    double total = 0;
+    
+    int id_func;
     
     /**
      * Creates new form FrmCaixa
      */
-    public FrmCaixa(int numCaixa, String operador) {
+    public FrmCaixa(int numCaixa, int operador) {
         initComponents();
         
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../img/icone.png")));
         
         conexao = new Conexao();
         conexao.conectar();
+        
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(275);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(50);
+        
+        modelo = (DefaultTableModel) jTable.getModel();
+        modelo.setNumRows(0);
+        
+        id_func = operador;
         
         definirNumCaixaEVenda(numCaixa);
         definirDataEOperador(operador);
@@ -42,13 +62,77 @@ public class FrmCaixa extends javax.swing.JFrame {
             numCompra = conexao.resultset.getInt("AUTO_INCREMENT");
         } catch (SQLException e) { }
         
-        jLabelNumCaixaEVenda.setText("Caixa: %02d    |    Nº da venda: %04d".formatted(numCaixa, numCompra));
+        jLabelNumCaixa.setText("Caixa: %02d    |".formatted(numCaixa));
+        jLabelVenda.setText("Nº da venda: %04d".formatted(numCompra));
     }
     
-    public final void definirDataEOperador(String operador) {
+    public final void definirDataEOperador(int operador) {
         String data = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
         
-        jLabelDataEOperador.setText("%s    |    Operador: %s".formatted(data, operador));
+        jLabelDataEOperador.setText("%s    |    Operador: %d".formatted(data, operador));
+    }
+    
+    public final void atualizarValor() {
+        jLabelSubtotal.setText("R$ %.2f".formatted(subtotal));
+        jLabelTotal.setText("R$ %.2f".formatted(total));
+    }
+    
+    public double receberPromoProd(int cod_lote) {
+        int cod_prod;
+        int cod_promo_prod;
+        int cod_cate;
+        int cod_promo_cate;
+        double promo_prod = 0.0;
+        double promo_cate = 0.0;
+        
+        //
+        conexao.executarSQL("SELECT * FROM lote WHERE cod_lote = " + cod_lote);
+        
+        //
+        try {
+            if (!conexao.resultset.first()) {
+                return 0.0;
+            }
+            
+            cod_prod = conexao.resultset.getInt("cod_prod");
+        }
+        catch (SQLException e) {
+            return 0.0;
+        }
+        
+        //
+        conexao.executarSQL("SELECT * FROM produto WHERE cod_prod = " + cod_prod);
+        try {
+            conexao.resultset.first();
+            cod_promo_prod = conexao.resultset.getInt("cod_promo_prod");
+            cod_cate = conexao.resultset.getInt("cod_cate");
+            
+            if (cod_promo_prod != 0) {
+                conexao.executarSQL("SELECT * FROM promocao_produto WHERE cod_promo_prod = " + cod_promo_prod + " AND data_termino > CURRENT_DATE");
+                conexao.resultset.first();
+                
+                promo_prod = conexao.resultset.getDouble("porcentagem");
+            } 
+        }
+        catch (SQLException e) {
+            return 0.0;
+        }
+        
+        //
+        conexao.executarSQL("SELECT * FROM categoria WHERE cod_cate = " + cod_cate);
+        try {
+            conexao.resultset.first();
+            cod_promo_cate = conexao.resultset.getInt("cod_promo_cate");
+            
+            if (cod_promo_cate != 0) {
+                conexao.executarSQL("SELECT * FROM promocao_categoria WHERE cod_promo_cate = " + cod_promo_cate + " AND data_termino > CURRENT_DATE");
+                conexao.resultset.first();
+                promo_cate = conexao.resultset.getInt("porcentagem");
+            }
+        } 
+        catch(SQLException e) {}
+        
+        return Math.min(promo_prod + promo_cate, 0.9);
     }
 
     /**
@@ -65,8 +149,9 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabelDataEOperador = new javax.swing.JLabel();
-        jLabelNumCaixaEVenda = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabelVenda = new javax.swing.JLabel();
+        jButtonSair = new javax.swing.JButton();
+        jLabelNumCaixa = new javax.swing.JLabel();
         jPanelBody = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -78,21 +163,18 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelQtde = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldQtde = new javax.swing.JTextField();
-        jPanelPreco = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextFieldPreco = new javax.swing.JTextField();
         jPanelSubtotal = new javax.swing.JPanel();
-        jLabelSubtotal1 = new javax.swing.JLabel();
+        jLabelSubtotal = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanelTotal = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabelSubtotal = new javax.swing.JLabel();
+        jLabelTotal = new javax.swing.JLabel();
         jButtonAdicionar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonFinalizar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,21 +201,27 @@ public class FrmCaixa extends javax.swing.JFrame {
         jLabelDataEOperador.setText("31/12/9999    |    Operador: 0123456789");
         jPanelHeader.add(jLabelDataEOperador, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 5, 500, 60));
 
-        jLabelNumCaixaEVenda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelNumCaixaEVenda.setForeground(new java.awt.Color(240, 240, 240));
-        jLabelNumCaixaEVenda.setText("Caixa: 02    |    Nº da venda: 1234");
-        jPanelHeader.add(jLabelNumCaixaEVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 5, -1, 60));
+        jLabelVenda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelVenda.setForeground(new java.awt.Color(240, 240, 240));
+        jLabelVenda.setText("Nº da venda: 1234");
+        jPanelHeader.add(jLabelVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, 70));
 
-        jButton1.setBackground(new java.awt.Color(254, 254, 254));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Sair");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSair.setBackground(new java.awt.Color(254, 254, 254));
+        jButtonSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonSair.setText("Sair");
+        jButtonSair.setBorderPainted(false);
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSairActionPerformed(evt);
             }
         });
-        jPanelHeader.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, 90, 30));
+        jPanelHeader.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, 90, 30));
+
+        jLabelNumCaixa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNumCaixa.setForeground(new java.awt.Color(240, 240, 240));
+        jLabelNumCaixa.setText("Caixa: 02    |");
+        jPanelHeader.add(jLabelNumCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, 70));
 
         jPanelMain.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 70));
 
@@ -169,17 +257,11 @@ public class FrmCaixa extends javax.swing.JFrame {
         jTable.setRowHeight(25);
         jScrollPane1.setViewportView(jTable);
         if (jTable.getColumnModel().getColumnCount() > 0) {
-            jTable.getColumnModel().getColumn(0).setResizable(false);
             jTable.getColumnModel().getColumn(0).setPreferredWidth(25);
-            jTable.getColumnModel().getColumn(1).setResizable(false);
             jTable.getColumnModel().getColumn(1).setPreferredWidth(25);
-            jTable.getColumnModel().getColumn(2).setResizable(false);
             jTable.getColumnModel().getColumn(2).setPreferredWidth(275);
-            jTable.getColumnModel().getColumn(3).setResizable(false);
             jTable.getColumnModel().getColumn(3).setPreferredWidth(25);
-            jTable.getColumnModel().getColumn(4).setResizable(false);
             jTable.getColumnModel().getColumn(4).setPreferredWidth(50);
-            jTable.getColumnModel().getColumn(5).setResizable(false);
             jTable.getColumnModel().getColumn(5).setPreferredWidth(50);
         }
 
@@ -198,10 +280,10 @@ public class FrmCaixa extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel3.setText("Código:");
-        jPanelCodigo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+        jPanelCodigo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 50));
 
         jTextFieldCodigo.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        jTextFieldCodigo.setText("123123");
+        jTextFieldCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jPanelCodigo.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 340, 50));
 
         jPanelBody.add(jPanelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 430, 50));
@@ -209,35 +291,28 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelQtde.setBackground(new java.awt.Color(255, 255, 255));
         jPanelQtde.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("Qtde:");
-        jPanelQtde.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
-        jPanelQtde.add(jTextFieldQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 30));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Quantidade (Un./Kg/L):");
+        jPanelQtde.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
 
-        jPanelBody.add(jPanelQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 260, 200, 30));
+        jTextFieldQtde.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTextFieldQtde.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanelQtde.add(jTextFieldQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 230, 40));
 
-        jPanelPreco.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelPreco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setText("Preço:");
-        jPanelPreco.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
-
-        jTextFieldPreco.setToolTipText("");
-        jPanelPreco.add(jTextFieldPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 30));
-
-        jPanelBody.add(jPanelPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 260, 200, 30));
+        jPanelBody.add(jPanelQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 260, 430, 40));
 
         jPanelSubtotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelSubtotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSubtotal1.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
-        jLabelSubtotal1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelSubtotal1.setText("R$ 00.000,00");
-        jPanelSubtotal.add(jLabelSubtotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 350, 50));
+        jLabelSubtotal.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
+        jLabelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSubtotal.setText("R$ 00.000,00");
+        jPanelSubtotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 350, 50));
 
         jLabel6.setText("Subtotal:");
         jPanelSubtotal.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanelBody.add(jPanelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 430, 60));
+        jPanelBody.add(jPanelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 430, 60));
 
         jPanelTotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -245,30 +320,50 @@ public class FrmCaixa extends javax.swing.JFrame {
         jLabel7.setText("Total:");
         jPanelTotal.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabelSubtotal.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        jLabelSubtotal.setForeground(new java.awt.Color(0, 51, 102));
-        jLabelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelSubtotal.setText("R$ 00.000,00");
-        jPanelTotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 370, 70));
+        jLabelTotal.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        jLabelTotal.setForeground(new java.awt.Color(0, 51, 102));
+        jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTotal.setText("R$ 00.000,00");
+        jPanelTotal.add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 370, 70));
 
-        jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 450, 430, 70));
+        jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 430, 70));
 
         jButtonAdicionar.setBackground(new java.awt.Color(0, 51, 102));
         jButtonAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonAdicionar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAdicionar.setText("Adicionar");
         jButtonAdicionar.setBorderPainted(false);
-        jPanelBody.add(jButtonAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 200, 30));
+        jButtonAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
+        jPanelBody.add(jButtonAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 210, 40));
 
         jButtonRemover.setBackground(new java.awt.Color(254, 254, 254));
+        jButtonRemover.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonRemover.setText("Remover");
         jButtonRemover.setBorderPainted(false);
-        jPanelBody.add(jButtonRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 310, 100, 30));
+        jButtonRemover.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
+        jPanelBody.add(jButtonRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 310, 100, 40));
 
         jButtonLimpar.setBackground(new java.awt.Color(254, 254, 254));
+        jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.setBorderPainted(false);
-        jPanelBody.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 310, 100, 30));
+        jButtonLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+        jPanelBody.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 310, 100, 40));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
@@ -285,17 +380,29 @@ public class FrmCaixa extends javax.swing.JFrame {
 
         jPanelBody.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, 430, 2));
 
-        jButton2.setBackground(new java.awt.Color(0, 51, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Finalizar Compra");
-        jButton2.setBorderPainted(false);
-        jPanelBody.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 290, 30));
+        jButtonFinalizar.setBackground(new java.awt.Color(0, 51, 102));
+        jButtonFinalizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonFinalizar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonFinalizar.setText("Finalizar Compra");
+        jButtonFinalizar.setBorderPainted(false);
+        jButtonFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinalizarActionPerformed(evt);
+            }
+        });
+        jPanelBody.add(jButtonFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 520, 290, 40));
 
-        jButton3.setBackground(new java.awt.Color(254, 254, 254));
-        jButton3.setText("Cancelar compra");
-        jButton3.setBorderPainted(false);
-        jPanelBody.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 530, 130, 30));
+        jButtonCancelar.setBackground(new java.awt.Color(254, 254, 254));
+        jButtonCancelar.setText("Cancelar compra");
+        jButtonCancelar.setBorderPainted(false);
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        jPanelBody.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 525, 120, 30));
 
         jPanelMain.add(jPanelBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 94, 1240, 580));
 
@@ -317,40 +424,343 @@ public class FrmCaixa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int op = javax.swing.JOptionPane.showConfirmDialog(
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        int op = JOptionPane.showConfirmDialog(
                 null, 
                 "Você realmente deseja sair do Sistema de Caixa?", 
                 "Confirmar logout", 
                 javax.swing.JOptionPane.YES_NO_OPTION, 
                 javax.swing.JOptionPane.QUESTION_MESSAGE);
         
-        if (op == javax.swing.JOptionPane.YES_OPTION) {
+        if (op == JOptionPane.YES_OPTION) {
             dispose();
             var painel = new FrmMain();
             painel.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSairActionPerformed
+    
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        int codigo;
+        double qt;
+        
+        //
+        if (jTextFieldCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: O campo 'Código' não pode estar vazio.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        try {
+            codigo = Integer.parseInt(jTextFieldCodigo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: O código deve ser um número inteiro.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        //
+        conexao.executarSQL("SELECT * FROM lote WHERE cod_lote = " + codigo);
+        
+        //
+        try {
+            if (!conexao.resultset.first()) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Produto inexistente.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            //
+            int cod_prod = conexao.resultset.getInt("cod_prod");
+            conexao.executarSQL("SELECT * FROM produto WHERE cod_prod = " + cod_prod);
+            
+            //
+            String descricao = conexao.resultset.getString("descricao");
+            double preco = conexao.resultset.getDouble("preco");
+            if (jTextFieldQtde.getText().isBlank()) {
+                qt = 1;
+            }
+            else {
+                qt = Double.parseDouble(jTextFieldQtde.getText().replace(',', '.'));
+            }
+            
+            //
+            modelo.addRow(new Object[] {
+                itemNum + 1,
+                codigo,
+                descricao,
+                "%.4f".formatted(qt).replace('.', ','),  // Quantidade
+                "R$ %.2f".formatted(preco).replace('.', ','),  // Preço unitário
+                "R$ %.2f".formatted(preco * qt).replace('.', ',')  // Subtotal
+            });
+            
+            //
+            itemNum++;
+            
+            double precoTotal = preco * qt;
+            
+            subtotal += precoTotal;
+            
+            total += precoTotal - precoTotal * receberPromoProd(codigo);
+            
+            //
+            atualizarValor();
+        } catch (SQLException e) {}
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: A quantidade deve ser um número.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldCodigo.setText("");
+        jTextFieldQtde.setText("");
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        int op = JOptionPane.showConfirmDialog(
+                null, 
+                "Você realmente deseja remover o último item?", 
+                "Confirmar remoção", 
+                javax.swing.JOptionPane.YES_NO_OPTION, 
+                javax.swing.JOptionPane.QUESTION_MESSAGE);
+        
+        if (op == JOptionPane.YES_OPTION) {
+            if (itemNum > 0) {
+                itemNum--;
+                
+                double preco = Double.parseDouble(
+                        jTable.getValueAt(itemNum, 5)
+                                .toString()
+                                .replace(',', '.')
+                                .split(" ")[1]
+                );
+                int codigo = Integer.parseInt(
+                        jTable.getValueAt(itemNum, 1).toString()
+                );
+                
+                subtotal -= preco;
+                total -= preco - preco * receberPromoProd(codigo);
+                
+                modelo.setNumRows(itemNum);
+                
+                atualizarValor();
+            } else {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Erro: Não há itens para remover.", 
+                        "Mensagem do programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
+
+    private void jButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarActionPerformed
+        int id_cliente;
+        int metodo_pag;
+        double preco_bruto = 0.0;
+        double valor_desconto = 0.0;
+        
+        String[] metodos_pagamento;
+        
+        //
+        if (itemNum <= 0) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Não há itens no carrinho.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        //
+        conexao.executarSQL("SELECT * FROM metodo_pagamento");
+        try {
+            int qtRow = 0;
+            conexao.resultset.beforeFirst();
+            while (conexao.resultset.next()) {
+                qtRow++;
+            }
+            
+            metodos_pagamento = new String[qtRow];
+            qtRow = 0;
+            conexao.resultset.beforeFirst();
+            while (conexao.resultset.next()) {
+                metodos_pagamento[qtRow] = conexao.resultset.getString(2);
+                qtRow++;
+            }
+        } 
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                        null, 
+                        "Erro: Não foi possível obter os métodos de pagamento.", 
+                        "Mensagem do programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        //
+        String op = JOptionPane.showInputDialog(null, """
+                                                      Selecione seu método de pagamento:
+                                                      1 - Dinheiro
+                                                      2 - Cheque
+                                                      3 - Cartão de Crédito
+                                                      4 - Cartão de Débito
+                                                      5 - Boleto Bancário
+                                                      6 - PIX
+                                                      7 - Crediário
+                                                      8 - Transferência bancária
+                                                      """,
+                "Método de pagamento", 
+                JOptionPane.QUESTION_MESSAGE);
+        
+        switch (op) {
+            case "1" -> metodo_pag = 1;
+            case "2" -> metodo_pag = 2;
+            case "3" -> metodo_pag = 3;
+            case "4" -> metodo_pag = 4;
+            case "5" -> metodo_pag = 5;
+            case "6" -> metodo_pag = 6;
+            case "7" -> metodo_pag = 7;
+            case "8" -> metodo_pag = 8;
+            default -> { return; }
+        }
+        
+        //
+        try {
+            id_cliente = Integer.parseInt(
+                JOptionPane.showInputDialog(
+                    null, 
+                    "Digite o código do cadastro do cliente\n(ou 0 se não houver)",
+                    "Identificação do cliente", 
+                    JOptionPane.QUESTION_MESSAGE)
+            );
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: O código do cliente deve ser um número inteiro.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        //
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            double preco = Double.parseDouble(
+                    jTable.getValueAt(i, 5)
+                            .toString()
+                            .replace(',', '.')
+                            .split(" ")[1]
+            );
+            int codigo = Integer.parseInt(
+                    jTable.getValueAt(i, 1).toString()
+            );
+            
+            //
+            preco_bruto += preco;
+            valor_desconto += preco * receberPromoProd(codigo);
+        }
+        
+        //
+         int cod_compra = 0;
+        
+        conexao.executarSQL("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'compra'");
+        
+        try {
+            conexao.resultset.first();
+            cod_compra = conexao.resultset.getInt("AUTO_INCREMENT");
+        } 
+        catch (SQLException e) {
+            // TODO: JOptionPane warn
+            return;
+        }
+        
+        conexao.executarSQL(
+            "INSERT INTO compra (cod_compra, id_func, id_cliente, data_compra, metodo_pag, preco_bruto, valor_desconto) VALUES (" + cod_compra + ", " + id_func + ", " + id_cliente + ", NOW(), " + metodo_pag + ", " + preco_bruto + ", " + valor_desconto + ")"
+        );
+        
+        //
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            int codigo = Integer.parseInt(
+                jTable.getValueAt(i, 1).toString()
+            );
+            double qt = Double.parseDouble(
+                modelo
+                    .getValueAt(i, 3)
+                    .toString()
+                    .replace(',', '.')
+            );
+            
+            conexao.executarSQL(
+                "INSERT INTO itens (cod_lote, cod_compra, quantidade) VALUES (" + codigo + ", " + cod_compra + ", " + qt + ")"
+            );
+        }
+    }//GEN-LAST:event_jButtonFinalizarActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        int op = JOptionPane.showConfirmDialog(
+                null, 
+                "Você realmente deseja CANCELAR a compra?", 
+                "Confirmar cancelamento", 
+                javax.swing.JOptionPane.YES_NO_OPTION, 
+                javax.swing.JOptionPane.QUESTION_MESSAGE);
+        
+        if (op == JOptionPane.YES_OPTION) {
+            if (itemNum > 0) {
+                itemNum = 0;
+                
+                subtotal = 0.0;
+                total = 0.0;
+                
+                atualizarValor();
+                
+                modelo.setNumRows(0);
+                
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Compra cancelada.", 
+                        "Mensagem do programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Erro: Não há itens no carrinho.", 
+                        "Mensagem do programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonFinalizar;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonRemover;
+    private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDataEOperador;
-    private javax.swing.JLabel jLabelNumCaixaEVenda;
+    private javax.swing.JLabel jLabelNumCaixa;
     private javax.swing.JLabel jLabelSubtotal;
-    private javax.swing.JLabel jLabelSubtotal1;
+    private javax.swing.JLabel jLabelTotal;
+    private javax.swing.JLabel jLabelVenda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -358,14 +768,12 @@ public class FrmCaixa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCodigo;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelMain;
-    private javax.swing.JPanel jPanelPreco;
     private javax.swing.JPanel jPanelQtde;
     private javax.swing.JPanel jPanelSubtotal;
     private javax.swing.JPanel jPanelTotal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextFieldCodigo;
-    private javax.swing.JTextField jTextFieldPreco;
     private javax.swing.JTextField jTextFieldQtde;
     // End of variables declaration//GEN-END:variables
 }
