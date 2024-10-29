@@ -195,10 +195,6 @@ public class CRUD
     }                                                   
     
    public void gravar() {
-        if (!validarCampos()) {
-            return;
-        }
-
         int fkInexistente = verificarFK();
         if (fkInexistente != -1) {
             JOptionPane.showMessageDialog(
@@ -209,16 +205,16 @@ public class CRUD
             return;
         }
 
-        int opcao = JOptionPane.showConfirmDialog(
+        int resposta = JOptionPane.showConfirmDialog(
                 null,
                 "Deseja salvar os dados?",
                 "Confirmar Gravação de Dados",
                 JOptionPane.YES_NO_OPTION);
 
-        if (opcao == 0) {
+        if (resposta == JOptionPane.OK_OPTION) {
             try {
                 String insertSql = calcularSQL(TipoSQL.Insert);
-                conexao.statement.executeUpdate(insertSql);
+                conexao.preparedStatement.executeUpdate(insertSql);
                 JOptionPane.showMessageDialog(
                         null,
                         "Gravação realizada com sucesso",
@@ -236,14 +232,16 @@ public class CRUD
                         "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(
+                        null, 
+                        "Operação cancelada pelo usuário", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
         }
     }                    
 
      public void alterar() {
-        if (!validarCampos()) {
-            return;
-        }
-
         int fkInexistente = verificarFK();
         if (fkInexistente != -1) {
             JOptionPane.showMessageDialog(
@@ -254,13 +252,13 @@ public class CRUD
             return;
         }
 
-        int opcao = JOptionPane.showConfirmDialog(
+        int resposta = JOptionPane.showConfirmDialog(
                 null,
                 "Deseja salvar as alterações?",
                 "Confirmar Alteração de Dados",
                 JOptionPane.YES_NO_OPTION);
 
-        if (opcao == 0) {
+        if (resposta == JOptionPane.OK_OPTION) {
             String sql;
 
             try {
@@ -270,7 +268,7 @@ public class CRUD
                     sql = calcularSQL(TipoSQL.Update);
                 }
 
-                conexao.statement.executeUpdate(sql);
+                conexao.preparedStatement.executeUpdate(sql);
                 JOptionPane.showMessageDialog(
                         null,
                         "Alteração realizada com sucesso",
@@ -288,6 +286,12 @@ public class CRUD
                         "Mensagem do Programa",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(
+                        null, 
+                        "Operação cancelada pelo usuário", 
+                        "Mensagem do Programa", 
+                        JOptionPane.INFORMATION_MESSAGE);
         }
     }                           
 
@@ -306,7 +310,7 @@ public class CRUD
 
             if (resposta == JOptionPane.OK_OPTION) {
                 String sql = calcularSQL(TipoSQL.Delete);
-                int excluir = conexao.statement.executeUpdate(sql);
+                int excluir = conexao.preparedStatement.executeUpdate(sql);
 
                 if (excluir != 0) {
                     JOptionPane.showMessageDialog(
@@ -334,16 +338,6 @@ public class CRUD
                     "Mensagem do Programa",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-    }
-
-    private boolean validarCampos() {
-        for (JTextField campo : campos) {
-            if (campo.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos.", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                return false;
-            }
-        }
-        return true;
     }
         
     // =========================================================================

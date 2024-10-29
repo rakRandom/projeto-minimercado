@@ -154,11 +154,14 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("  Outras Tabelas:    ");
         jToolBar1.add(jLabel4);
 
+        jButtonClassificacoes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonClassificacoes.setText("  Classificações  ");
+        jButtonClassificacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClassificacoes.setFocusable(false);
         jButtonClassificacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonClassificacoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -169,7 +172,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonClassificacoes);
 
+        jButtonTelefones.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonTelefones.setText("  Telefones  ");
+        jButtonTelefones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonTelefones.setFocusable(false);
         jButtonTelefones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonTelefones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -180,7 +185,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonTelefones);
 
+        jButtonMetodoPag.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonMetodoPag.setText("  Métodos de Pagamento  ");
+        jButtonMetodoPag.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonMetodoPag.setFocusable(false);
         jButtonMetodoPag.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMetodoPag.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -191,7 +198,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonMetodoPag);
 
+        jButtonContas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonContas.setText("  Contas e Credenciais  ");
+        jButtonContas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonContas.setFocusable(false);
         jButtonContas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonContas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,7 +214,9 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jSeparator1.setSeparatorSize(new java.awt.Dimension(50, 25));
         jToolBar1.add(jSeparator1);
 
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSair.setText("   Sair   ");
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -216,12 +227,13 @@ public class FrmPainelControle extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonSair);
 
-        jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 700, 30));
+        jPanelMain.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 700, 40));
 
-        jLabelRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelRelatorio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelRelatorio.setText("Notificações:");
         jPanelMain.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
+        jTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -256,7 +268,10 @@ public class FrmPainelControle extends javax.swing.JFrame {
 
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 700, 330));
 
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jMenuRecursosHumanos.setText("Recursos Humanos");
+        jMenuRecursosHumanos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItemClientes.setText("Controle de Clientes");
         jMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -293,6 +308,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenuBar1.add(jMenuRecursosHumanos);
 
         jMenuProdutosCompras.setText("Produtos e Compras");
+        jMenuProdutosCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItemProdutos.setText("Controle de Produtos");
         jMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -345,6 +361,7 @@ public class FrmPainelControle extends javax.swing.JFrame {
         jMenuBar1.add(jMenuProdutosCompras);
 
         jMenuRelatorioGastos.setText("Relatório Geral de Gastos");
+        jMenuRelatorioGastos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuRelatorioGastos.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }

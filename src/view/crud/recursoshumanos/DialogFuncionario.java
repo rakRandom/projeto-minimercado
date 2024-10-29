@@ -150,7 +150,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jLabel10.setText("      ");
         jToolBar.add(jLabel10);
 
+        jButtonNovoRegistro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonNovoRegistro.setText(" Novo Registro ");
+        jButtonNovoRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNovoRegistro.setFocusable(false);
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
@@ -162,7 +164,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonNovoRegistro);
 
+        jButtonGravar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonGravar.setText(" Gravar ");
+        jButtonGravar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonGravar.setFocusable(false);
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
@@ -174,8 +178,10 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonGravar);
 
+        jButtonAlterar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAlterar.setText(" Alterar ");
         jButtonAlterar.setToolTipText("");
+        jButtonAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -186,7 +192,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAlterar);
 
+        jButtonExcluir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonExcluir.setText(" Excluir ");
+        jButtonExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -198,7 +206,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
+        jButtonPrimeiro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonPrimeiro.setText(" Primeiro ");
+        jButtonPrimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -209,7 +219,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonPrimeiro);
 
+        jButtonAnterior.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAnterior.setText(" Anterior ");
+        jButtonAnterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -220,7 +232,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAnterior);
 
+        jButtonProximo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonProximo.setText(" Próximo ");
+        jButtonProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -231,7 +245,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonProximo);
 
+        jButtonUltimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonUltimo.setText(" Último ");
+        jButtonUltimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -243,7 +259,9 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSair.setText("   Sair   ");
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -256,17 +274,19 @@ public class DialogFuncionario extends javax.swing.JDialog {
 
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 40));
 
+        jLabelPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelPesquisa.setText("Pesquisar por");
-        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, -1, -1));
+        jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, -1, -1));
 
+        jComboBoxPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome do Funcionário", "Data de Nascimento", "CPF", "RG", "Endereço", "Cód. do Cargo", "Cód. do Expediente" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 680, -1, -1));
-        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 680, 420, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 160, -1));
+        jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 680, 450, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Atributos");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
@@ -284,34 +304,41 @@ public class DialogFuncionario extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, 2));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cód. do Expediente:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, 20));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ID:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 15, -1, -1));
 
         jTextFieldID.setEnabled(false);
         jPanel1.add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 80, -1));
         jPanel1.add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 350, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nome do Funcionário:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, 20));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Data de Nascimento:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 30));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("CPF:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, 20));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("RG:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 95, -1, 20));
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Endereço:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, 20));
@@ -340,14 +367,16 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jTextFieldEndereco.setPreferredSize(new java.awt.Dimension(210, 27));
         jPanel1.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 350, -1));
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Cód. do Cargo:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 55, -1, -1));
         jPanel1.add(jTextFieldExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 80, -1));
         jPanel1.add(jTextFieldCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 80, -1));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1060, 120));
 
+        jTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -379,23 +408,29 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 1060, 490));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.setBorderPainted(false);
+        jButtonPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 680, 115, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 680, 110, -1));
 
+        jButtonResetar2.setBackground(new java.awt.Color(240, 240, 240));
+        jButtonResetar2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jButtonResetar2.setText("Resetar");
+        jButtonResetar2.setBorderPainted(false);
+        jButtonResetar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonResetar2ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 115, -1));
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

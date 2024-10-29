@@ -70,10 +70,6 @@ public class DialogClassific extends javax.swing.JDialog {
         jPanelMain = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jTextFieldCodigo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldDescricao = new javax.swing.JTextField();
         jToolBar = new javax.swing.JToolBar();
         jLabel3 = new javax.swing.JLabel();
         jButtonNovoRegistro = new javax.swing.JButton();
@@ -92,6 +88,11 @@ public class DialogClassific extends javax.swing.JDialog {
         jTextFieldPesquisa = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonResetar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jTextFieldDescricao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrar Classificações");
@@ -100,6 +101,7 @@ public class DialogClassific extends javax.swing.JDialog {
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -134,21 +136,7 @@ public class DialogClassific extends javax.swing.JDialog {
             jTable.getColumnModel().getColumn(1).setPreferredWidth(600);
         }
 
-        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 280));
-
-        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodigoActionPerformed(evt);
-            }
-        });
-        jPanelMain.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 90, -1));
-
-        jLabel1.setText("Cód. Classificação:");
-        jPanelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
-
-        jLabel2.setText("Descrição:");
-        jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 30));
-        jPanelMain.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 410, -1));
+        jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 680, 250));
 
         jToolBar.setBackground(new java.awt.Color(0, 51, 102));
         jToolBar.setFloatable(false);
@@ -157,7 +145,9 @@ public class DialogClassific extends javax.swing.JDialog {
         jLabel3.setText("      ");
         jToolBar.add(jLabel3);
 
+        jButtonNovoRegistro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonNovoRegistro.setText(" Novo Registro ");
+        jButtonNovoRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNovoRegistro.setFocusable(false);
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
@@ -169,7 +159,9 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonNovoRegistro);
 
+        jButtonGravar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonGravar.setText(" Gravar ");
+        jButtonGravar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonGravar.setFocusable(false);
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
@@ -181,8 +173,10 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonGravar);
 
+        jButtonAlterar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAlterar.setText(" Alterar ");
         jButtonAlterar.setToolTipText("");
+        jButtonAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -193,7 +187,9 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAlterar);
 
+        jButtonExcluir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonExcluir.setText(" Excluir ");
+        jButtonExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,7 +201,9 @@ public class DialogClassific extends javax.swing.JDialog {
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
+        jButtonPrimeiro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonPrimeiro.setText(" Primeiro ");
+        jButtonPrimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -216,7 +214,9 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonPrimeiro);
 
+        jButtonAnterior.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAnterior.setText(" Anterior ");
+        jButtonAnterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -227,7 +227,9 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAnterior);
 
+        jButtonProximo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonProximo.setText(" Próximo ");
+        jButtonProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -238,7 +240,9 @@ public class DialogClassific extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonProximo);
 
+        jButtonUltimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonUltimo.setText(" Último ");
+        jButtonUltimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -250,7 +254,9 @@ public class DialogClassific extends javax.swing.JDialog {
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSair.setText("   Sair   ");
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -263,33 +269,75 @@ public class DialogClassific extends javax.swing.JDialog {
 
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
+        jLabelPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelPesquisa.setText("Pesquisar por");
         jLabelPesquisa.setPreferredSize(new java.awt.Dimension(71, 20));
         jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 90, -1));
 
+        jComboBoxPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição" }));
+        jComboBoxPesquisa.setPreferredSize(new java.awt.Dimension(75, 20));
         jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        jTextFieldPesquisa.setPreferredSize(new java.awt.Dimension(75, 20));
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 340, -1));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonPesquisar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.setBorderPainted(false);
+        jButtonPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonPesquisar.setPreferredSize(new java.awt.Dimension(75, 20));
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 100, 24));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 100, -1));
 
+        jButtonResetar.setBackground(new java.awt.Color(240, 240, 240));
+        jButtonResetar.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jButtonResetar.setText("Resetar");
+        jButtonResetar.setBorderPainted(false);
+        jButtonResetar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonResetar.setPreferredSize(new java.awt.Dimension(75, 20));
         jButtonResetar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonResetarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonResetar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
+        jPanelMain.add(jButtonResetar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, 100, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cód. Classificação:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Descrição:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 30));
+
+        jTextFieldCodigo.setEnabled(false);
+        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCodigoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 15, 90, -1));
+
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 55, 410, -1));
+
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 680, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,6 +402,10 @@ public class DialogClassific extends javax.swing.JDialog {
         crud.resetarTabela();
     }//GEN-LAST:event_jButtonResetarActionPerformed
 
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -371,6 +423,7 @@ public class DialogClassific extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPesquisa;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;

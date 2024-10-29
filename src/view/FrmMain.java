@@ -58,7 +58,7 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 240));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione o sistema para acessar");
@@ -66,9 +66,10 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 410, -1));
 
         jButton1.setBackground(new java.awt.Color(254, 254, 254));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jButton1.setText("Painel de Controle");
         jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setName(""); // NOI18N
         jButton1.setPreferredSize(new java.awt.Dimension(200, 40));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,9 +80,10 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 330, -1));
 
         jButton2.setBackground(new java.awt.Color(254, 254, 254));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jButton2.setText("Sistema de Caixa");
         jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -105,11 +107,12 @@ public class FrmMain extends javax.swing.JFrame {
         jPanelMain.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 220, 430, 200));
 
         jButtonDev.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonDev.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonDev.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonDev.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDev.setMnemonic('D');
         jButtonDev.setText("Desenvolvedores");
         jButtonDev.setBorderPainted(false);
+        jButtonDev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDev.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDevMouseClicked(evt);

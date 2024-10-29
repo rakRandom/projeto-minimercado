@@ -56,11 +56,11 @@ public class DialogDev extends javax.swing.JDialog {
         jPanelMain.setPreferredSize(new java.awt.Dimension(690, 410));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel2.setText("Bárbara Fernandes Rampazi");
         jPanelMain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setText("Enzo de Paulo Souto");
         jPanelMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 30));
 
@@ -97,11 +97,11 @@ public class DialogDev extends javax.swing.JDialog {
 
         jPanelMain.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 290, 70));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel4.setText("Fellipe Leonardo Peixoto Cunha");
         jPanelMain.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Centro Paula Souza - Etec da Zona Leste - Novotec Desenvolvimento de Sistemas - Manhã - 2º Módulo");
         jPanelMain.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 660, 30));
@@ -162,6 +162,7 @@ public class DialogDev extends javax.swing.JDialog {
 
         jMenu1.setMnemonic('S');
         jMenu1.setText("Sair");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);

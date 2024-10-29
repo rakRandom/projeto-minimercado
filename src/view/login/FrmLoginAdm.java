@@ -59,7 +59,7 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 32)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Painel de Controle - Login");
         jPanelMain.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 50));
@@ -67,7 +67,7 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelSenha.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabelSenha.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSenha.setText("Senha");
         jPanel1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 30));
@@ -80,8 +80,10 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 270, 30));
 
-        jButtonLogin.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonLogin.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jButtonLogin.setText("Login");
+        jButtonLogin.setBorderPainted(false);
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
@@ -89,8 +91,10 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, 30));
 
-        jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setBorderPainted(false);
+        jButtonLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
@@ -98,7 +102,7 @@ public class FrmLoginAdm extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 100, 30));
 
-        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuário");
         jPanel1.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 30));
@@ -117,6 +121,7 @@ public class FrmLoginAdm extends javax.swing.JFrame {
 
         jMenuSair.setMnemonic('S');
         jMenuSair.setText("Sair");
+        jMenuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuSairMouseClicked(evt);

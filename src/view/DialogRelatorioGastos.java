@@ -289,6 +289,7 @@ public class DialogRelatorioGastos extends javax.swing.JDialog {
         jPanelMain.setPreferredSize(new java.awt.Dimension(740, 480));
         jPanelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -322,15 +323,16 @@ public class DialogRelatorioGastos extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabelRelatorio.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabelRelatorio.setForeground(new java.awt.Color(255, 255, 255));
         jLabelRelatorio.setText("Relatório Geral de Gastos - [dd/mm/yyyy]:");
-        jPanel1.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel1.add(jLabelRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 50));
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 60));
 
         jMenu1.setMnemonic('S');
         jMenu1.setText("Sair");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);

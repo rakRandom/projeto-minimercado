@@ -118,7 +118,9 @@ public class DialogCargo extends javax.swing.JDialog {
         jLabel5.setText("      ");
         jToolBar.add(jLabel5);
 
+        jButtonNovoRegistro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonNovoRegistro.setText(" Novo Registro ");
+        jButtonNovoRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNovoRegistro.setFocusable(false);
         jButtonNovoRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovoRegistro.setPreferredSize(new java.awt.Dimension(150, 23));
@@ -130,7 +132,9 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonNovoRegistro);
 
+        jButtonGravar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonGravar.setText(" Gravar ");
+        jButtonGravar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonGravar.setFocusable(false);
         jButtonGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(75, 24));
@@ -142,8 +146,10 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonGravar);
 
+        jButtonAlterar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAlterar.setText(" Alterar ");
         jButtonAlterar.setToolTipText("");
+        jButtonAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -154,7 +160,9 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAlterar);
 
+        jButtonExcluir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonExcluir.setText(" Excluir ");
+        jButtonExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonExcluir.setFocusable(false);
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -166,7 +174,9 @@ public class DialogCargo extends javax.swing.JDialog {
         jToolBar.add(jButtonExcluir);
         jToolBar.add(jSeparator1);
 
+        jButtonPrimeiro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonPrimeiro.setText(" Primeiro ");
+        jButtonPrimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrimeiro.setFocusable(false);
         jButtonPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -177,7 +187,9 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonPrimeiro);
 
+        jButtonAnterior.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAnterior.setText(" Anterior ");
+        jButtonAnterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior.setFocusable(false);
         jButtonAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -188,7 +200,9 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonAnterior);
 
+        jButtonProximo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonProximo.setText(" Próximo ");
+        jButtonProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProximo.setFocusable(false);
         jButtonProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonProximo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -199,7 +213,9 @@ public class DialogCargo extends javax.swing.JDialog {
         });
         jToolBar.add(jButtonProximo);
 
+        jButtonUltimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonUltimo.setText(" Último ");
+        jButtonUltimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUltimo.setFocusable(false);
         jButtonUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -211,7 +227,9 @@ public class DialogCargo extends javax.swing.JDialog {
         jToolBar.add(jButtonUltimo);
         jToolBar.add(jSeparator2);
 
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSair.setText("   Sair   ");
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -224,17 +242,19 @@ public class DialogCargo extends javax.swing.JDialog {
 
         jPanelMain.add(jToolBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
+        jLabelPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelPesquisa.setText("Pesquisar por");
         jPanelMain.add(jLabelPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
+        jComboBoxPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cód. do Cargo", "Descrição", "Salário" }));
-        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+        jPanelMain.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 130, -1));
         jPanelMain.add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 230, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Atributos");
@@ -253,17 +273,20 @@ public class DialogCargo extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 2));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cód. do Cargo:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 55, -1, 30));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descrição:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Salário:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 176, -1, 30));
 
         jTextFieldCodigo.setEnabled(false);
         jPanel1.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 100, -1));
@@ -272,8 +295,9 @@ public class DialogCargo extends javax.swing.JDialog {
         jTextFieldSalario.setPreferredSize(new java.awt.Dimension(60, 22));
         jPanel1.add(jTextFieldSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, 27));
 
-        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, 230));
+        jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, 230));
 
+        jTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -310,7 +334,7 @@ public class DialogCargo extends javax.swing.JDialog {
         jPanelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 420, 370));
 
         jButtonPesquisar.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonPesquisar.setFont(new java.awt.Font("Fira Sans", 1, 13)); // NOI18N
+        jButtonPesquisar.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jButtonPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.setBorderPainted(false);
@@ -320,15 +344,19 @@ public class DialogCargo extends javax.swing.JDialog {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 115, -1));
+        jPanelMain.add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 110, 30));
 
+        jButtonResetar2.setBackground(new java.awt.Color(240, 240, 240));
+        jButtonResetar2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jButtonResetar2.setText("Resetar");
+        jButtonResetar2.setBorderPainted(false);
+        jButtonResetar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonResetar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonResetar2ActionPerformed(evt);
             }
         });
-        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 115, -1));
+        jPanelMain.add(jButtonResetar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

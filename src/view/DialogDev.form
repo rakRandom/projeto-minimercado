@@ -8,6 +8,9 @@
           <Properties>
             <Property name="mnemonic" type="int" value="83"/>
             <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
@@ -71,7 +74,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="16" style="1"/>
+              <Font name="Arial" size="16" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xe1;rbara Fernandes Rampazi"/>
           </Properties>
@@ -84,7 +87,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="16" style="1"/>
+              <Font name="Arial" size="16" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Enzo de Paulo Souto"/>
           </Properties>
@@ -184,7 +187,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="16" style="1"/>
+              <Font name="Arial" size="16" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fellipe Leonardo Peixoto Cunha"/>
           </Properties>
@@ -197,7 +200,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Arial" size="13" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Centro Paula Souza - Etec da Zona Leste - Novotec Desenvolvimento de Sistemas - Manh&#xe3; - 2&#xba; M&#xf3;dulo"/>

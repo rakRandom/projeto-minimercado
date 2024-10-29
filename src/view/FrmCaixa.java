@@ -175,7 +175,6 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButtonFinalizar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caixa");
@@ -196,18 +195,18 @@ public class FrmCaixa extends javax.swing.JFrame {
 
         jPanelHeader.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 70));
 
-        jLabelDataEOperador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelDataEOperador.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelDataEOperador.setForeground(new java.awt.Color(240, 240, 240));
         jLabelDataEOperador.setText("31/12/9999    |    Operador: 0123456789");
         jPanelHeader.add(jLabelDataEOperador, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 5, 500, 60));
 
-        jLabelVenda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelVenda.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelVenda.setForeground(new java.awt.Color(240, 240, 240));
         jLabelVenda.setText("Nº da venda: 1234");
         jPanelHeader.add(jLabelVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, 70));
 
         jButtonSair.setBackground(new java.awt.Color(254, 254, 254));
-        jButtonSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setBorderPainted(false);
         jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -218,7 +217,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         });
         jPanelHeader.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, 90, 30));
 
-        jLabelNumCaixa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNumCaixa.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelNumCaixa.setForeground(new java.awt.Color(240, 240, 240));
         jLabelNumCaixa.setText("Caixa: 02    |");
         jPanelHeader.add(jLabelNumCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, 70));
@@ -227,7 +226,7 @@ public class FrmCaixa extends javax.swing.JFrame {
 
         jPanelBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -278,7 +277,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelCodigo.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCodigo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel3.setText("Código:");
         jPanelCodigo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 50));
 
@@ -291,7 +290,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelQtde.setBackground(new java.awt.Color(255, 255, 255));
         jPanelQtde.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Quantidade (Un./Kg/L):");
         jPanelQtde.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
 
@@ -304,11 +303,12 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelSubtotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelSubtotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSubtotal.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
+        jLabelSubtotal.setFont(new java.awt.Font("Arial", 0, 34)); // NOI18N
         jLabelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSubtotal.setText("R$ 00.000,00");
         jPanelSubtotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 350, 50));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Subtotal:");
         jPanelSubtotal.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
@@ -317,10 +317,11 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelTotal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Total:");
         jPanelTotal.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabelTotal.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        jLabelTotal.setFont(new java.awt.Font("Arial", 0, 42)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(0, 51, 102));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelTotal.setText("R$ 00.000,00");
@@ -329,7 +330,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 430, 70));
 
         jButtonAdicionar.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonAdicionar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonAdicionar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAdicionar.setText("Adicionar");
         jButtonAdicionar.setBorderPainted(false);
@@ -342,7 +343,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelBody.add(jButtonAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 210, 40));
 
         jButtonRemover.setBackground(new java.awt.Color(254, 254, 254));
-        jButtonRemover.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonRemover.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonRemover.setText("Remover");
         jButtonRemover.setBorderPainted(false);
         jButtonRemover.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -354,7 +355,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelBody.add(jButtonRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 310, 100, 40));
 
         jButtonLimpar.setBackground(new java.awt.Color(254, 254, 254));
-        jButtonLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.setBorderPainted(false);
         jButtonLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -381,7 +382,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelBody.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, 430, 2));
 
         jButtonFinalizar.setBackground(new java.awt.Color(0, 51, 102));
-        jButtonFinalizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonFinalizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonFinalizar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonFinalizar.setText("Finalizar Compra");
         jButtonFinalizar.setBorderPainted(false);
@@ -394,6 +395,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jPanelBody.add(jButtonFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 520, 290, 40));
 
         jButtonCancelar.setBackground(new java.awt.Color(254, 254, 254));
+        jButtonCancelar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar compra");
         jButtonCancelar.setBorderPainted(false);
         jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -402,12 +404,9 @@ public class FrmCaixa extends javax.swing.JFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanelBody.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 525, 120, 30));
+        jPanelBody.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 525, 130, 30));
 
         jPanelMain.add(jPanelBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 94, 1240, 580));
-
-        jLabel8.setText("Controles: Alt + S - Sair | [...]");
-        jPanelMain.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 1240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -702,10 +701,10 @@ public class FrmCaixa extends javax.swing.JFrame {
         }
         
         try {
-            conexao.statement.executeUpdate(
+            conexao.preparedStatement.executeUpdate(
                 "INSERT INTO compra (cod_compra, id_func, id_cliente, data_compra, metodo_pag, preco_bruto, valor_desconto) VALUES (" + cod_compra + ", " + id_func + ", " + id_cliente + ", NOW(), " + metodo_pag + ", " + preco_bruto + ", " + valor_desconto + ")"
             );
-        }
+        } 
         catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null, 
@@ -728,11 +727,11 @@ public class FrmCaixa extends javax.swing.JFrame {
                         .replace(',', '.')
                 );
 
-                conexao.statement.executeUpdate(
+                conexao.preparedStatement.executeUpdate(
                     "INSERT INTO itens (cod_lote, cod_compra, quantidade) VALUES (" + codigo + ", " + cod_compra + ", " + qt + ")"
                 );
             }
-        }
+        } 
         catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null, 
@@ -822,7 +821,6 @@ public class FrmCaixa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDataEOperador;
     private javax.swing.JLabel jLabelNumCaixa;
