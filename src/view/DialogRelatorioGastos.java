@@ -244,11 +244,25 @@ public class DialogRelatorioGastos extends javax.swing.JDialog {
         
         // =====================================================================
         
+        Double porcentagemMes = mesLucro / mesLiquido;
+        Double porcentagemAno = anoLucro / anoLiquido;
+        Double porcentagemTotal = totalLucro / totalLiquido;
+        
+        if (mesLiquido == 0.0) {
+            porcentagemMes = 0.0;
+        }
+        if (anoLiquido == 0.0) {
+            porcentagemAno = 0.0;
+        }
+        if (totalLiquido == 0.0) {
+            porcentagemTotal = 0.0;
+        }
+        
         rowPorcentagemDeLucro = new Object[] {
             "Porcentagem de lucro",
-            "~ %.2f %%".formatted(mesLucro / mesLiquido),
-            "~ %.2f %%".formatted(anoLucro / anoLiquido),
-            "~ %.2f %%".formatted(totalLucro / totalLiquido)
+            "~ %.2f %%".formatted(porcentagemMes),
+            "~ %.2f %%".formatted(porcentagemAno),
+            "~ %.2f %%".formatted(porcentagemTotal)
         };
         
         // =====================================================================
