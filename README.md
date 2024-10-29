@@ -44,7 +44,7 @@ Utiliza Java com Swing e MySQL.
 
     - [x] Sistema de Caixa
 
-- [ ] Design
+- [x] Design
     - [x] Nome do minimercado
     - [x] Criar Logo
     - [x] Adicionar Imagens
@@ -52,14 +52,14 @@ Utiliza Java com Swing e MySQL.
         - [x] Desenvolvedores
             - [x] Foto dos desenvolvedores
             - [x] Banner do minimercado
-    - [ ] Alinhar e padronizar todos os elementos
+    - [x] Alinhar e padronizar todos os elementos
     - [x] Verificar o tamanho dos Frames, se não estão muito grandes ou muito pequenos
     - [x] Verificar o título dos Frames, eles somem do nada
-    - [ ] Colocar todos os botões com fundo `(254,254,254)` ou `(0,51,102)`, `borderPainted = false` e `cursor = "Hand Cursor"`
+    - [x] Colocar todos os botões com fundo `(254,254,254)` ou `(0,51,102)`, `borderPainted = false` e `cursor = "Hand Cursor"`
 
 - [x] Outros
     - [x] Fazer a To-do list da classe CRUD
-    - [ ] Verificar se algum código usa o `conexao.resultset.getString(Integer)` errado.
+    - [x] Verificar se algum código usa o `conexao.resultset.getString(Integer)` errado.
     - [ ] Colocar verificações no gravar, alterar e excluir da classe CRUD.
     - [ ] Adicionar verificação de SQL Injection na classe de conexão
 
