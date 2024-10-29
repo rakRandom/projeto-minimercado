@@ -533,15 +533,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldData">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="dd/MM/yyyy hh:mm:ss&#x202f;" subtype="-1" type="2"/>
-                </Property>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="jFormattedTextFieldData">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="200" width="120" height="-1"/>
+                  <AbsoluteConstraints x="140" y="200" width="120" height="22"/>
                 </Constraint>
               </Constraints>
             </Component>

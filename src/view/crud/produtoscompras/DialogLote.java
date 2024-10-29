@@ -105,8 +105,8 @@ public class DialogLote extends javax.swing.JDialog {
         jTextFieldLote = new javax.swing.JTextField();
         jTextFieldProduto = new javax.swing.JTextField();
         jTextFieldQuantidade = new javax.swing.JTextField();
-        jFormattedTextFieldValidade = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldCompra = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldCompra = new javax.swing.JTextField();
+        jFormattedTextFieldValidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jTextFieldPesquisa = new javax.swing.JTextField();
@@ -311,12 +311,8 @@ public class DialogLote extends javax.swing.JDialog {
         jPanel3.add(jTextFieldLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 190, -1));
         jPanel3.add(jTextFieldProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 190, -1));
         jPanel3.add(jTextFieldQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, -1));
-
-        jFormattedTextFieldValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jPanel3.add(jFormattedTextFieldValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, -1));
-
-        jFormattedTextFieldCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jPanel3.add(jFormattedTextFieldCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 190, -1));
+        jPanel3.add(jFormattedTextFieldCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 190, 22));
+        jPanel3.add(jFormattedTextFieldValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 22));
 
         jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 320));
 
@@ -462,8 +458,8 @@ public class DialogLote extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCompra;
-    private javax.swing.JFormattedTextField jFormattedTextFieldValidade;
+    private javax.swing.JTextField jFormattedTextFieldCompra;
+    private javax.swing.JTextField jFormattedTextFieldValidade;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;

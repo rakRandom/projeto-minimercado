@@ -123,13 +123,13 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextFieldNasc = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
         jFormattedTextFieldRG = new javax.swing.JFormattedTextField();
         jTextFieldEndereco = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextFieldExpediente = new javax.swing.JTextField();
         jTextFieldCargo = new javax.swing.JTextField();
+        jFormattedTextFieldNasc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jButtonPesquisar = new javax.swing.JButton();
@@ -343,11 +343,6 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jLabel8.setText("Endereço:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, 20));
 
-        jFormattedTextFieldNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedTextFieldNasc.setMinimumSize(new java.awt.Dimension(65, 22));
-        jFormattedTextFieldNasc.setPreferredSize(new java.awt.Dimension(92, 27));
-        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 140, -1));
-
         try {
             jFormattedTextFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -373,6 +368,7 @@ public class DialogFuncionario extends javax.swing.JDialog {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 55, -1, -1));
         jPanel1.add(jTextFieldExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 80, -1));
         jPanel1.add(jTextFieldCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 80, -1));
+        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 130, 22));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1060, 120));
 
@@ -505,7 +501,7 @@ public class DialogFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNasc;
+    private javax.swing.JTextField jFormattedTextFieldNasc;
     private javax.swing.JFormattedTextField jFormattedTextFieldRG;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

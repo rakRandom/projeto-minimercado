@@ -113,9 +113,9 @@ public class DialogCliente extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldEndereco = new javax.swing.JTextField();
-        jFormattedTextFieldNasc = new javax.swing.JFormattedTextField();
         jFormattedTextFieldRG = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldNasc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jButtonPesquisar = new javax.swing.JButton();
@@ -326,10 +326,6 @@ public class DialogCliente extends javax.swing.JDialog {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
         jPanel1.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 330, -1));
 
-        jFormattedTextFieldNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedTextFieldNasc.setPreferredSize(new java.awt.Dimension(65, 22));
-        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 110, -1));
-
         jFormattedTextFieldRG.setPreferredSize(new java.awt.Dimension(80, 22));
         jPanel1.add(jFormattedTextFieldRG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, -1));
 
@@ -340,6 +336,7 @@ public class DialogCliente extends javax.swing.JDialog {
         }
         jFormattedTextFieldCPF.setPreferredSize(new java.awt.Dimension(92, 22));
         jPanel1.add(jFormattedTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 110, -1));
+        jPanel1.add(jFormattedTextFieldNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 110, 22));
 
         jPanelMain2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1040, 140));
 
@@ -472,7 +469,7 @@ public class DialogCliente extends javax.swing.JDialog {
     private javax.swing.JButton jButtonUltimo2;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNasc;
+    private javax.swing.JTextField jFormattedTextFieldNasc;
     private javax.swing.JFormattedTextField jFormattedTextFieldRG;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

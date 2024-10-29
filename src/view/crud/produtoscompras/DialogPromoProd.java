@@ -99,8 +99,8 @@ public class DialogPromoProd extends javax.swing.JDialog {
         jLabel17 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
         jTextFieldPorcentagem = new javax.swing.JTextField();
-        jFormattedTextFieldInicio = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldTermino = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldInicio = new javax.swing.JTextField();
+        jFormattedTextFieldTermino = new javax.swing.JTextField();
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
         jLabelPesquisa = new javax.swing.JLabel();
         jTextFieldPesquisa = new javax.swing.JTextField();
@@ -332,12 +332,8 @@ public class DialogPromoProd extends javax.swing.JDialog {
         jTextFieldCodigo.setEnabled(false);
         jPanel3.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 70, -1));
         jPanel3.add(jTextFieldPorcentagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 70, -1));
-
-        jFormattedTextFieldInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jPanel3.add(jFormattedTextFieldInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 140, 100, -1));
-
-        jFormattedTextFieldTermino.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jPanel3.add(jFormattedTextFieldTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 180, 100, -1));
+        jPanel3.add(jFormattedTextFieldInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 140, 100, 22));
+        jPanel3.add(jFormattedTextFieldTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 180, 100, -1));
 
         jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 240));
 
@@ -457,8 +453,8 @@ public class DialogPromoProd extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
-    private javax.swing.JFormattedTextField jFormattedTextFieldInicio;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTermino;
+    private javax.swing.JTextField jFormattedTextFieldInicio;
+    private javax.swing.JTextField jFormattedTextFieldTermino;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel17;

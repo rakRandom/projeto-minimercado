@@ -92,11 +92,11 @@ public class DialogExpediente extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextFieldInicio = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldTermino = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jFormattedTextFieldInicio = new javax.swing.JTextField();
+        jFormattedTextFieldTermino = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonResetar2 = new javax.swing.JButton();
 
@@ -302,22 +302,6 @@ public class DialogExpediente extends javax.swing.JDialog {
         jLabel2.setText("Hora de Início:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 115, -1, -1));
 
-        jFormattedTextFieldInicio.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextFieldInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldInicioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jFormattedTextFieldInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, -1));
-
-        jFormattedTextFieldTermino.setPreferredSize(new java.awt.Dimension(60, 22));
-        jFormattedTextFieldTermino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldTerminoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jFormattedTextFieldTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 80, -1));
-
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hora de Término:");
@@ -342,6 +326,8 @@ public class DialogExpediente extends javax.swing.JDialog {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 2));
+        jPanel1.add(jFormattedTextFieldInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 70, 22));
+        jPanel1.add(jFormattedTextFieldTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 70, -1));
 
         jPanelMain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, 200));
 
@@ -391,10 +377,6 @@ public class DialogExpediente extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jFormattedTextFieldTerminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTerminoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldTerminoActionPerformed
-
     private void jButtonNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoRegistroActionPerformed
         crud.novoRegistro();
     }//GEN-LAST:event_jButtonNovoRegistroActionPerformed
@@ -435,10 +417,6 @@ public class DialogExpediente extends javax.swing.JDialog {
         crud.resetarTabela();
     }//GEN-LAST:event_jButtonResetar2ActionPerformed
 
-    private void jFormattedTextFieldInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldInicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldInicioActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAnterior;
@@ -452,8 +430,8 @@ public class DialogExpediente extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
-    private javax.swing.JFormattedTextField jFormattedTextFieldInicio;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTermino;
+    private javax.swing.JTextField jFormattedTextFieldInicio;
+    private javax.swing.JTextField jFormattedTextFieldTermino;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

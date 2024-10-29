@@ -152,7 +152,7 @@ public class DialogCompra extends javax.swing.JDialog {
         jTextFieldPag = new javax.swing.JTextField();
         jTextFieldBruto = new javax.swing.JTextField();
         jTextFieldDesconto = new javax.swing.JTextField();
-        jFormattedTextFieldData = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldData = new javax.swing.JTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jComboBoxPesquisa = new javax.swing.JComboBox<>();
@@ -403,9 +403,7 @@ public class DialogCompra extends javax.swing.JDialog {
         jPanel3.add(jTextFieldPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 90, -1));
         jPanel3.add(jTextFieldBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 120, -1));
         jPanel3.add(jTextFieldDesconto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 120, -1));
-
-        jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss "))));
-        jPanel3.add(jFormattedTextFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 120, -1));
+        jPanel3.add(jFormattedTextFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 120, 22));
 
         jPanelMain.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, 400));
 
@@ -553,7 +551,7 @@ public class DialogCompra extends javax.swing.JDialog {
     private javax.swing.JButton jButtonTiposDeTelefone;
     private javax.swing.JButton jButtonUltimo;
     private javax.swing.JComboBox<String> jComboBoxPesquisa;
-    private javax.swing.JFormattedTextField jFormattedTextFieldData;
+    private javax.swing.JTextField jFormattedTextFieldData;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
