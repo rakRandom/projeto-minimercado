@@ -305,7 +305,7 @@ public class FrmCaixa extends javax.swing.JFrame {
 
         jLabelSubtotal.setFont(new java.awt.Font("Arial", 0, 34)); // NOI18N
         jLabelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelSubtotal.setText("R$ 00.000,00");
+        jLabelSubtotal.setText("R$ 0,00");
         jPanelSubtotal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 6, 350, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -324,7 +324,7 @@ public class FrmCaixa extends javax.swing.JFrame {
         jLabelTotal.setFont(new java.awt.Font("Arial", 0, 42)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(0, 51, 102));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelTotal.setText("R$ 00.000,00");
+        jLabelTotal.setText("R$ 0,00");
         jPanelTotal.add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 370, 70));
 
         jPanelBody.add(jPanelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 430, 70));
@@ -642,7 +642,14 @@ public class FrmCaixa extends javax.swing.JFrame {
             case "6" -> metodo_pag = 6;
             case "7" -> metodo_pag = 7;
             case "8" -> metodo_pag = 8;
-            default -> { return; }
+            default -> { 
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro: Método de pagamento inválido.", 
+                    "Mensagem do programa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return; 
+            }
         }
         
         //
