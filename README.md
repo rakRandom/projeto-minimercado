@@ -60,6 +60,7 @@ Utiliza Java com Swing e MySQL.
 - [x] Outros
     - [x] Fazer a To-do list da classe CRUD
     - [x] Verificar se algum código usa o `conexao.resultset.getString(Integer)` errado.
-    - [ ] Colocar verificações no gravar, alterar e excluir da classe CRUD.
+    - [x] Colocar verificações no gravar, alterar e excluir da classe CRUD.
     - [ ] Adicionar verificação de SQL Injection na classe de conexão
+        - [ ] Atualizar os SQLs de `Statement` para `PreparedStatement`
 
