@@ -122,27 +122,27 @@ classDiagram
         + setVisible(boolean visible)
     }
 
-    Main --> UIManager : Uses
+    Main --o UIManager
     Main --> FrmMain : Creates instance
 
-    FrmMain --> FrmLoginAdm : Navigates to
-    FrmMain --> FrmLoginCaixa : Navigates to
-    FrmMain --> DialogDev : Opens dialog for developers
-    FrmMain --> JFrame : Inherits
+    CRUD --o DefaultTableModel
+    CRUD --o JComboBox
+    CRUD --o "1..*" JTextField
+    CRUD --> "*" TipoAtributo
+    CRUD --> "*" TipoSQL
 
-    FrmLoginAdm --> FrmPainelControle : Navigates to
-    FrmLoginAdm --> Conexao : Uses
-    FrmLoginAdm --> JFrame : Inherits
+    FrmMain --> FrmLoginAdm : Navega para
+    FrmMain --> FrmLoginCaixa : Navega para
+    FrmMain --> DialogDev : Abre Frame Modal
+    
+    FrmLoginAdm --> FrmPainelControle : Navega para
+    FrmLoginCaixa --> FrmCaixa : Navega para
+    
+    JFrame <|-- FrmMain
+    JFrame <|-- FrmLoginAdm
+    JFrame <|-- FrmLoginCaixa
 
-    FrmLoginCaixa --> FrmCaixa : Navigates to
-    FrmLoginCaixa --> Conexao : Uses
-    FrmLoginCaixa --> JFrame : Inherits
-
-    CRUD "1" --> "1" Conexao : Uses
-    CRUD "1" --> "1" DefaultTableModel : Uses
-    CRUD "1" --> "1" JComboBox : Uses
-    CRUD "1" --> "1" JTextField : Uses
-    CRUD "1" --> "*" TipoAtributo : Uses
-    CRUD "1" --> "*" String : Uses
-    CRUD "1" --> "*" JTextField : Uses
-    CRUD "1" --> "*" TipoSQL : Calls
+    Conexao o-- CRUD
+    Conexao o-- FrmLoginAdm
+    Conexao o-- FrmLoginCaixa
+    
