@@ -1,0 +1,148 @@
+classDiagram
+    class Main {
+        + main(String[] args)
+    }
+
+    class UIManager {
+        + setLookAndFeel(String className)
+        + getSystemLookAndFeelClassName() String
+    }
+
+    class CRUD {
+        - Conexao conexao
+        - DefaultTableModel modelo
+        - String nome_tabela
+        - String[] atributos
+        - String[] tabelasFK
+        - TipoAtributo[] tiposAtributo
+        - JTextField[] campos
+        - Integer pkIndex
+        - JComboBox jComboBoxPesquisa
+        - JTextField jTextFieldPesquisa
+        
+        + CRUD(Conexao, DefaultTableModel, String, String[], String[], TipoAtributo[], JTextField[], JComboBox, JTextField)
+        + String calcularInsert()
+        + String calcularSelect()
+        + String calcularUpdate()
+        + String calcularDelete()
+        + int verificarFK()
+        + String calcularSQL(TipoSQL)
+        + void novoRegistro()
+        + void gravar()
+        + void alterar()
+        + void excluir()
+        + void primeiro()
+        + void anterior()
+        + void proximo()
+        + void ultimo()
+        + String calcularPesquisa()
+        + void pesquisar()
+        + void resetarTabela()
+        + void preencherTabela()
+        + void posicionarRegistro()
+        + void mostrarDados()
+    }
+
+    class Conexao {
+        - String driver = "com.mysql.cj.jdbc.Driver"
+        - String url = "jdbc:mysql://localhost/minimercado"
+        - String usuario = "root"
+        - String senha = ""
+        - Connection conexao
+        - PreparedStatement preparedStatement
+        - ResultSet resultset
+
+        + boolean conectar()
+        + void desconectar()
+        + void executarSQL(String sql, Object... params)
+    }
+
+    class TipoSQL {
+        <<enumeration>>
+        Insert
+        Select
+        Update
+        Delete
+    }
+
+    class TipoAtributo {
+        <<enumeration>>
+        PK
+        FK
+        String
+        Number
+        Money
+    }
+
+    class FrmMain {
+        + FrmMain()
+        + initComponents()
+        + jButton1MouseClicked(java.awt.event.MouseEvent)
+        + jButtonDevActionPerformed(java.awt.event.ActionEvent)
+        + jButtonDevMouseClicked(java.awt.event.MouseEvent)
+        + jButton2MouseClicked(java.awt.event.MouseEvent)
+    }
+
+    class FrmLoginAdm {
+        - Conexao conexaoDB
+        
+        + FrmLoginAdm()
+        + initComponents()
+        - void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt)
+        - void jMenuSairMouseClicked(java.awt.event.MouseEvent evt)
+        - void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt)
+    }
+
+    class FrmLoginCaixa {
+        - Conexao conexaoDB
+
+        + FrmLoginAdm()
+        + initComponents()
+        - void jMenuSairMouseClicked(java.awt.event.MouseEvent evt)
+        - void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt)
+    }
+
+    class FrmPainelControle {
+    }
+
+    class FrmCaixa {
+    }
+
+    class DialogDev {
+        + DialogDev(java.awt.Frame, boolean)
+        + setVisible(boolean)
+    }
+
+    class JFrame {
+        + setDefaultCloseOperation(int)
+        + setTitle(String)
+        + setMinimumSize(java.awt.Dimension)
+        + setResizable(boolean)
+        + setSize(java.awt.Dimension)
+        + setVisible(boolean visible)
+    }
+
+    Main --> UIManager : Uses
+    Main --> FrmMain : Creates instance
+
+    FrmMain --> FrmLoginAdm : Navigates to
+    FrmMain --> FrmLoginCaixa : Navigates to
+    FrmMain --> DialogDev : Opens dialog for developers
+    FrmMain --> JFrame : Inherits
+
+    FrmLoginAdm --> FrmPainelControle : Navigates to
+    FrmLoginAdm --> Conexao : Uses
+    FrmLoginAdm --> JFrame : Inherits
+
+    FrmLoginCaixa --> FrmCaixa : Navigates to
+    FrmLoginCaixa --> Conexao : Uses
+    FrmLoginCaixa --> JFrame : Inherits
+
+    CRUD "1" --> "1" Conexao : Uses
+    CRUD "1" --> "1" DefaultTableModel : Uses
+    CRUD "1" --> "1" JComboBox : Uses
+    CRUD "1" --> "1" JTextField : Uses
+    CRUD "1" --> "*" TipoAtributo : Uses
+    CRUD "1" --> "*" String : Uses
+    CRUD "1" --> "*" JTextField : Uses
+    CRUD "1" --> "*" TipoSQL : Calls
